@@ -1,0 +1,5 @@
+# .htaccess untuk website di direktori dishub
+RewriteEngine On
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^dishub\.bot [NC]
+RewriteRule ^(.*)$ http://dishub.bot/$1 [L,R=301]

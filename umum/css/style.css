@@ -1,0 +1,70 @@
+/* Aturan gaya untuk header */
+header {
+  background-color: #333; /* Warna latar belakang header */
+  color: #fff; /* Warna teks header */
+  padding: 10px; /* Ruang padding header */
+  width: 100%;
+}
+
+/* Aturan gaya untuk teks berwarna biru */
+.blue-text {
+  color: blue;
+}
+
+/* Aturan gaya untuk tombol */
+.button {
+  background-color: #007bff; /* Warna latar belakang tombol */
+  color: #fff; /* Warna teks tombol */
+  padding: 10px 20px; /* Ruang padding tombol */
+  border: none; /* Hilangkan border tombol */
+  border-radius: 5px; /* Sudut bulat tombol */
+  cursor: pointer; /* Tampilkan kursor saat diarahkan ke tombol */
+}
+
+/* Aturan gaya untuk gambar */
+.image {
+  width: 100%; /* Lebar gambar 100% */
+  height: auto; /* Tinggi gambar otomatis sesuai proporsi */
+}
+
+/* Aturan gaya untuk judul di header */
+header h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Aturan gaya untuk navigasi */
+nav {
+  padding: 0;
+}
+
+/* Aturan gaya untuk menu navigasi */
+.navbar-nav li {
+  margin-right: 10px;
+}
+
+/* Aturan gaya untuk konten utama */
+.container {
+  margin-top: 20px;
+}
+
+/* Aturan gaya untuk kartu */
+.card {
+  margin-bottom: 20px;
+}
+
+/* Aturan gaya untuk teks pada kartu */
+.card-body ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* Aturan gaya untuk footer */
+footer {
+  padding: 20px 0;
+  background-color: #f8f9fa;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
