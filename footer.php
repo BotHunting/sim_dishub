@@ -14,7 +14,8 @@
                 <div class="social-links d-flex mt-4">
                     <a href="https://dishub.fakfakkab.go.id/" target="_blank"><i class="bi bi-twitter"></i></a>
                     <a href="https://www.facebook.com/dishub.fakfak" target="_blank"><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.instagram.com/dishubkab.fakfak/" target="_blank"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.instagram.com/dishubkab.fakfak/" target="_blank"><i
+                            class="bi bi-instagram"></i></a>
                     <a href="https://fakfakkab.go.id/" target="_blank"><i class="bi bi-linkedin"></i></a>
                 </div>
             </div>
@@ -44,7 +45,8 @@
 
             <div class="col-lg-4 col-md-12 footer-newsletter">
                 <h4>INDEKS KEPUASAN MASYARAKAT</h4>
-                <p>Partisipasi Anda sangat berarti bagi kami. Silakan isi survei kami untuk membantu kami meningkatkan layanan kami.</p>
+                <p>Partisipasi Anda sangat berarti bagi kami. Silakan isi survei kami untuk membantu kami meningkatkan
+                    layanan kami.</p>
                 <form action="https://forms.gle/SVx2djjqmf2eywyL9" target="_blank">
                     <input type="submit" value="Isi Survey" class="btn btn-primary">
                 </form>
@@ -56,16 +58,17 @@
     <div class="container copyright text-center mt-4">
         <p>&copy; <?php echo date("Y"); ?> Sistem Informasi Dinas Perhubungan Fakfak</p>
         <div class="credits">
-            Bot Hunting Company Limited</a>
-            <div class="credits">
-            </div>
+            <a href="https://flying-classy-sage.glitch.me/" target="_blank" rel="noopener noreferrer">
+                Bot Hunting Company Limited
+            </a>
         </div>
     </div>
 
 </footer>
 
 <!-- Scroll Top -->
-<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
 <!-- Preloader -->
 <div id="preloader"></div>

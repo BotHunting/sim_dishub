@@ -1,6 +1,6 @@
 <?php
 // Include file koneksi database
-include_once 'koneksi.php';
+include_once '../../config.php';
 
 // Periksa apakah parameter id telah diberikan
 if (isset($_GET['id'])) {

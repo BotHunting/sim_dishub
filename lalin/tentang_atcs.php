@@ -8,46 +8,50 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                <!-- Box 1: Apa itu ATCS -->
                 <div class="box">
                     <h2>Apa itu ATCS?</h2>
-                    <p>ATCS adalah singkatan dari Area Traffic Control System, yaitu sebuah sistem kendali lalu lintas cerdas yang menggunakan teknologi informasi untuk mengoptimalkan kinerja jaringan jalan raya.</p>
-                    <p>Sistem ATCS bekerja dengan cara mengumpulkan data lalu lintas secara real-time dari berbagai sensor yang terpasang di persimpangan jalan, seperti:</p>
+                    <p>ATCS (Area Traffic Control System) adalah sistem kontrol lalu lintas berbasis teknologi yang dirancang untuk meningkatkan kelancaran dan keselamatan lalu lintas di perkotaan. Sistem ini bekerja dengan cara memantau kondisi lalu lintas secara real-time dan mengatur pengaturan lampu lalu lintas secara otomatis untuk mengurangi kemacetan dan meningkatkan efisiensi perjalanan.</p>
+                    <p>Beberapa teknologi yang digunakan dalam ATCS meliputi:</p>
                     <ul>
-                        <li>Detektor kendaraan</li>
-                        <li>Kamera CCTV</li>
-                        <li>Sensor lampu lalu lintas</li>
+                        <li>Detektor kendaraan yang terpasang di ruas jalan</li>
+                        <li>CCTV untuk pemantauan kondisi lalu lintas</li>
+                        <li>Sensor pengatur lampu lalu lintas</li>
                     </ul>
-                    <p>Data tersebut kemudian diolah oleh pusat kendali ATCS menggunakan perangkat lunak khusus. Berdasarkan hasil analisis data, ATCS dapat membuat keputusan untuk mengatur durasi lampu lalu lintas secara dinamis sehingga dapat menyesuaikan dengan kondisi lalu lintas aktual.</p>
-                    <p>Dengan demikian, ATCS diharapkan dapat mengatasi permasalahan kemacetan lalu lintas yang sering terjadi di perkotaan.</p>
+                    <p>Data yang diperoleh dari sensor tersebut akan dianalisis dan diolah oleh pusat kendali ATCS untuk mengatur pengaturan lampu lalu lintas yang lebih optimal, sesuai dengan kondisi riil di lapangan.</p>
                 </div>
 
+                <!-- Box 2: Tujuan dan Manfaat ATCS -->
                 <div class="box">
                     <h2>Tujuan dan Manfaat ATCS</h2>
-                    <p>ATCS memiliki beberapa tujuan utama, yaitu:</p>
+                    <p>ATCS memiliki berbagai tujuan penting, antara lain:</p>
                     <ul>
-                        <li>Meningkatkan kelancaran lalu lintas</li>
-                        <li>Meningkatkan keselamatan lalu lintas</li>
-                        <li>Mengurangi emisi gas buang kendaraan</li>
-                        <li>Meningkatkan produktivitas masyarakat</li>
+                        <li>Meningkatkan kelancaran dan efisiensi lalu lintas</li>
+                        <li>Meningkatkan keselamatan pengendara dan pejalan kaki</li>
+                        <li>Meminimalkan kemacetan dengan pengaturan lampu lalu lintas yang lebih dinamis</li>
+                        <li>Mengurangi emisi gas buang kendaraan dengan mempercepat aliran lalu lintas</li>
                     </ul>
-                    <p>Dengan tercapainya tujuan tersebut, maka ATCS dapat memberikan berbagai manfaat bagi masyarakat, antara lain:</p>
+                    <p>Beberapa manfaat yang dapat dirasakan dari penerapan ATCS, antara lain:</p>
                     <ul>
-                        <li>Waktu tempuh perjalanan menjadi lebih singkat</li>
-                        <li>Konsumsi bahan bakar kendaraan menjadi lebih efisien</li>
-                        <li>Kualitas udara menjadi lebih baik</li>
-                        <li>Produktivitas masyarakat meningkat</li>
+                        <li>Perjalanan lebih cepat dan waktu tempuh yang lebih singkat</li>
+                        <li>Penghematan bahan bakar kendaraan</li>
+                        <li>Pengurangan polusi udara akibat emisi kendaraan</li>
+                        <li>Peningkatan kualitas hidup masyarakat perkotaan</li>
                     </ul>
                 </div>
 
+                <!-- Box 3: Komponen Sistem ATCS -->
                 <div class="box">
                     <h2>Komponen Sistem ATCS</h2>
-                    <p>ATCS terdiri dari beberapa komponen utama, yaitu:</p>
+                    <p>Sistem ATCS terdiri dari beberapa komponen penting yang bekerja secara sinergis untuk mengatur lalu lintas secara efisien. Beberapa komponen utama tersebut antara lain:</p>
                     <ul>
-                        <li><b>Sensor lapangan</b>: Berfungsi mengumpulkan data lalu lintas secara real-time.</li>
-                        <li><b>Pusat kendali ATCS</b>: Berfungsi mengolah data lalu lintas dan membuat keputusan pengaturan lampu lalu lintas.</li>
-                        <li><b>Jaringan komunikasi</b>: Memfasilitasi komunikasi antara sensor lapangan dan pusat kendali ATCS.</li>
-                        <li><b>Lampu lalu lintas</b>: Menerima instruksi pengaturan dari pusat kendali ATCS.</li>
+                        <li><strong>Sensor Lalu Lintas</strong>: Sensor yang dipasang di jalan raya untuk mendeteksi jumlah kendaraan, kecepatan, dan kepadatan lalu lintas di suatu area tertentu.</li>
+                        <li><strong>Detektor Kendaraan</strong>: Alat yang mendeteksi keberadaan kendaraan pada persimpangan atau ruas jalan tertentu. Data dari detektor ini digunakan untuk mengatur durasi lampu lalu lintas.</li>
+                        <li><strong>CCTV Lalu Lintas</strong>: Kamera pengawas yang dipasang di titik-titik strategis untuk memantau kondisi lalu lintas secara langsung.</li>
+                        <li><strong>Pusat Kendali ATCS</strong>: Tempat di mana semua data dari sensor dan CCTV dikumpulkan, dianalisis, dan digunakan untuk mengontrol pengaturan lampu lalu lintas serta memberikan rekomendasi terkait pengaturan lalu lintas lainnya.</li>
+                        <li><strong>Jaringan Komunikasi</strong>: Infrastruktur yang menghubungkan sensor-sensor dan pusat kendali untuk memastikan data dapat disampaikan dengan cepat dan akurat.</li>
                     </ul>
+                    <p>Dengan adanya komponen-komponen ini, ATCS dapat memberikan solusi atas permasalahan kemacetan dan meningkatkan kualitas pengaturan lalu lintas di kota-kota besar.</p>
                 </div>
             </div>
         </div>

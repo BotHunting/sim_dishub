@@ -8,43 +8,29 @@ $tanggal = mysqli_real_escape_string($koneksi, $_POST['tanggal']);
 $jenis_laporan = mysqli_real_escape_string($koneksi, $_POST['jenis_laporan']);
 $isi = mysqli_real_escape_string($koneksi, $_POST['isi']);
 $status = mysqli_real_escape_string($koneksi, $_POST['status']);
+$file_google_drive = mysqli_real_escape_string($koneksi, $_POST['file_google_drive']); // Menangani link Google Drive
 
-// Proses upload file
-$targetDir = "lib/laporan/";
-$fileName = basename($_FILES["file"]["name"]);
-$targetFilePath = $targetDir . $fileName;
-$fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-
-// Validasi file
-if (empty($fileName)) {
-    $error = "Pilih file untuk diunggah.";
-} elseif ($_FILES["file"]["size"] > 5000000) { // 5MB
-    $error = "File terlalu besar. Maksimum 5MB.";
-} elseif (!in_array($fileType, array('pdf'))) {
-    $error = "Hanya file PDF yang diizinkan.";
+// Validasi link Google Drive
+if (empty($file_google_drive)) {
+    $error = "Masukkan link Google Drive untuk file laporan.";
 } else {
-    // Upload file ke folder "lib/laporan"
-    if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
-        // Gunakan prepared statement untuk mencegah SQL Injection
-        $query = "INSERT INTO laporan (nomor_surat, tanggal, jenis_laporan, isi, status, file_upload) 
-                  VALUES (?, ?, ?, ?, ?, ?)";
-        $stmt = $koneksi->prepare($query);
-        $stmt->bind_param("ssssss", $nomor_surat, $tanggal, $jenis_laporan, $isi, $status, $fileName);
+    // Gunakan prepared statement untuk mencegah SQL Injection
+    $query = "INSERT INTO laporan (nomor_surat, tanggal, jenis_laporan, isi, status, file_google_drive) 
+              VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = $koneksi->prepare($query);
+    $stmt->bind_param("ssssss", $nomor_surat, $tanggal, $jenis_laporan, $isi, $status, $file_google_drive);
 
-        // Jalankan prepared statement
-        if ($stmt->execute()) {
-            // Redirect ke halaman laporan.php setelah berhasil menambahkan data
-            header("Location: laporan.php");
-            exit;
-        } else {
-            $error = "Error: Terjadi kesalahan saat menambahkan data.";
-        }
-
-        // Tutup statement
-        $stmt->close();
+    // Jalankan prepared statement
+    if ($stmt->execute()) {
+        // Redirect ke halaman laporan.php setelah berhasil menambahkan data
+        header("Location: laporan.php");
+        exit;
     } else {
-        $error = "Terjadi kesalahan saat mengupload file.";
+        $error = "Error: Terjadi kesalahan saat menambahkan data.";
     }
+
+    // Tutup statement
+    $stmt->close();
 }
 
 if (!empty($error)) {

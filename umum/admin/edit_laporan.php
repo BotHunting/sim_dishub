@@ -1,6 +1,6 @@
 <?php
 // Include file koneksi database
-include_once 'koneksi.php';
+include_once '../../config.php';
 
 // Tangkap ID laporan yang akan diedit
 $id = $_GET['id'];
@@ -18,7 +18,7 @@ if ($result->num_rows > 0) {
     <?php include_once 'header.php'; ?>
     <div class="container mt-5">
         <h1 class="mt-4">Edit Laporan</h1>
-        <form action="proses_edit_laporan.php" method="post" enctype="multipart/form-data">
+        <form action="proses_edit_laporan.php" method="post">
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
             <div class="mb-3">
                 <label for="tanggal" class="form-label">Tanggal</label>
@@ -51,15 +51,15 @@ if ($result->num_rows > 0) {
             </div>
             <div class="mb-3">
                 <label>File Sebelumnya:</label>
-                <?php if (!empty($row['file_upload'])) : ?>
-                    <a href="lib/laporan/<?php echo htmlspecialchars($row['file_upload']); ?>" class="btn btn-info" target="_blank">Lihat File</a>
+                <?php if (!empty($row['file_google_drive'])) : ?>
+                    <a href="<?php echo htmlspecialchars($row['file_google_drive']); ?>" class="btn btn-info" target="_blank">Lihat File</a>
                 <?php else : ?>
                     <span class="text-muted">Tidak ada file sebelumnya</span>
                 <?php endif; ?>
             </div>
             <div class="mb-3">
-                <label>Upload File Baru (jika ingin diperbarui):</label>
-                <input type="file" class="form-control-file" name="file">
+                <label>Link Google Drive Baru (jika ingin diperbarui):</label>
+                <input type="url" class="form-control" name="file_google_drive" placeholder="Masukkan link Google Drive" value="<?php echo htmlspecialchars($row['file_google_drive']); ?>">
             </div>
             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
             <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>
@@ -73,5 +73,4 @@ if ($result->num_rows > 0) {
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>

@@ -35,7 +35,7 @@
                 // Prepare and bind SQL statement
                 $sql = "SELECT * FROM suratmenyurat WHERE status = ? ORDER BY tanggal DESC";
                 $stmt = $koneksi->prepare($sql);
-                $status = 'Draft';
+                $status = 'Draft';  // Atur status menjadi 'Draft'
                 $stmt->bind_param("s", $status);
                 $stmt->execute();
                 $result = $stmt->get_result();
@@ -51,8 +51,9 @@
                         echo "<td>" . htmlspecialchars($row['isi']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                         echo "<td>";
-                        if (!empty($row['file_upload'])) {
-                            echo "<a href='lib/surat/" . htmlspecialchars($row['file_upload']) . "' class='btn btn-info btn-sm' target='_blank'>View</a>";
+                        // Periksa apakah ada link file Google Drive
+                        if (!empty($row['file_google_drive'])) {
+                            echo "<a href='" . htmlspecialchars($row['file_google_drive']) . "' class='btn btn-info btn-sm' target='_blank'>Lihat Lampiran</a>";
                         } else {
                             echo "Tidak ada lampiran";
                         }
@@ -80,5 +81,4 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>

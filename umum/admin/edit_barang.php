@@ -3,7 +3,7 @@
 session_start();
 
 // Include koneksi ke database
-require_once 'koneksi.php';
+require_once '../../config.php';
 
 // Periksa apakah id barang telah diberikan melalui parameter URL
 if (isset($_GET['id'])) {

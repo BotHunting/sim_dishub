@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Include koneksi ke database
-require_once 'koneksi.php';
+require_once __DIR__ . '/../config.php';
 // Ambil data pengelolaan dari database
 $query = "SELECT * FROM pengelolaan";
 // Membuat prepared statement

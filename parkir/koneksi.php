@@ -1,12 +1,8 @@
 <?php
-// Konfigurasi koneksi ke database
-$host = 'localhost'; // Host database
-$username = 'root'; // Nama pengguna database
-$password = ''; // Kata sandi database
-$database = 'dishub_sim'; // Nama database
+require_once '../config.php'; // Menggunakan sambungan SQL dari config.php
 
 // Membuat koneksi ke database
-$koneksi = new mysqli($host, $username, $password, $database);
+$koneksi = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 // Memeriksa koneksi
 if ($koneksi->connect_error) {

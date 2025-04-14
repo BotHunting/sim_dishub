@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once 'koneksi.php';
-$id = $nomor_surat = $jenis_pengawasan = $tanggal = $deskripsi = $status = $file_upload = '';
+require_once '../../config.php'; // Update to use config.php
+$id = $nomor_surat = $jenis_pengawasan = $tanggal = $deskripsi = $status = $file_google_drive = '';
 $error = '';
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $id = $_GET['id'];
@@ -18,7 +18,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
         $tanggal = $row['tanggal'];
         $deskripsi = $row['deskripsi'];
         $status = $row['status'];
-        $file_upload = $row['file_upload'];
+        $file_google_drive = $row['file_google_drive'];  // Mengambil link Google Drive
     } else {
         header("Location: pengawasan.php");
         exit();
@@ -27,6 +27,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
     header("Location: pengawasan.php");
     exit();
 }
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Menggunakan prepared statement untuk menghindari SQL Injection
     $nomor_surat = $_POST['nomor_surat'];
@@ -34,33 +35,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tanggal = $_POST['tanggal'];
     $deskripsi = $_POST['deskripsi'];
     $status = $_POST['status'];
-    if (!empty($_FILES["file"]["name"])) {
-        $targetDir = "lib/spt/";
-        $fileName = $jenis_pengawasan . "_" . uniqid() . ".pdf";
-        $targetFilePath = $targetDir . $fileName;
-        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-        if ($_FILES["file"]["size"] > 5000000) { // 5MB
-            $error = "File terlalu besar. Maksimum 5MB.";
-        } elseif (!in_array($fileType, array('pdf'))) {
-            $error = "Hanya file PDF yang diizinkan.";
-        } else {
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
-                if (!empty($file_upload)) {
-                    unlink("lib/spt/" . $file_upload);
-                }
-                $file_upload = $fileName;
-            } else {
-                $error = "Terjadi kesalahan saat mengupload file.";
-            }
-        }
+
+    // Jika link Google Drive baru diinputkan, update link
+    if (!empty($_POST['file_google_drive'])) {
+        $file_google_drive = $_POST['file_google_drive'];
     }
+
+    // Validasi jika kolom wajib kosong
     if (empty($nomor_surat) || empty($jenis_pengawasan) || empty($tanggal) || empty($deskripsi) || empty($status)) {
         $error = "Semua kolom harus diisi";
     } else {
         // Menggunakan prepared statement untuk menghindari SQL Injection
-        $query = "UPDATE pengawasan SET nomor_surat = ?, jenis_pengawasan = ?, tanggal = ?, deskripsi = ?, status = ?, file_upload = ? WHERE id = ?";
+        $query = "UPDATE pengawasan SET nomor_surat = ?, jenis_pengawasan = ?, tanggal = ?, deskripsi = ?, status = ?, file_google_drive = ? WHERE id = ?";
         $stmt = $koneksi->prepare($query);
-        $stmt->bind_param('ssssssi', $nomor_surat, $jenis_pengawasan, $tanggal, $deskripsi, $status, $file_upload, $id);
+        $stmt->bind_param('ssssssi', $nomor_surat, $jenis_pengawasan, $tanggal, $deskripsi, $status, $file_google_drive, $id);
         if ($stmt->execute()) {
             header("Location: pengawasan.php");
             exit;
@@ -74,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include("header.php"); ?>
 <div class="container mt-5">
     <h2>Edit Surat Perintah</h2>
-    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . "?id=" . $id; ?>" enctype="multipart/form-data">
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) . "?id=" . $id; ?>">
         <div class="form-group">
             <label for="nomor_surat" class="form-label">Nomor Surat</label>
             <input type="text" class="form-control" id="nomor_surat" name="nomor_surat" value="<?php echo $nomor_surat; ?>">
@@ -100,16 +88,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select>
         </div>
         <div class="mb-3">
-            <label>File Sebelumnya:</label>
-            <?php if (!empty($row['file_upload'])) : ?>
-                <a href="lib/spt/<?php echo $row['file_upload']; ?>" class="btn btn-info" target="_blank">Lihat File</a>
+            <label>Link Google Drive Sebelumnya:</label>
+            <?php if (!empty($file_google_drive)) : ?>
+                <a href="<?php echo $file_google_drive; ?>" class="btn btn-info" target="_blank">Lihat File</a>
             <?php else : ?>
-                <span class="text-muted">Tidak ada file sebelumnya</span>
+                <span class="text-muted">Tidak ada link file sebelumnya</span>
             <?php endif; ?>
         </div>
         <div class="mb-3">
-            <label>Upload File Baru (jika ingin diperbarui):</label>
-            <input type="file" class="form-control-file" name="file">
+            <label>Masukkan Link Google Drive Baru (jika ingin diperbarui):</label>
+            <input type="text" class="form-control" name="file_google_drive" value="<?php echo $file_google_drive; ?>" placeholder="Masukkan link Google Drive">
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
         <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>

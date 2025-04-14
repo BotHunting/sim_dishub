@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 19 Apr 2024 pada 16.14
--- Versi server: 8.3.0
--- Versi PHP: 8.3.4
+-- Waktu pembuatan: 12 Apr 2025 pada 09.05
+-- Versi server: 8.0.40
+-- Versi PHP: 8.3.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -87,6 +87,28 @@ INSERT INTO `bidang` (`id`, `nama_bidang`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `cctv_embed`
+--
+
+CREATE TABLE `cctv_embed` (
+  `id` int NOT NULL,
+  `nama_lokasi` varchar(100) NOT NULL,
+  `link_embed` text NOT NULL,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data untuk tabel `cctv_embed`
+--
+
+INSERT INTO `cctv_embed` (`id`, `nama_lokasi`, `link_embed`, `updated_at`) VALUES
+(1, 'Lokasi 1', 'https://www.youtube.com/embed/y_VvvKp1GNc', '2025-04-12 07:21:20'),
+(2, 'Lokasi 2', 'https://www.youtube.com/embed/DNXIi5MJQO8', '2025-04-12 07:21:20'),
+(3, 'Lokasi 3', 'https://www.youtube.com/embed/83WOspaMYpM', '2025-04-12 07:21:20');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `disposisi`
 --
 
@@ -97,7 +119,7 @@ CREATE TABLE `disposisi` (
   `penerima` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `judul` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `isi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `file_upload` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `file_google_drive` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `status` enum('Pending','Approved','Rejected') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -105,14 +127,14 @@ CREATE TABLE `disposisi` (
 -- Dumping data untuk tabel `disposisi`
 --
 
-INSERT INTO `disposisi` (`id`, `tanggal`, `pengirim`, `penerima`, `judul`, `isi`, `file_upload`, `status`) VALUES
-(3, '2024-03-11', 'Kepala Dinas', 'Kabag Umum', 'Tindak lanjut Pinjam truck', 'Cakep!', 'Kepala Dinas_3_ACC.pdf', 'Pending'),
+INSERT INTO `disposisi` (`id`, `tanggal`, `pengirim`, `penerima`, `judul`, `isi`, `file_google_drive`, `status`) VALUES
+(3, '2024-03-11', 'Kepala Dinas', 'Kepala Dinas', 'Tindak lanjut Pinjam truck', 'Cakep!', 'https://drive.google.com/file/d/16Yd_sGeG2e_Snkm-3dd-r5Qe-E2iht4a/view?usp=drive_link', 'Pending'),
 (4, '2024-03-11', 'Kasubag Umum', 'Kepala Dinas', 'Pinjam dulu seratus', 'agar silaturrahmi tidak putus', NULL, 'Approved'),
 (5, '2024-03-11', 'Sub Bagian Umum', 'Kepala Dinas', 'tindak lanjut pinjam bahu jalan', 'axaxa', 'Kasubag Umum_5_ACC.pdf', 'Rejected'),
-(9, '2024-03-12', 'Kepala Dinas', 'Kabag Umum', 'Pinjam dulu seratus', 'asasasa', 'Kepala Dinas_65f011da442d1_.pdf', 'Approved'),
 (10, '2024-03-12', 'Kepala Dinas', 'Kabag Umum', 'Apel', 'segera', 'Kepala Dinas_10_ACC.pdf', 'Approved'),
-(11, '2024-03-17', 'Kepala Dinas', 'Kepala Bidang Lalu Lintas', 'Tindak lanjut', 'laksanakan  sesuai aturan', 'Kasubag Umum_65f6f7492734a.pdf', 'Approved'),
-(12, '2024-03-25', 'Kepala Dinas', 'Bidang Prasarana', 'Tindak lanjut  pindah trayek', 'ikuti aturan berlaku', 'Kepala Dinas_6601a6ad07f11.pdf', 'Pending');
+(11, '2024-03-17', 'Kepala Dinas', 'Kepala Dinas', 'Tindak lanjut', 'laksanakan  sesuai aturan', 'https://drive.google.com/file/d/16UaJ1AwEveftybC7i7Pa6cnU4zZjjP_r/view?usp=drive_link', 'Approved'),
+(12, '2024-03-25', 'Kepala Dinas', 'Kepala Dinas', 'Tindak lanjut  pindah trayek', 'ikuti aturan berlaku', 'https://drive.google.com/file/d/16c2GpK8Lwn4isxxMG9QdcF6Y-j8qevs2/view?usp=drive_link', 'Pending'),
+(13, '2024-11-20', 'Kepala Dinas', 'Bidang Prasarana', 'Pinjam Pick Up', 'setujui pinjam', 'https://drive.google.com/file/d/16Unc3bAQkOeIGzBXAH2zY7KMJ1DVK3vc/view?usp=drive_link', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -297,7 +319,9 @@ INSERT INTO `kendaraan_keluar` (`id`, `nomor_kendaraan`, `trayek`, `waktu_kebera
 (41, 'PB1254F', 'C', '2024-03-30 01:34:00', 0, 'Terminal Sebrang', 2000, '2024-03-29 19:42:00', 3, 'Terminal Thumburuni'),
 (42, 'PB6485F', 'D', '2024-03-30 01:35:00', 1, 'Terminal Wartutin', 2000, '2024-03-30 01:00:00', 4, 'Terminal Sebrang'),
 (43, 'PB3252F', 'A', '2024-03-30 01:36:00', 3, 'Terminal Puncak', 2000, '2024-03-30 01:01:00', 2, 'Terminal Wartutin'),
-(44, 'PB2145F', 'C', '2024-03-30 01:39:00', 6, 'Terminal Bomberai', 2000, '2024-03-30 01:16:00', 3, 'Terminal Thumburuni');
+(44, 'PB2145F', 'C', '2024-03-30 01:39:00', 6, 'Terminal Bomberai', 2000, '2024-03-30 01:16:00', 3, 'Terminal Thumburuni'),
+(45, 'PB 6464 F', 'A', '2025-03-14 13:29:00', 0, 'Terminal Kokas', 2000, '2025-03-14 13:29:00', 3, 'Terminal Bomberai'),
+(46, 'PB3517F', 'A', '2025-03-14 13:30:00', 9, 'Terminal Kokas', 2000, '2024-03-30 00:59:00', 3, 'Terminal Thumburuni');
 
 -- --------------------------------------------------------
 
@@ -319,14 +343,14 @@ CREATE TABLE `kendaraan_masuk` (
 --
 
 INSERT INTO `kendaraan_masuk` (`id`, `nomor_kendaraan`, `trayek`, `waktu_kedatangan`, `jumlah_penumpang_masuk`, `asal_terminal`) VALUES
-(44, 'PB3517F', 'A', '2024-03-30 00:59:00', 3, 'Terminal Thumburuni'),
 (45, 'PB9645F', 'B', '2024-03-30 00:59:00', 3, 'Terminal Torea'),
 (46, 'PB3254F', 'C', '2024-03-30 00:59:00', 3, 'Terminal Puncak'),
 (48, 'PB8524F', 'E', '2024-03-30 01:00:00', 4, 'Terminal Kokas'),
 (49, 'PB4614F', 'E', '2024-03-30 01:01:00', 5, 'Terminal Bomberai'),
 (52, 'PB8547F', 'C', '2024-03-30 01:18:00', 3, 'Terminal Thumburuni'),
 (53, 'PB5252F', 'B', '2024-03-30 01:24:00', 2, 'Terminal Thumburuni'),
-(54, 'PB7485F', 'A', '2024-03-30 01:30:00', 6, 'Terminal Thumburuni');
+(54, 'PB7485F', 'A', '2024-03-30 01:30:00', 6, 'Terminal Thumburuni'),
+(55, 'PB 9999 F', 'A', '2024-07-25 04:22:01', 5, 'Terminal Kokas');
 
 -- --------------------------------------------------------
 
@@ -341,17 +365,18 @@ CREATE TABLE `laporan` (
   `jenis_laporan` enum('Harian','Mingguan','Bulanan','Tahunan') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `isi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `status` enum('Pending','Approved','Rejected') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `file_upload` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `file_google_drive` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `laporan`
 --
 
-INSERT INTO `laporan` (`id`, `nomor_surat`, `tanggal`, `jenis_laporan`, `isi`, `status`, `file_upload`) VALUES
+INSERT INTO `laporan` (`id`, `nomor_surat`, `tanggal`, `jenis_laporan`, `isi`, `status`, `file_google_drive`) VALUES
 (1, '3151/awdaw/1212/2024', '2024-03-09', 'Mingguan', 'pengecekan pasukan', 'Pending', 'FORMAT SURAT IJIN DAN PERYATAAN (4) (5).pdf'),
-(2, '51565151/218518/sada/2021', '2024-03-14', 'Tahunan', 'jelas', 'Approved', '605-Article Text-3080-1-10-20220120.pdf'),
-(3, '1651/awda/515661', '2024-03-15', 'Bulanan', 'sip', 'Rejected', 'FORMAT SURAT IJIN DAN PERYATAAN (4) (3).pdf');
+(2, '51565151/218518/sada/2021', '2024-03-14', 'Tahunan', 'jelas', 'Approved', 'https://drive.google.com/file/d/16jMrI4d_jaA6cXfi2AmFOJHTNZkvMByt/view?usp=drive_link'),
+(3, '1651/awda/515661', '2024-03-15', 'Bulanan', 'sip', 'Rejected', 'https://drive.google.com/file/d/16ChPDXej2Feri3MzojkjJmvDN8yc5k9f/view?usp=drive_link'),
+(4, '1212/bap/2024', '2024-11-20', 'Bulanan', 'audit kegiatan', 'Pending', 'https://drive.google.com/file/d/16jMrI4d_jaA6cXfi2AmFOJHTNZkvMByt/view?usp=drive_link');
 
 -- --------------------------------------------------------
 
@@ -539,7 +564,7 @@ CREATE TABLE `pelayananumum` (
   `tanggal` datetime NOT NULL,
   `nama_layanan` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `deskripsi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
-  `file_upload` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `file_google_drive` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `pemohon` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `status` enum('Pending','Approved','Rejected') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -548,12 +573,15 @@ CREATE TABLE `pelayananumum` (
 -- Dumping data untuk tabel `pelayananumum`
 --
 
-INSERT INTO `pelayananumum` (`id`, `tanggal`, `nama_layanan`, `deskripsi`, `file_upload`, `pemohon`, `status`) VALUES
+INSERT INTO `pelayananumum` (`id`, `tanggal`, `nama_layanan`, `deskripsi`, `file_google_drive`, `pemohon`, `status`) VALUES
 (2, '2024-03-11 00:00:00', 'ada kah?', 'ada sayang ada', NULL, 'sipaling', 'Approved'),
-(9, '2024-03-12 08:17:45', 'Pinjam truck', '1 minggu', '0.pdf', 'adwdad', 'Approved'),
-(10, '2024-03-12 08:23:23', 'pinjam bahu jalan', '1 bulan', 'rahasia_65f002ebba50e.pdf', 'malika', 'Pending'),
+(9, '2024-03-12 08:17:45', 'Pinjam truck', '1 minggu', 'https://drive.google.com/file/d/0BzBaCdVh0eMDaXpJWVRwNjFlTGo0S0twSVk3SVdadUdlOGd3/view?usp=drive_link&resourcekey=0-F7hbfHPh4ASeOCshbM7FWw', 'adwdad', 'Approved'),
+(10, '2024-03-12 08:23:23', 'pinjam bahu jalan', '1 bulan', 'https://drive.google.com/file/d/1vW9Eb2QiUWHsntwjZtei_x2yBbIwBYP8/view?usp=drive_link', 'malika', 'Rejected'),
 (11, '2024-03-17 14:53:03', 'Pindah Trayek', 'dari trayek A ke C', 'Samsul_65f6f5bfcc37a.pdf', 'Samsul', 'Pending'),
-(12, '2024-03-22 14:42:18', 'Pinjam Pickup', '2 minggu untuk bandara', 'Yohanes_65fd98ca645ef.pdf', 'Yohanes', 'Pending');
+(12, '2024-03-22 14:42:18', 'Pinjam Pickup', '2 minggu untuk bandara', 'https://drive.google.com/file/d/0BzBaCdVh0eMDaXpJWVRwNjFlTGo0S0twSVk3SVdadUdlOGd3/view?usp=drive_link&resourcekey=0-F7hbfHPh4ASeOCshbM7FWw', 'Yohanes', 'Approved'),
+(13, '2024-11-20 06:48:16', 'Pinjam Pick Up', 'Pinjam 1 hari', 'https://drive.google.com/file/d/0BzBaCdVh0eMDaXpJWVRwNjFlTGo0S0twSVk3SVdadUdlOGd3/view?usp=drive_link&resourcekey=0-F7hbfHPh4ASeOCshbM7FWw', 'Marsyanda', 'Pending'),
+(14, '2025-03-14 06:11:17', 'Izin Trayek', 'Trayek kokas', 'https://drive.google.com/file/d/0BzBaCdVh0eMDaXpJWVRwNjFlTGo0S0twSVk3SVdadUdlOGd3/view?usp=drive_link&resourcekey=0-F7hbfHPh4ASeOCshbM7FWw', 'Yunica', 'Pending'),
+(15, '2025-03-14 06:19:41', 'Izin Angkutan Pariwisata', 'CV. Jasa Karya', 'https://drive.google.com/file/d/1vW9Eb2QiUWHsntwjZtei_x2yBbIwBYP8/view?usp=drive_link', 'Andik', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -590,17 +618,18 @@ CREATE TABLE `pengawasan` (
   `tanggal` date DEFAULT NULL,
   `deskripsi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `status` enum('Pending','Approved','Rejected') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `file_upload` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+  `file_google_drive` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `pengawasan`
 --
 
-INSERT INTO `pengawasan` (`id`, `nomor_surat`, `jenis_pengawasan`, `tanggal`, `deskripsi`, `status`, `file_upload`) VALUES
-(1, '99999999', 'Jaga Malam', '2024-03-11', 'Antisipasi Situasi dan Kondisi TPP', 'Pending', 'Jaga Malam_65f05305f3cff.pdf'),
+INSERT INTO `pengawasan` (`id`, `nomor_surat`, `jenis_pengawasan`, `tanggal`, `deskripsi`, `status`, `file_google_drive`) VALUES
+(1, '99999999', 'Jaga Malam', '2024-03-11', 'Antisipasi Situasi dan Kondisi TPP', 'Approved', 'Jaga Malam_65f05305f3cff.pdf'),
 (2, '3151/awdaw/1212/2024', 'Jaga Siang', '2024-03-12', 'jaga jalan', 'Approved', 'Jaga Siang_65f04e483868e.pdf'),
-(3, '31222/arfasdaD/31321/2021', 'Jaga Jalan', '2024-03-17', 'Laksanakan', 'Rejected', 'Jaga Jalan_65f5b5c601003.pdf');
+(3, '31222/arfasdaD/31321/2021', 'Jaga Jalan', '2024-03-17', 'Laksanakan', 'Rejected', 'https://drive.google.com/file/d/16HjQJyAqonnC-qX27S9ce68I10JTebGJ/view?usp=drive_link'),
+(4, '74747/post/2024', 'Jaga', '2024-11-20', 'Jaga kampanye', 'Pending', 'https://drive.google.com/file/d/16RHCzs7w6OXHlfGo5siJ3k-D1WJAskO-/view?usp=drive_link');
 
 -- --------------------------------------------------------
 
@@ -705,10 +734,13 @@ INSERT INTO `pinjaman` (`id`, `id_barang`, `id_pegawai`, `waktu_pinjam`, `waktu_
 (3, 5, 105, '2024-03-28 22:11:22', '2024-03-28 22:11:22', 'Belum Dikembalikan'),
 (4, 3, 103, '2024-03-28 22:24:03', '2024-03-28 22:24:03', 'Belum Dikembalikan'),
 (5, 5, 104, '2024-03-28 22:28:18', '2024-03-28 22:28:18', 'Belum Dikembalikan'),
-(6, 4, 103, '2024-03-28 22:30:05', '2024-03-28 22:30:05', 'Belum Dikembalikan'),
+(6, 4, 103, '2024-03-28 22:30:05', '2024-08-20 18:10:46', 'Sudah Dikembalikan'),
 (7, 4, 107, '2024-03-28 23:01:11', '2024-03-28 23:01:11', 'Belum Dikembalikan'),
 (8, 4, 117, '2024-03-28 23:07:49', '2024-03-28 23:08:10', 'Sudah Dikembalikan'),
-(9, 3, 106, '2024-03-28 23:08:24', '2024-03-29 00:09:44', 'Sudah Dikembalikan');
+(9, 3, 106, '2024-03-28 23:08:24', '2024-03-29 00:09:44', 'Sudah Dikembalikan'),
+(10, 3, 134, '2024-08-20 18:09:45', NULL, 'Belum Dikembalikan'),
+(11, 6, 97, '2025-03-14 12:51:55', NULL, 'Belum Dikembalikan'),
+(12, 4, 105, '2025-03-14 12:52:54', NULL, 'Belum Dikembalikan');
 
 -- --------------------------------------------------------
 
@@ -858,7 +890,69 @@ INSERT INTO `riwayat_absensi` (`id`, `nama`, `pangkat`, `nip`, `jabatan`, `bidan
 (1175, 'DARWAN MERAM, A.Md', 'PENATA MUDA (III/a)', '198104292010041003', 'Pengawas Keselamatan Angkutan', 'Pengembangan dan Keselamatan', '07:21:00', '16:58:00', 'hadir', '2024-03-25', '2024-03-25 12:39:56'),
 (1176, 'ABDUL MUTI RUMADAN', 'PENGATUR TK.I(II/d)', '197003062006051002', 'Pengelola Terminal', 'Prasarana', '07:25:00', '16:31:00', 'hadir', '2024-03-25', '2024-03-25 12:39:56'),
 (1177, 'FARIDS FIRMANSYAH SUPARMAN', 'PENGATUR TINGKAT I (II/d)', '198405152007011006', 'Pengelola Sertifikasi Kompetensi Penilai Analisis Dampak Lalulintas', 'Prasarana', '07:02:00', '16:44:00', 'hadir', '2024-03-25', '2024-03-25 12:39:56'),
-(1178, 'NURFIA SAMAY, S.ik', 'PENATA MUDA (III/a)', '199012302020122019', 'Pengawas Keselamatan Angkutan', 'Pengembangan dan Keselamatan', '07:00:00', '16:52:00', 'hadir', '2024-03-25', '2024-03-25 12:39:56');
+(1178, 'NURFIA SAMAY, S.ik', 'PENATA MUDA (III/a)', '199012302020122019', 'Pengawas Keselamatan Angkutan', 'Pengembangan dan Keselamatan', '07:00:00', '16:52:00', 'hadir', '2024-03-25', '2024-03-25 12:39:56'),
+(1241, 'T. HERU USWANAS, S.Sos. M.Si', 'PEMBINA UTAMA MUDA (IV/c)', '196709041996101002', 'Kepala Dinas', 'Kepala Dinas', '07:02:00', '16:35:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1242, 'TEGUH SUGIHARTO, S.T', 'PEMBINA TK I (IV/b)', '197011141997121001', 'Sekertaris', 'Sekretariat', '07:07:00', '16:42:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1243, 'RISMAWATI AKATIAN, SE', 'PENATA TK. I (III/d )', '198309062009092003', 'Kepala Sub Bagian Umum', 'Sekretariat', '07:18:00', '16:30:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1244, 'ENGGAR MASTUTI, SE. M.Si', 'PEMBINA ( IV/a )', '197505312007012013', 'Kepala Sub Bagian Perencanaan dan Pelaporan', 'Sekretariat', '07:12:00', '16:49:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1245, 'SENEN SAGAS, SE', 'PEMBINA  (IV/a)', '196705191998031005', 'Kepala Bidang Lalu Lintas dan Angkutan', 'Lalu Lintas dan Angkutan', '07:30:00', '16:39:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1246, 'SITI FITRIAH USWANAS, ST.M.S.P', 'PENATA TK. I (III/d)', '198307162011042001', 'Kepala Seksi Lalu Lintas', 'Lalu Lintas dan Angkutan', '07:07:00', '16:50:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1247, 'HUSEIN PATTY, S.Sos', 'PENATA TK. I (III/d )', '197608032006051001', 'Kepala Seksi Angkutan', 'Lalu Lintas dan Angkutan', '07:11:00', '16:55:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1248, 'ACHMAD HELFAN AMRI, SE', 'PENATA TINGKAT I (III/d )', '197009091992031009', 'Kepala Seksi Pengujian Sarana', 'Lalu Lintas dan Angkutan', '07:22:00', '16:43:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1249, 'SAIFFUDIN SOEMARDI, S.Sos', 'PENATA TINGKAT I (III/d)', '197405202007011029', 'Kepala Bidang Prasarana', 'Prasarana', '07:30:00', '16:44:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1250, 'SITTI HASANNOESI', 'PENATA TINGKAT I (III/d)', '196706011992032011', 'Kepala Seksi Perencanaan Prasarana', 'Prasarana', '07:23:00', '16:51:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1251, 'CLEMENTINA HOMBA HOMBA, SE', 'PENATA TINGKAT I (III/d)', '196507112000122001', 'Kepala Seksi Pembangunan Prasarana', 'Prasarana', '07:06:00', '16:54:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1252, 'IRMAWATI', 'PENATA TK. I (III/d)', '196904211992032010', 'Kepala Seksi Pengoperasian Prasarana', 'Prasarana', '07:00:00', '16:48:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1253, 'JAPARI BIARPRUGA, SE', 'PEMBINA (IV/a)', '197305092003121007', 'Kepala Bidang Pengembangan dan Keselamatan', 'Pengembangan dan Keselamatan', '07:17:00', '16:51:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1254, 'DEDY MALIK RUMAGESAN, S.ST(TD)', 'PENATA (III/c)', '198512192005021001', 'Kepala Seksi Pemanduan Moda dan Teknologi Perhubungan', 'Pengembangan dan Keselamatan', '07:26:00', '16:30:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1255, 'YOHAN A.T ARAGAY, SE', 'PENATA (III/c)', '197704262000121004', 'Kepala Seksi Lingkungan Perhubungan', 'Pengembangan dan Keselamatan', '07:12:00', '16:54:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1256, 'NANI MADI, S.Sos', 'PENATA TINGKAT I (III/d)', '197505212006052001', 'Kepala Seksi Keselamatan', 'Pengembangan dan Keselamatan', '07:08:00', '16:44:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1257, 'HARSINI ELEUWARIN, S.Sos', 'PENATA (III/c)', '198203202009042001', 'Pengadministrasi Umum', 'Sekretariat', '07:13:00', '16:33:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1258, 'MUHAMAD RUMBAY, A.Md', 'PENATA MUDA Tk.I (III/b)', '197812012009091001', 'Pengelola Barang Milik Negara', 'Sekretariat', '07:28:00', '16:34:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1259, 'MARLON RESBAL', 'PENGATUR (II/c)', '198209202009041001', 'Pengelola Sarana Prasarana dan Rumah Tangga Dinas', 'Sekretariat', '07:05:00', '16:36:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1260, 'SUMARDIN, SE', 'PENATA MUDA (III/a)', '198509162010011021', 'Bendahara', 'Sekretariat', '07:10:00', '16:35:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1261, 'FAHRUL SANI HUDA, A.Md', 'PENATA MUDA Tk.I (III/b)', '198506222009091001', 'Penata Laporan Keuangan', 'Sekretariat', '07:05:00', '16:34:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1262, 'AMELIA MADU, SE', 'PENATA MUDA (III/a)', '197903082015102001', 'Pengelola Program dan Laporan', 'Sekretariat', '07:29:00', '16:58:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1263, 'RINI JULIYANI, S.Si', 'PENATA MUDA (III/a)', '199006022020122019', 'Pengelola Pelaksanaan Program dan Anggaran', 'Sekretariat', '07:24:00', '16:55:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1264, 'MEGITA KRISTANTI TARUMASELE', 'PENGATUR MUDA (II/a)', '199905292020122003', 'Pembantu Bendahara Pengeluaran', 'Sekretariat', '07:14:00', '16:52:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1265, 'VERY SAHETAPY, SE', 'PENATA MUDA TINGKAT I (III/b)', '197402272007011014', 'Pemeriksa Lalu Lintas Darat', 'Lalu Lintas dan Angkutan', '07:14:00', '16:58:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1266, 'DAVID JAKMANAM, A.Md', 'PENATA MUDA TK. I (III/b)', '198506162011041001', 'Pemeriksa Lalu Lintas Darat', 'Lalu Lintas dan Angkutan', '07:20:00', '16:38:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1267, 'ALFI HTALA USWANAS, SE', 'PENATA MUDA TK.I (III/b)', '197802182008011011', 'Pengawas Lalu Lintas Darat', 'Lalu Lintas dan Angkutan', '07:03:00', '16:37:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1268, 'BENEDIKTA SEPSIA YULIANI, A.Md. Tra', 'PENGATUR (II/c)', '200009172022072001', 'Pengadministrasi LLAJ', 'Lalu Lintas dan Angkutan', '07:10:00', '16:36:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1269, 'SAFIJAN', 'PENGATUR  (II/c)', '197309012008011010', 'Pengadministrasi LLAJ', 'Lalu Lintas dan Angkutan', '07:26:00', '16:46:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1270, 'SAMAD HEGEMUR, A.Md', 'PENATA MUDA TK. I (III/b)', '198311202010041001', 'Analis Angkutan Darat', 'Lalu Lintas dan Angkutan', '07:16:00', '16:35:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1271, 'MANSUR BATIGIN, S.T', 'PENATA MUDA (III/a)', '198712052020121008', 'Analis Angkutan Darat', 'Lalu Lintas dan Angkutan', '07:07:00', '16:44:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1272, 'ADIB PRIYA MAHENDRA, S.ST (TD)', 'PENATA MUDA (III/a)', '199610062020121001', 'Pengawas dan Pembina Angkutan', 'Lalu Lintas dan Angkutan', '07:16:00', '16:58:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1273, 'LEIVINA PENTURY, A.Md. LLAJ', 'PENGATUR (II/c)', '199509282020122001', 'Analis Angkutan Darat', 'Lalu Lintas dan Angkutan', '07:01:00', '16:46:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1274, 'ELVIRA AZIZAH, A.Md. Tra', 'PENGATUR (II/c)', '200007072022072001', 'Analis Angkutan Darat', 'Lalu Lintas dan Angkutan', '07:05:00', '16:38:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1275, 'JUNUS MARLESSY, S.Sos', 'PENATA TK. I (III/d)', '197206092006051002', 'Pengawas Pengujian Kendaraan Bermotor', 'Lalu Lintas dan Angkutan', '07:08:00', '16:49:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1276, 'ACHMAD FARIS ZUBAIDI, A.Ma. PKB', 'PENGATUR (II/c)', '199507132017011001', 'Pengawas Pengujian Kendaraan Bermotor', 'Lalu Lintas dan Angkutan', '07:21:00', '16:30:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1277, 'RENALDI DWI SAPUTRO, SE', 'PENATA MUDA (III/a)', '199504152017011001', 'Pengelola Pengujian Kendaraan', 'Lalu Lintas dan Angkutan', '07:11:00', '16:44:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1278, 'WILSON GERALD FAIRIO, Amd.Kom', 'PENGATUR (II/c)', '198906032020121010', 'Pengelola Pengujian Kendaraan', 'Lalu Lintas dan Angkutan', '07:08:00', '16:34:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1279, 'AGUSTINUS ELTON SESA, S.AP', 'PENATA MUDA (III/a)', '199308262018041001', 'Pengelola Perbengkelan dan Pengujian Kendaraan Bermotor', 'Lalu Lintas dan Angkutan', '07:27:00', '16:50:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1280, 'YOHANIS HORIK, A.Md', 'PENGATUR (II/c)', '199101172020121007', 'Pengelola Perbengkelan dan Pengujian Kendaraan Bermotor', 'Lalu Lintas dan Angkutan', '07:25:00', '16:49:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1281, 'ARDI CAHYADI RAMLY, A.Md', 'PENATA MUDA TK. I (III/b)', '198201202011041001', 'Analis Rencana Induk Jaringan Transportasi Darat', 'Prasarana', '07:19:00', '16:46:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1282, 'F. LOYS PIAHAR', 'PENATA MUDA (III/a)', '197803012007011014', 'Analis Rencana Induk Jaringan Transportasi Darat', 'Prasarana', '07:18:00', '16:47:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1283, 'KRISTIANUS HINDOM, A.Md, IP', 'PENATA (III/c)', '197003281995031003', 'Analis Rencana Induk Jaringan Transportasi Darat', 'Prasarana', '07:02:00', '16:37:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1284, 'YUSLI ODENTEA', 'PENATA MUDA (III/a)', '198610012006051001', 'Operator Terminal', 'Prasarana', '07:30:00', '16:32:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1285, 'JOHN ANDERZON ASE, A.Md', 'PENATA MUDA TINGKAT I (III/b)', '198211042008011013', 'Teknisi Survey Jaringan Prasarana dan Pelayanan Transportasi Jalan', 'Prasarana', '07:09:00', '16:31:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1286, 'SHAFWAN BIN MOHAMMAD RUMAIN', 'PENATA MUDA (III/a)', '197704222007011010', 'Pengelola Sistem Informasi Sarana dan Prasarana Jalan', 'Prasarana', '07:12:00', '16:53:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1287, 'NUR HUWAIDA ALYSSA PUTRI, A.Md.Tra', 'PENGATUR (II/c)', '200011112023022003', 'Teknisi Survey Jaringan Prasarana dan Pelayanan Transportasi Jalan', 'Prasarana', '07:16:00', '16:43:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1288, 'VISCA PRICELLA, A.Md.Tra', 'PENGATUR (II/c)', '200004012023022002', 'Teknisi Survey Jaringan Prasarana dan Pelayanan Transportasi Jalan', 'Prasarana', '07:08:00', '16:54:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1289, 'ABDUL MUTI RUMADAN', 'PENATA MUDA (III/a)', '197003062006051002', 'Pengawas Angkutan dan Terminal', 'Prasarana', '07:14:00', '16:36:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1290, 'LA KARIM', 'PENATA MUDA (III/a)', '197711292007011005', 'Pengawas Angkutan dan Terminal', 'Prasarana', '07:07:00', '16:52:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1291, 'FARIDS FIRMANSYAH SUPARMAN', 'PENATA MUDA (III/a)', '198405152007011006', 'Pengawas Angkutan dan Terminal', 'Prasarana', '07:29:00', '16:53:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1292, 'AMINUDIN TANGGAHMA', 'PENATA MUDA (III/a)', '197702152007011015', 'Pengawas Angkutan dan Terminal', 'Prasarana', '07:08:00', '16:42:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1293, 'MUHAMMAD MAHDI SARIF', 'PENATA MUDA (III/a)', '197010122006051003', 'Pengawas Angkutan dan Terminal', 'Prasarana', '07:23:00', '16:54:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1294, 'RIAN ERMAN SYAHYADI SARAGIH, S.ST', 'PENATA MUDA (III/a)', '198910302020121011', 'Analis Rencana Umum Pemanduan Moda Transportasi Darat', 'Pengembangan dan Keselamatan', '07:08:00', '16:35:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1295, 'MUH. YUSFA YUSUF, S.Kel', 'PENATA MUDA (III/a)', '198701142021121001', 'Analis Rencana Umum Pemanduan Moda Transportasi Darat', 'Pengembangan dan Keselamatan', '07:14:00', '16:39:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1296, 'AMRIZAL RUMASUKUN, A.Md. Tra', 'PENGATUR (II/c)', '199904032022071001', 'Analis Rencana Umum Pemanduan Moda Transportasi Darat', 'Pengembangan dan Keselamatan', '07:00:00', '16:55:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1297, 'ELIZA DOMINGGUS RISAMBESSY', 'PENGATUR (II/c)', '197603192015101001', 'Penyurvei Pemanduan Moda', 'Pengembangan dan Keselamatan', '07:10:00', '16:45:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1298, 'CHARLES SONNY TALLA', 'PENGATUR TK. I (II/d)', '198404112010011038', 'Juru Pungut Retribusi', 'Pengembangan dan Keselamatan', '07:22:00', '16:43:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1299, 'ADE IMAM PRADA S.Tr.Tra', 'PENATA MUDA (III/a)', '200012022023021006', 'Analis Perhubungan dan Telekomunikasi', 'Pengembangan dan Keselamatan', '07:17:00', '16:44:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1300, 'SYAIDIN MERAM, SE', 'PENATA (III/c)', '198402062007011006', 'Pemeriksa Keselamatan Darat', 'Pengembangan dan Keselamatan', '07:13:00', '16:43:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1301, 'DAME BUNGARIA SIANIPAR, A.Md', 'PENATA (III/c)', '197204242007012018', 'Penelaah Audit Keselamatan Jalan', 'Pengembangan dan Keselamatan', '07:15:00', '16:51:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53'),
+(1302, 'DARWAN MERAM, A.Md', 'PENATA MUDA Tk.I (III/b)', '198104292010041003', 'Pengawas Keselamatan Angkutan', 'Pengembangan dan Keselamatan', '07:29:00', '16:37:00', 'hadir', '2025-03-14', '2025-03-14 05:12:53');
 
 -- --------------------------------------------------------
 
@@ -913,17 +1007,19 @@ CREATE TABLE `suratmenyurat` (
   `subjek` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `isi` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `status` enum('Draft','Sent') CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `file_upload` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
+  `file_google_drive` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `suratmenyurat`
 --
 
-INSERT INTO `suratmenyurat` (`id`, `nomor_surat`, `tanggal`, `pengirim`, `penerima`, `subjek`, `isi`, `status`, `file_upload`) VALUES
-(4, 'asawdad', '2024-03-12', 'Kepala Dinas', 'Kabag Umum', 'Mutasi', 'azas', 'Sent', 'Kepala Dinas_4_ACC.pdf'),
-(5, '123/2312/asasa/2024', '2024-03-12', 'Kepala Dinas', 'Kabag Umum', 'Mutasi', 'asad', 'Sent', 'Kepala Dinas_5_ACC.pdf'),
-(6, '2515/adafsd/2024', '2024-03-23', 'Kepala Dinas', 'Kepala Bidang Lalu Lintas', 'Pengadaan Bus', '3 Unit', 'Draft', 'Kepala Dinas_65ff0c1bd0991.pdf');
+INSERT INTO `suratmenyurat` (`id`, `nomor_surat`, `tanggal`, `pengirim`, `penerima`, `subjek`, `isi`, `status`, `file_google_drive`) VALUES
+(4, 'asawdad', '2024-03-12', 'Kepala Dinas', 'Kabag Umum', 'Mutasi', 'azas', 'Sent', 'https://drive.google.com/file/d/16cKbpO7iwuse2LP73tGvU55m9TjdAEGN/view?usp=drive_link'),
+(5, '123/2312/asasa/2024', '2024-03-12', 'Kepala Dinas', 'Kabag Umum', 'Mutasi', 'asad', 'Sent', 'https://drive.google.com/file/d/16RHCzs7w6OXHlfGo5siJ3k-D1WJAskO-/view?usp=drive_link'),
+(6, '2515/adafsd/2024', '2024-03-23', 'Kepala Dinas', 'Kepala Bidang Lalu Lintas', 'Pengadaan Bus', '3 Unit', 'Draft', 'https://drive.google.com/file/d/16Unc3bAQkOeIGzBXAH2zY7KMJ1DVK3vc/view?usp=drive_link'),
+(7, '5615651/adakah/2024', '2024-11-20', 'Kepala Dinas', 'Wilson', 'Kenaikan Pangkat', 'setujui', 'Draft', 'https://drive.google.com/file/d/16RHeDex6OihlLZeBafcS_USF6zl2Jtct/view?usp=drive_link'),
+(8, '621551/watpad/2024', '2024-11-20', 'Kepala Dinas', 'Horik', 'Naik Pangkat', 'ACC bossqueh', 'Draft', 'https://drive.google.com/file/d/16RHCzs7w6OXHlfGo5siJ3k-D1WJAskO-/view?usp=drive_link');
 
 -- --------------------------------------------------------
 
@@ -1066,6 +1162,12 @@ ALTER TABLE `admin`
 -- Indeks untuk tabel `bidang`
 --
 ALTER TABLE `bidang`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `cctv_embed`
+--
+ALTER TABLE `cctv_embed`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1232,10 +1334,16 @@ ALTER TABLE `bidang`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT untuk tabel `cctv_embed`
+--
+ALTER TABLE `cctv_embed`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT untuk tabel `disposisi`
 --
 ALTER TABLE `disposisi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT untuk tabel `jabatan`
@@ -1253,19 +1361,19 @@ ALTER TABLE `kendaraan`
 -- AUTO_INCREMENT untuk tabel `kendaraan_keluar`
 --
 ALTER TABLE `kendaraan_keluar`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT untuk tabel `kendaraan_masuk`
 --
 ALTER TABLE `kendaraan_masuk`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT untuk tabel `laporan`
 --
 ALTER TABLE `laporan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `laporan_parkir`
@@ -1289,7 +1397,7 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT untuk tabel `pelayananumum`
 --
 ALTER TABLE `pelayananumum`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `pelayanan_kantor`
@@ -1301,7 +1409,7 @@ ALTER TABLE `pelayanan_kantor`
 -- AUTO_INCREMENT untuk tabel `pengawasan`
 --
 ALTER TABLE `pengawasan`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengelolaan`
@@ -1325,13 +1433,13 @@ ALTER TABLE `petugas_parkir`
 -- AUTO_INCREMENT untuk tabel `pinjaman`
 --
 ALTER TABLE `pinjaman`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `riwayat_absensi`
 --
 ALTER TABLE `riwayat_absensi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1179;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1303;
 
 --
 -- AUTO_INCREMENT untuk tabel `seksi`
@@ -1343,7 +1451,7 @@ ALTER TABLE `seksi`
 -- AUTO_INCREMENT untuk tabel `suratmenyurat`
 --
 ALTER TABLE `suratmenyurat`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `terminal`

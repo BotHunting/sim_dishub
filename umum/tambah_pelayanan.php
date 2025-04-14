@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once 'koneksi.php';
-$nama_layanan = $deskripsi = $pemohon = '';
+require_once __DIR__ . '/../config.php';
+$nama_layanan = $deskripsi = $pemohon = $file_google_drive = '';
 $error = '';
 
 // Fungsi untuk menghasilkan CAPTCHA sederhana
@@ -22,37 +22,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $nama_layanan = $_POST['nama_layanan'];
         $deskripsi = $_POST['deskripsi'];
         $pemohon = $_POST['pemohon'];
-        $file_upload = ''; // Inisialisasi nama file upload
+        $file_google_drive = $_POST['file_google_drive']; // Link Google Drive
         $status = 'Pending';
-        if (empty($nama_layanan) || empty($pemohon)) {
+
+        if (empty($nama_layanan) || empty($pemohon) || empty($file_google_drive)) {
             $error = "Semua kolom harus diisi";
         } else {
-            if (!empty($_FILES['file']['name'])) {
-                $target_dir = "templates/pelayananumum/";
-                $file_upload = $pemohon . "_" . uniqid() . ".pdf";
-                $target_file = $target_dir . basename($file_upload);
-                $file_type = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-                if ($file_type != "pdf") {
-                    $error = "Hanya file PDF yang diizinkan";
-                } else {
-                    if (move_uploaded_file($_FILES['file']['tmp_name'], $target_file)) {
-                        // Menggunakan prepared statement untuk mencegah SQL Injection
-                        $query = "INSERT INTO pelayananumum (tanggal, nama_layanan, deskripsi, pemohon, file_upload, status) VALUES (?, ?, ?, ?, ?, ?)";
-                        $stmt = $koneksi->prepare($query);
-                        $stmt->bind_param("ssssss", $tanggal, $nama_layanan, $deskripsi, $pemohon, $file_upload, $status);
-                        if ($stmt->execute()) {
-                            header("Location: pelayanan.php");
-                            exit;
-                        } else {
-                            $error = "Error: " . $stmt->error;
-                        }
-                        $stmt->close();
-                    } else {
-                        $error = "Terjadi kesalahan saat mengunggah file";
-                    }
-                }
+            // Validasi link Google Drive
+            if (!filter_var($file_google_drive, FILTER_VALIDATE_URL) || !str_contains($file_google_drive, 'drive.google.com')) {
+                $error = "Link Google Drive tidak valid.";
             } else {
-                $error = "File harus diunggah";
+                // Menggunakan prepared statement untuk mencegah SQL Injection
+                $query = "INSERT INTO pelayananumum (tanggal, nama_layanan, deskripsi, pemohon, file_google_drive, status) VALUES (?, ?, ?, ?, ?, ?)";
+                $stmt = $koneksi->prepare($query);
+                $stmt->bind_param("ssssss", $tanggal, $nama_layanan, $deskripsi, $pemohon, $file_google_drive, $status);
+                if ($stmt->execute()) {
+                    header("Location: pelayanan.php");
+                    exit;
+                } else {
+                    $error = "Error: " . $stmt->error;
+                }
+                $stmt->close();
             }
         }
     }
@@ -62,26 +52,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include("header.php"); ?>
 <div class="container mt-5">
     <h2>Tambah Data Pelayanan Umum</h2>
-    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <div class="form-group">
             <label>Tanggal:</label>
             <input type="text" class="form-control" value="<?php echo date("Y-m-d H:i:s"); ?>" readonly>
         </div><br>
         <div class="form-group">
             <label>Perihal:</label>
-            <input type="text" name="nama_layanan" class="form-control" value="<?php echo $nama_layanan; ?>">
+            <input type="text" name="nama_layanan" class="form-control" value="<?php echo $nama_layanan; ?>" required>
         </div><br>
         <div class="form-group">
             <label>Deskripsi:</label>
-            <textarea name="deskripsi" class="form-control"><?php echo $deskripsi; ?></textarea>
+            <textarea name="deskripsi" class="form-control" required><?php echo $deskripsi; ?></textarea>
         </div><br>
         <div class="form-group">
             <label>Nama Pemohon:</label>
-            <input type="text" name="pemohon" class="form-control" value="<?php echo $pemohon; ?>">
+            <input type="text" name="pemohon" class="form-control" value="<?php echo $pemohon; ?>" required>
         </div><br>
         <div class="form-group">
-            <label>Upload File (PDF):</label>
-            <input type="file" name="file" class="form-control-file">
+            <label>Link Google Drive (File PDF):</label>
+            <input type="url" name="file_google_drive" class="form-control" placeholder="Masukkan link Google Drive" value="<?php echo $file_google_drive; ?>" required>
         </div><br>
         <!-- Menampilkan CAPTCHA sederhana -->
         <div class="form-group">

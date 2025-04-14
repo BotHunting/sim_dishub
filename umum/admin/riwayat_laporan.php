@@ -57,8 +57,8 @@ $result_laporan = mysqli_query($koneksi, $query_laporan);
                         <td><?php echo $row['isi']; ?></td>
                         <td><?php echo $row['status']; ?></td>
                         <td>
-                            <?php if (!empty($row['file_upload'])) : ?>
-                                <a href="lib/laporan/<?php echo $row['file_upload']; ?>" target="_blank">Lihat File</a>
+                            <?php if (!empty($row['file_google_drive'])) : ?>
+                                <a href="<?php echo $row['file_google_drive']; ?>" target="_blank">Lihat File</a>
                             <?php else : ?>
                                 -
                             <?php endif; ?>

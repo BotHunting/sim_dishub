@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Include koneksi ke database
-require_once 'koneksi.php';
+require_once __DIR__ . '/../config.php';
 // Ambil data pengawasan dari database dengan status "Approved" dan diurutkan berdasarkan tanggal terbaru
 $query = "SELECT * FROM pengawasan WHERE status = ? ORDER BY tanggal DESC";
 // Membuat prepared statement

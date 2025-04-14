@@ -12,6 +12,15 @@ Web/Blog	: https://github.com/BotHunting
 
 Website SIM Dishub
 
+Versi 3.9
+- perapian koneksi.php ke config.php
+- tambah tabel cctv
+- perapian ui cctv
+
+Versi 3.8
+- ganti semua file upload dengan link gdrive
+- ganti nama kolom data base file_upload ke file_google_drive
+
 Versi 3.7
 - ganti file anjab dengan link gdrive
 - capcha tambah layanan
@@ -49,7 +58,7 @@ Versi 3.1
 - fix absensi
 
 Versi 3.0
-- update ui index
+- upgrade UI/UX
 - update about us, pegawai, testimoni, pelayanan, contact
 
 Versi 2.13

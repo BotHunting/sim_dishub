@@ -1,4 +1,7 @@
 <?php
+// Include koneksi ke database
+require_once __DIR__ . '/../config.php';
+
 // Ambil nama file dari URL
 $file_name = isset($_GET['file']) ? $_GET['file'] : '';
 

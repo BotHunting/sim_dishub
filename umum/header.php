@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include_once 'koneksi.php';
+require_once __DIR__ . '/../config.php';
 $logged_in = false;
 $rules = "";
 if (isset($_SESSION['username'])) {

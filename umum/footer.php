@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/../config.php';
+?>
 <footer id="footer" class="footer position-relative">
     <div class="container footer-top">
         <div class="row gy-4">
@@ -15,7 +18,7 @@
                     <a href="https://dishub.fakfakkab.go.id/" target="_blank"><i class="bi bi-twitter"></i></a>
                     <a href="https://www.facebook.com/dishub.fakfak" target="_blank"><i class="bi bi-facebook"></i></a>
                     <a href="https://www.instagram.com/dishubkab.fakfak/" target="_blank"><i class="bi bi-instagram"></i></a>
-                    <a href="https://fakfakkab.go.id/"><i class="bi bi-linkedin" target="_blank"></i></a>
+                    <a href="https://fakfakkab.go.id/" target="_blank"><i class="bi bi-linkedin" target="_blank"></i></a>
                 </div>
             </div>
 
@@ -54,10 +57,11 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-        <p>&copy; <?php echo date("Y"); ?> Sistem Informasi Tata Usaha</p>
+        <p>&copy; <?php echo date("Y"); ?> Sistem Informasi Dinas Perhubungan Fakfak</p>
         <div class="credits">
-            Bot Hunting Company Limited</a>
-        <div class="credits">
+            <a href="https://flying-classy-sage.glitch.me/" target="_blank" rel="noopener noreferrer">
+                Bot Hunting Company Limited
+            </a>
         </div>
     </div>
 

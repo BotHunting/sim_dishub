@@ -16,39 +16,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $jenis_laporan = $_POST['jenis_laporan'];
     $isi = $_POST['isi'];
     $status = $_POST['status'];
+    $file_google_drive = $_POST['file_google_drive'];  // Ambil link Google Drive
 
-    // Proses upload file
-    $targetDir = "lib/laporan/";
-    $fileName = basename($_FILES["file"]["name"]);
-    $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+    // Validasi link Google Drive
+    if (empty($file_google_drive)) {
+        $error = "Masukkan link Google Drive untuk file laporan.";
+    }
 
-    // Validasi file
-    if (empty($fileName)) {
-        $error = "Pilih file untuk diunggah.";
-    } elseif ($_FILES["file"]["size"] > 5000000) { // 5MB
-        $error = "File terlalu besar. Maksimum 5MB.";
-    } elseif (!in_array($fileType, array('pdf'))) {
-        $error = "Hanya file PDF yang diizinkan.";
-    } else {
-        // Upload file ke folder "lib/laporan"
-        if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
-            // Query SQL untuk menambahkan data laporan ke dalam tabel
-            $sql = "INSERT INTO laporan (nomor_surat, tanggal, jenis_laporan, isi, status, file_upload) 
-                    VALUES (?, ?, ?, ?, ?, ?)";
+    // Jika tidak ada error, masukkan data ke dalam database
+    if (empty($error)) {
+        // Query SQL untuk menambahkan data laporan ke dalam tabel
+        $sql = "INSERT INTO laporan (nomor_surat, tanggal, jenis_laporan, isi, status, file_google_drive) 
+                VALUES (?, ?, ?, ?, ?, ?)";
 
-            // Gunakan prepared statement untuk mencegah SQL Injection
-            $stmt = $koneksi->prepare($sql);
-            $stmt->bind_param('ssssss', $nomor_surat, $tanggal, $jenis_laporan, $isi, $status, $fileName);
-            if ($stmt->execute()) {
-                // Redirect ke halaman laporan.php setelah berhasil menambahkan data
-                header("Location: laporan.php");
-                exit;
-            } else {
-                $error = "Error: " . $sql . "<br>" . $koneksi->error;
-            }
+        // Gunakan prepared statement untuk mencegah SQL Injection
+        $stmt = $koneksi->prepare($sql);
+        $stmt->bind_param('ssssss', $nomor_surat, $tanggal, $jenis_laporan, $isi, $status, $file_google_drive);
+        if ($stmt->execute()) {
+            // Redirect ke halaman laporan.php setelah berhasil menambahkan data
+            header("Location: laporan.php");
+            exit;
         } else {
-            $error = "Terjadi kesalahan saat mengupload file.";
+            $error = "Error: " . $sql . "<br>" . $koneksi->error;
         }
     }
 }
@@ -57,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include_once 'header.php'; ?>
 <div class="container mt-5">
     <h1 class="mb-4">Tambah Laporan</h1>
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
         <div class="mb-3">
             <label for="nomor_surat" class="form-label">Nomor Surat</label>
             <input type="text" class="form-control" id="nomor_surat" name="nomor_surat" required>
@@ -90,8 +79,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </select>
         </div>
         <div class="mb-3">
-            <label for="file" class="form-label">Upload File PDF:</label>
-            <input type="file" class="form-control-file" id="file" name="file" required accept=".pdf">
+            <label for="file_google_drive" class="form-label">Link Google Drive:</label>
+            <input type="url" class="form-control" id="file_google_drive" name="file_google_drive" required placeholder="Masukkan link Google Drive">
         </div>
         <?php if (!empty($error)) : ?>
             <div class="alert alert-danger" role="alert">

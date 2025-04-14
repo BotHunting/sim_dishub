@@ -1,6 +1,6 @@
 <?php
 include_once 'header.php';
-require_once 'koneksi.php';
+require_once '../../config.php';
 
 // Ambil id pinjaman dari URL
 $id_pinjaman = $_GET['id'];

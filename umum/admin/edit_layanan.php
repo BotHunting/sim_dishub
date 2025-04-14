@@ -4,7 +4,7 @@
     <link rel="icon" href="img/logo.png" type="image/png">
     <?php
     // Include file koneksi database
-    include_once 'koneksi.php';
+    include_once '../../config.php';
     // Periksa apakah parameter id telah diberikan
     if (isset($_GET['id'])) {
         // Menggunakan prepared statement untuk menghindari SQL Injection
@@ -22,7 +22,6 @@
                 <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>">
                 <div class="form-group">
                     <label for="tanggal">Tanggal:</label>
-                    <!-- Tampilkan data sebelumnya pada kolom tanggal -->
                     <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?php echo htmlspecialchars($row['tanggal']); ?>" required>
                 </div>
                 <div class="form-group">
@@ -45,12 +44,17 @@
                         <option value="Rejected" <?php echo ($row['status'] == 'Rejected') ? 'selected' : ''; ?>>Rejected</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="file_google_drive">Link Google Drive:</label>
+                    <input type="url" class="form-control" id="file_google_drive" name="file_google_drive" value="<?php echo htmlspecialchars($row['file_google_drive']); ?>" required>
+                    <small class="form-text text-muted">Masukkan link file dari Google Drive (contoh: https://drive.google.com/...)</small>
+                </div>
                 <div class="mb-3">
-                    <label>File Sebelumnya:</label>
-                    <?php if (!empty($row['file_upload'])) : ?>
-                        <a href="../templates/pelayananumum/<?php echo htmlspecialchars($row['file_upload']); ?>" class="btn btn-info" target="_blank">Lihat File</a>
+                    <label>Link Sebelumnya:</label>
+                    <?php if (!empty($row['file_google_drive'])) : ?>
+                        <a href="<?php echo htmlspecialchars($row['file_google_drive']); ?>" class="btn btn-info" target="_blank">Lihat File</a>
                     <?php else : ?>
-                        <span class="text-muted">Tidak ada file sebelumnya</span>
+                        <span class="text-muted">Tidak ada link sebelumnya</span>
                     <?php endif; ?>
                 </div>
                 <button type="submit" class="btn btn-primary">Simpan Perubahan</button>

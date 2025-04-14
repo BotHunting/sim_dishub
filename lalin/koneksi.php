@@ -1,17 +1,26 @@
 <?php
+// Include konfigurasi dari config.php
+require_once __DIR__ . '/../config.php';
+
 // Konfigurasi koneksi ke database
-$host = 'localhost'; // Host database (biasanya 'localhost')
-$username = 'root'; // Nama pengguna database
-$password = ''; // Kata sandi database
-$database = 'dishub_sim'; // Nama database
+$host = DB_HOST;
+$username = DB_USER;
+$password = DB_PASS;
+$database = DB_NAME;
 
 // Membuat koneksi ke database
-$koneksi = new mysqli($host, $username, $password, $database);
+$conn = new mysqli($host, $username, $password, $database);
 
-// Memeriksa koneksi
-if ($koneksi->connect_error) {
-    die("Koneksi gagal: " . $koneksi->connect_error);
+// Periksa koneksi
+if ($conn->connect_error) {
+    die("Koneksi gagal: " . $conn->connect_error);
 }
 
-// Set encoding UTF-8 untuk koneksi
-$koneksi->set_charset("utf8");
+// Set charset
+$conn->set_charset("utf8");
+
+// Fungsi sanitasi input
+function bersihkanInput($data) {
+    global $conn;
+    return mysqli_real_escape_string($conn, stripslashes(htmlspecialchars(trim($data))));
+}

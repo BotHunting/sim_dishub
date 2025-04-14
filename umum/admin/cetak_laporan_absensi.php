@@ -1,5 +1,5 @@
 <?php
-require_once 'koneksi.php';
+require_once '../../config.php'; // Update to use config.php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['tanggal'])) {
     $tanggal = $_POST['tanggal'];
     function getRiwayatAbsensi($tanggal)

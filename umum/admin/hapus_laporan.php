@@ -1,6 +1,6 @@
 <?php
 // Include file koneksi database
-include_once 'koneksi.php';
+include_once '../../config.php';
 
 // Pastikan ID laporan telah diterima dari parameter URL
 if (isset($_GET['id']) && !empty($_GET['id'])) {

@@ -2,22 +2,26 @@
 include_once 'koneksi.php';
 
 // Mendapatkan daftar bulan unik dari tabel pelayananumum
-$query_months = "SELECT DISTINCT MONTH(tanggal) AS month FROM pelayananumum WHERE status = 'Approved' ORDER BY month ASC";
+$query_months = "SELECT DISTINCT MONTH(tanggal) AS month, YEAR(tanggal) AS year FROM pelayananumum WHERE status IN ('Approved', 'Rejected') ORDER BY year, month ASC";
 $result_months = mysqli_query($koneksi, $query_months);
 $months = [];
 while ($row_month = mysqli_fetch_assoc($result_months)) {
     $month_num = $row_month['month'];
-    $month_name = date("F", mktime(0, 0, 0, $month_num, 10));
-    $months[$month_num] = $month_name;
+    $year = $row_month['year'];
+    $month_name = date("F Y", mktime(0, 0, 0, $month_num, 10, $year));
+    $months["$year-$month_num"] = $month_name;
 }
 
 // Mengatur default bulan
-$current_month = isset($_GET['month']) ? $_GET['month'] : (count($months) > 0 ? array_keys($months)[0] : date('n'));
+$current_month = isset($_GET['month']) ? mysqli_real_escape_string($koneksi, $_GET['month']) : (count($months) > 0 ? array_keys($months)[0] : date('Y-n'));
+list($current_year, $current_month_num) = explode('-', $current_month);
 
 // Mendapatkan data pelayananumum untuk bulan yang dipilih
-$query_pelayananumum = "SELECT * FROM pelayananumum WHERE MONTH(tanggal) = $current_month AND status = 'Approved' ORDER BY tanggal DESC";
-$result_pelayananumum = mysqli_query($koneksi, $query_pelayananumum);
-
+$query_pelayananumum = "SELECT * FROM pelayananumum WHERE YEAR(tanggal) = ? AND MONTH(tanggal) = ? AND status IN ('Approved', 'Rejected') ORDER BY tanggal DESC";
+$stmt = $koneksi->prepare($query_pelayananumum);
+$stmt->bind_param("ii", $current_year, $current_month_num);
+$stmt->execute();
+$result_pelayananumum = $stmt->get_result();
 ?>
 
 <?php include_once 'header.php'; ?>
@@ -28,8 +32,8 @@ $result_pelayananumum = mysqli_query($koneksi, $query_pelayananumum);
             <div class="col-auto">
                 <label for="month">Pilih Bulan:</label>
                 <select name="month" id="month" class="form-control" onchange="this.form.submit()">
-                    <?php foreach ($months as $month_num => $month_name) : ?>
-                        <option value="<?php echo $month_num; ?>" <?php if ($month_num == $current_month) echo 'selected'; ?>><?php echo $month_name; ?></option>
+                    <?php foreach ($months as $month_key => $month_name) : ?>
+                        <option value="<?php echo $month_key; ?>" <?php if ($month_key == $current_month) echo 'selected'; ?>><?php echo $month_name; ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -49,26 +53,32 @@ $result_pelayananumum = mysqli_query($koneksi, $query_pelayananumum);
                 </tr>
             </thead>
             <tbody>
-                <?php while ($row = mysqli_fetch_assoc($result_pelayananumum)) : ?>
+                <?php if ($result_pelayananumum->num_rows > 0) : ?>
+                    <?php while ($row = $result_pelayananumum->fetch_assoc()) : ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['tanggal']); ?></td>
+                            <td><?php echo htmlspecialchars($row['nama_layanan']); ?></td>
+                            <td><?php echo htmlspecialchars($row['deskripsi']); ?></td>
+                            <td>
+                                <?php if (!empty($row['file_google_drive'])) : ?>
+                                    <a href="<?php echo htmlspecialchars($row['file_google_drive']); ?>" target="_blank" class="btn btn-sm btn-primary">Lihat File</a>
+                                <?php else : ?>
+                                    <span class="text-muted">Tidak ada file</span>
+                                <?php endif; ?>
+                            </td>
+                            <td><?php echo htmlspecialchars($row['pemohon']); ?></td>
+                            <td><?php echo htmlspecialchars($row['status']); ?></td>
+                            <td>
+                                <a href="edit_layanan.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="hapus_layanan.php?id=<?php echo htmlspecialchars($row['id']); ?>" class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
+                            </td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else : ?>
                     <tr>
-                        <td><?php echo $row['tanggal']; ?></td>
-                        <td><?php echo $row['nama_layanan']; ?></td>
-                        <td><?php echo $row['deskripsi']; ?></td>
-                        <td>
-                            <?php if (!empty($row['file_upload'])) : ?>
-                                <a href="../templates/pelayananumum/<?php echo $row['file_upload']; ?>" target="_blank">Lihat File</a>
-                            <?php else : ?>
-                                -
-                            <?php endif; ?>
-                        </td>
-                        <td><?php echo $row['pemohon']; ?></td>
-                        <td><?php echo $row['status']; ?></td>
-                        <td>
-                            <a href="edit_pelayanan.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
-                            <a href="hapus_pelayanan.php?id=<?php echo $row['id']; ?>" class="btn btn-sm btn-danger">Hapus</a>
-                        </td>
+                        <td colspan="7" class="text-center">Tidak ada data pelayanan untuk bulan ini.</td>
                     </tr>
-                <?php endwhile; ?>
+                <?php endif; ?>
             </tbody>
         </table>
         <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>
@@ -79,5 +89,4 @@ $result_pelayananumum = mysqli_query($koneksi, $query_pelayananumum);
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>

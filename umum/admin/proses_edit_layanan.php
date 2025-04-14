@@ -6,7 +6,7 @@ session_start();
 require_once 'koneksi.php';
 
 // Inisialisasi variabel
-$id = $nama_layanan = $deskripsi = $pemohon = '';
+$id = $nama_layanan = $deskripsi = $pemohon = $file_google_drive = '';
 $error = '';
 
 // Cek apakah form telah disubmit dengan metode POST
@@ -17,19 +17,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $deskripsi = mysqli_real_escape_string($koneksi, $_POST['deskripsi']);
     $pemohon = mysqli_real_escape_string($koneksi, $_POST['pemohon']);
     $status = mysqli_real_escape_string($koneksi, $_POST['status']);
+    $file_google_drive = mysqli_real_escape_string($koneksi, $_POST['file_google_drive']);
 
     // Validasi data
-    if (empty($nama_layanan) || empty($pemohon)) {
-        $error = "Semua kolom harus diisi";
+    if (empty($nama_layanan) || empty($pemohon) || empty($file_google_drive)) {
+        $error = "Semua kolom harus diisi termasuk link Google Drive.";
     } else {
         // Query untuk mengupdate data layanan berdasarkan ID
-        $query = "UPDATE pelayananumum SET nama_layanan=?, deskripsi=?, pemohon=?, status=? WHERE id=?";
+        $query = "UPDATE pelayananumum SET nama_layanan=?, deskripsi=?, pemohon=?, status=?, file_google_drive=? WHERE id=?";
 
         // Persiapkan statement
         $stmt = $koneksi->prepare($query);
 
         // Bind parameter ke query
-        $stmt->bind_param("ssssi", $nama_layanan, $deskripsi, $pemohon, $status, $id);
+        $stmt->bind_param("sssssi", $nama_layanan, $deskripsi, $pemohon, $status, $file_google_drive, $id);
 
         // Eksekusi statement
         if ($stmt->execute()) {
@@ -37,7 +38,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: pelayanan.php");
             exit;
         } else {
-            $error = "Error: " . $query . "<br>" . $koneksi->error;
+            $error = "Error: " . $stmt->error;
         }
+
+        // Tutup statement
+        $stmt->close();
     }
 }
+
+// Tampilkan error jika ada
+if (!empty($error)) {
+    echo "<div class='alert alert-danger'>$error</div>";
+}
+
+// Tutup koneksi database
+$koneksi->close();
+?>

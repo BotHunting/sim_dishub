@@ -17,7 +17,6 @@ $current_month = isset($_GET['month']) ? $_GET['month'] : (count($months) > 0 ? 
 // Mendapatkan data pengawasan untuk bulan yang dipilih
 $query_pengawasan = "SELECT * FROM pengawasan WHERE MONTH(tanggal) = $current_month AND status = 'Approved' ORDER BY tanggal DESC";
 $result_pengawasan = mysqli_query($koneksi, $query_pengawasan);
-
 ?>
 
 <?php include_once 'header.php'; ?>
@@ -57,8 +56,8 @@ $result_pengawasan = mysqli_query($koneksi, $query_pengawasan);
                         <td><?php echo $row['deskripsi']; ?></td>
                         <td><?php echo $row['status']; ?></td>
                         <td>
-                            <?php if (!empty($row['file_upload'])) : ?>
-                                <a href="../admin/lib/spt/<?php echo $row['file_upload']; ?>" target="_blank">Lihat File</a>
+                            <?php if (!empty($row['file_google_drive'])) : ?>
+                                <a href="<?php echo $row['file_google_drive']; ?>" target="_blank">Lihat File</a>
                             <?php else : ?>
                                 -
                             <?php endif; ?>

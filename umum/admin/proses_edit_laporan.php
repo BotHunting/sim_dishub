@@ -9,55 +9,36 @@ $nomor_surat = $_POST['nomor_surat']; // Tambahkan variabel untuk menangkap nomo
 $jenis_laporan = $_POST['jenis_laporan'];
 $isi = $_POST['isi'];
 $status = $_POST['status'];
+$file_google_drive = $_POST['file_google_drive']; // Tangkap link Google Drive baru
 
-// Persiapkan statement SQL untuk mengupdate data laporan
+// Persiapkan query dasar untuk mengupdate data laporan
 $query = "UPDATE laporan SET tanggal=?, nomor_surat=?, jenis_laporan=?, isi=?, status=?";
 
 // Buat array untuk menyimpan tipe data dari setiap parameter
 $types = "sssss";
 
-// Periksa apakah ada file yang diunggah
-if ($_FILES['file']['name'] != '') {
-    // Jika ada file yang diunggah, proses file tersebut
-    $targetDir = "lib/laporan/";
-    $fileName = basename($_FILES["file"]["name"]);
-    $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-
-    // Validasi file
-    if ($_FILES["file"]["size"] > 5000000) { // 5MB
-        $error = "File terlalu besar. Maksimum 5MB.";
-        header("Location: edit_laporan.php?id=$id&error=$error");
-        exit;
-    } elseif (!in_array($fileType, array('pdf'))) {
-        $error = "Hanya file PDF yang diizinkan.";
-        header("Location: edit_laporan.php?id=$id&error=$error");
-        exit;
-    }
-
-    // Tambahkan nama file ke query dan perbarui tipe data
-    $query .= ", file_upload=?";
-    $types .= "s";
+// Cek apakah ada link Google Drive yang dimasukkan
+if (!empty($file_google_drive)) {
+    // Tambahkan link Google Drive ke query
+    $query .= ", file_google_drive=?";
+    $types .= "s"; // Menambahkan tipe data untuk link Google Drive
 }
 
 // Tambahkan kondisi WHERE untuk ID
 $query .= " WHERE id=?";
-$types .= "i";
+$types .= "i";  // Tipe data untuk ID adalah integer
 
 // Persiapkan statement
 $stmt = $koneksi->prepare($query);
 
 // Bind parameter ke statement
-$stmt->bind_param($types, $tanggal, $nomor_surat, $jenis_laporan, $isi, $status);
-
-// Periksa apakah ada file yang diunggah
-if ($_FILES['file']['name'] != '') {
-    // Tambahkan file ke parameter statement
-    $stmt->bind_param('s', $fileName);
+if (!empty($file_google_drive)) {
+    // Jika ada link Google Drive, ikat semua parameter, termasuk file_google_drive
+    $stmt->bind_param($types, $tanggal, $nomor_surat, $jenis_laporan, $isi, $status, $file_google_drive, $id);
+} else {
+    // Jika tidak ada link Google Drive, ikat tanpa parameter file_google_drive
+    $stmt->bind_param($types, $tanggal, $nomor_surat, $jenis_laporan, $isi, $status, $id);
 }
-
-// Bind parameter ID
-$stmt->bind_param('i', $id);
 
 // Eksekusi statement
 if ($stmt->execute()) {
@@ -77,3 +58,4 @@ $stmt->close();
 
 // Tutup koneksi database
 $koneksi->close();
+?>

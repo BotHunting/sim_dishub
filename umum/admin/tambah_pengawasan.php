@@ -3,8 +3,9 @@ session_start();
 // Include file koneksi database
 require_once 'koneksi.php';
 // Inisialisasi variabel
-$nomor_surat = $jenis_pengawasan = $tanggal = $deskripsi = $status = '';
+$nomor_surat = $jenis_pengawasan = $tanggal = $deskripsi = $status = $file_google_drive = '';
 $error = '';
+
 // Cek apakah form telah disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil nilai dari form
@@ -13,37 +14,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tanggal = $_POST['tanggal'];
     $deskripsi = $_POST['deskripsi'];
     $status = $_POST['status'];
+    $file_google_drive = $_POST['file_google_drive']; // Ambil link Google Drive dari form
+
     // Validasi data
     if (empty($nomor_surat) || empty($jenis_pengawasan) || empty($tanggal) || empty($deskripsi) || empty($status)) {
         $error = "Semua kolom harus diisi";
+    } elseif (empty($file_google_drive)) {
+        $error = "Link Google Drive harus diisi";
     } else {
-        // File upload
-        $targetDir = "lib/spt/";
-        $fileName = $jenis_pengawasan . "_" . uniqid() . ".pdf";
-        $targetFilePath = $targetDir . $fileName;
-        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-
-        // Validasi file
-        if ($_FILES["file"]["size"] > 5000000) { // 5MB
-            $error = "File terlalu besar. Maksimum 5MB.";
-        } elseif (!in_array($fileType, array('pdf'))) {
-            $error = "Hanya file PDF yang diizinkan.";
+        // Query untuk menambahkan data pengawasan ke dalam tabel
+        $query = "INSERT INTO pengawasan (nomor_surat, jenis_pengawasan, tanggal, deskripsi, status, file_google_drive) 
+                  VALUES ('$nomor_surat', '$jenis_pengawasan', '$tanggal', '$deskripsi', '$status', '$file_google_drive')";
+        
+        // Jalankan query
+        if ($koneksi->query($query) === TRUE) {
+            // Redirect ke halaman pengawasan.php setelah berhasil menambahkan data
+            header("Location: pengawasan.php");
+            exit;
         } else {
-            // Upload file ke folder "lib/spt"
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
-                // Query untuk menambahkan data pengawasan ke dalam tabel
-                $query = "INSERT INTO pengawasan (nomor_surat, jenis_pengawasan, tanggal, deskripsi, status, file_upload) VALUES ('$nomor_surat', '$jenis_pengawasan', '$tanggal', '$deskripsi', '$status', '$fileName')";
-                // Jalankan query
-                if ($koneksi->query($query) === TRUE) {
-                    // Redirect ke halaman pengawasan.php setelah berhasil menambahkan data
-                    header("Location: pengawasan.php");
-                    exit;
-                } else {
-                    $error = "Error: " . $query . "<br>" . $koneksi->error;
-                }
-            } else {
-                $error = "Terjadi kesalahan saat mengupload file.";
-            }
+            $error = "Error: " . $query . "<br>" . $koneksi->error;
         }
     }
 }
@@ -52,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include("header.php"); ?>
 <div class="container mt-5">
     <h2>Tambah Surat Perintah</h2>
-    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <div class="form-group">
             <label for="nomor_surat" class="form-label">Nomor Surat</label>
             <input type="text" class="form-control" id="nomor_surat" name="nomor_surat" value="<?php echo $nomor_surat; ?>">
@@ -72,14 +61,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-group">
             <label>Status:</label>
             <select name="status" class="form-control">
-                <option value="Pending">Pending</option>
-                <option value="Approved">Approved</option>
-                <option value="Rejected">Rejected</option>
+                <option value="Pending" <?php if ($status == 'Pending') echo 'selected'; ?>>Pending</option>
+                <option value="Approved" <?php if ($status == 'Approved') echo 'selected'; ?>>Approved</option>
+                <option value="Rejected" <?php if ($status == 'Rejected') echo 'selected'; ?>>Rejected</option>
             </select>
         </div>
         <div class="form-group">
-            <label>Upload File PDF:</label>
-            <input type="file" class="form-control-file" name="file">
+            <label>Masukkan Link Google Drive:</label>
+            <input type="text" class="form-control" name="file_google_drive" value="<?php echo $file_google_drive; ?>" placeholder="Masukkan link Google Drive">
         </div>
         <button type="submit" class="btn btn-primary">Tambah</button>
         <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>

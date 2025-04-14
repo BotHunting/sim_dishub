@@ -5,8 +5,8 @@
         <div class="text-end mb-4">
             <a href="tambah_laporan.php" class="btn btn-primary">Tambah Laporan</a>
             <a href="riwayat_laporan.php" class="btn btn-primary">Riwayat Laporan</a>
-            <a href="sdm.php" class="btn btn-primary">laporan SDM</a>
-            <a href="laporan_absensi.php" class="btn btn-primary">laporan Absensi</a>
+            <a href="sdm.php" class="btn btn-primary">Laporan SDM</a>
+            <a href="laporan_absensi.php" class="btn btn-primary">Laporan Absensi</a>
         </div>
     <?php endif; ?>
     <div class="table-responsive">
@@ -45,8 +45,8 @@
                         echo "<td>" . htmlspecialchars($row['isi']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                         echo "<td>";
-                        if (!empty($row['file_upload'])) {
-                            echo "<a href='../admin/lib/laporan/" . htmlspecialchars($row['file_upload']) . "' class='btn btn-info btn-sm' target='_blank'>View</a>";
+                        if (!empty($row['file_google_drive'])) {
+                            echo "<a href=\"" . htmlspecialchars($row['file_google_drive']) . "\" class='btn btn-info btn-sm' target='_blank'>View</a>";
                         } else {
                             echo "Tidak ada lampiran";
                         }
@@ -60,7 +60,7 @@
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='6'>Tidak ada data laporan yang belum disetujui.</td></tr>";
+                    echo "<tr><td colspan='7'>Tidak ada data laporan yang belum disetujui.</td></tr>";
                 }
                 $stmt->close();
                 $koneksi->close();
@@ -74,5 +74,4 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>

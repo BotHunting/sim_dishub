@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'koneksi.php';
+require_once '../../config.php';
 $error = '';
 $id = $_GET['id'] ?? '';
 $query = "SELECT * FROM pegawai WHERE id = ?";

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'koneksi.php';
+require_once '../../config.php'; // Update the path to config.php
 $query_bidang = "SELECT * FROM bidang";
 $stmt_bidang = $koneksi->prepare($query_bidang);
 $stmt_bidang->execute();

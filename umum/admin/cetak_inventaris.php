@@ -1,5 +1,5 @@
 <?php
-require_once 'koneksi.php';
+require_once '../../config.php'; // Update to use config.php
 
 // Memeriksa apakah ada data yang dikirimkan melalui metode POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -190,7 +190,7 @@ function getLaporanInventaris($start_date, $end_date)
         </div>
         <div class="text-center mt-4">
             <button onclick="window.print()" class="btn btn-primary">Cetak</button>
-            <a href="absensi_form.php" class="btn btn-secondary">Kembali</a>
+            <a href="laporan_inventaris.php" class="btn btn-secondary">Kembali</a>
         </div>
     </div>
 </body>

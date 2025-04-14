@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once 'koneksi.php';
+require_once __DIR__ . '/../config.php';
 // Inisialisasi variabel $logout_button
 $logout_button = '';
 

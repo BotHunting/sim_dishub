@@ -47,8 +47,9 @@
                         echo "<td>" . htmlspecialchars($row['deskripsi']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                         echo "<td>";
-                        if (!empty($row['file_upload'])) {
-                            echo "<a href='../admin/lib/spt/" . htmlspecialchars($row['file_upload']) . "' class='btn btn-info btn-sm' target='_blank'>View</a>";
+                        // Periksa apakah ada link Google Drive
+                        if (!empty($row['file_google_drive'])) {
+                            echo "<a href='" . htmlspecialchars($row['file_google_drive']) . "' class='btn btn-info btn-sm' target='_blank'>View</a>";
                         } else {
                             echo "Tidak ada lampiran";
                         }

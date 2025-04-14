@@ -1,5 +1,5 @@
 <?php
-include_once 'koneksi.php';
+include_once '../../config.php';
 
 // Pastikan ada data yang dikirimkan melalui metode GET
 if ($_SERVER["REQUEST_METHOD"] == "GET") {

@@ -3,7 +3,7 @@
 session_start();
 
 // Sertakan file koneksi ke database
-require_once 'koneksi.php';
+require_once '../../config.php';
 
 // Query untuk mengambil daftar bidang
 $query_bidang = "SELECT id, nama_bidang FROM bidang";

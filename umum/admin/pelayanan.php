@@ -17,17 +17,16 @@
                     <th>Pemohon</th>
                     <th>Status</th>
                     <th>Lampiran</th>
-                    <?php
-                    if ($rules === 'Kepala') {
-                        echo "<th>Aksi</th>";
-                    }
-                    ?>
+                    <?php if ($rules === 'Kepala') : ?>
+                        <th>Aksi</th>
+                    <?php endif; ?>
                 </tr>
             </thead>
             <tbody>
                 <?php
                 require_once 'koneksi.php';
-                $query = "SELECT * FROM pelayananumum WHERE status = ? ORDER BY tanggal DESC"; // Query dengan placeholder dan urutan tanggal terbaru
+                // Query dengan placeholder untuk status 'Pending' dan urutan tanggal terbaru
+                $query = "SELECT * FROM pelayananumum WHERE status = ? ORDER BY tanggal DESC";
                 $stmt = $koneksi->prepare($query);
                 $status = 'Pending';
                 $stmt->bind_param('s', $status);
@@ -38,25 +37,29 @@
                     while ($row = $result->fetch_assoc()) {
                         echo "<tr>";
                         echo "<td>" . $no++ . "</td>";
-                        echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>"; // Melindungi dari XSS
-                        echo "<td>" . htmlspecialchars($row['nama_layanan']) . "</td>"; // Melindungi dari XSS
-                        echo "<td>" . htmlspecialchars($row['deskripsi']) . "</td>"; // Melindungi dari XSS
-                        echo "<td>" . htmlspecialchars($row['pemohon']) . "</td>"; // Melindungi dari XSS
-                        echo "<td>" . htmlspecialchars($row['status']) . "</td>"; // Melindungi dari XSS
+                        echo "<td>" . htmlspecialchars($row['tanggal']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['nama_layanan']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['deskripsi']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['pemohon']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                         echo "<td>";
-                        if (!empty($row['file_upload'])) {
-                            echo "<a href='../templates/pelayananumum/" . htmlspecialchars($row['file_upload']) . "' class='btn btn-sm btn-primary' target='_blank'>View</a>";
+                        // Tampilkan link Google Drive jika tersedia
+                        if (!empty($row['file_google_drive'])) {
+                            echo "<a href='" . htmlspecialchars($row['file_google_drive']) . "' class='btn btn-sm btn-primary' target='_blank'>View</a>";
                         } else {
-                            echo "File tidak tersedia";
+                            echo "<span class='text-muted'>Tidak ada file</span>";
                         }
                         echo "</td>";
                         if ($rules === 'Kepala') {
-                            echo "<td><a href='edit_layanan.php?id=" . htmlspecialchars($row['id']) . "' class='btn btn-sm btn-warning'>Edit</a> <a href='hapus_layanan.php?id=" . htmlspecialchars($row['id']) . "' class='btn btn-sm btn-danger'>Hapus</a></td>";
+                            echo "<td>";
+                            echo "<a href='edit_layanan.php?id=" . htmlspecialchars($row['id']) . "' class='btn btn-sm btn-warning'>Edit</a> ";
+                            echo "<a href='hapus_layanan.php?id=" . htmlspecialchars($row['id']) . "' class='btn btn-sm btn-danger' onclick='return confirm(\"Yakin ingin menghapus data ini?\")'>Hapus</a>";
+                            echo "</td>";
                         }
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='8'>Tidak ada data pelayanan umum dengan status 'Pending'.</td></tr>";
+                    echo "<tr><td colspan='8' class='text-center'>Tidak ada data pelayanan umum dengan status 'Pending'.</td></tr>";
                 }
                 ?>
             </tbody>
@@ -68,5 +71,4 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>

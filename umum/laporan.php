@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Include koneksi ke database
-require_once 'koneksi.php';
+require_once __DIR__ . '/../config.php';
 // Ambil data laporan dengan status "Approved" dari database
 $query = "SELECT * FROM laporan WHERE status = ?";
 // Persiapkan statement SQL
@@ -35,7 +35,7 @@ $stmt->close();
             <div class="row d-flex justify-content-center text-center">
                 <div class="col-lg-8">
                     <h1>Laporan</h1>
-                    <p class="mb-0">Halaman Laporan di website Tata Usaha Dinas Perhubungan Kabupaten Fakfak memungkinkan Anda untuk Menyimpan dan mengelola laporan.</p>
+                    <p class="mb-0">Halaman Laporan di website Tata Usaha Dinas Perhubungan Kabupaten Fakfak memungkinkan Anda untuk menyimpan dan mengelola laporan.</p>
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@ $stmt->close();
 
 <div class="container mt-5">
     <h2>Laporan</h2>
-        <a href="sdm.php" class="btn btn-primary mb-3">laporan SDM</a>
+    <a href="sdm.php" class="btn btn-primary mb-3">Laporan SDM</a>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -77,8 +77,8 @@ $stmt->close();
                             <td><?php echo $data['isi']; ?></td>
                             <td><?php echo $data['status']; ?></td>
                             <td>
-                                <?php if (!empty($data['file_upload'])) : ?>
-                                    <a href="admin/lib/laporan/<?php echo $data['file_upload']; ?>" class="btn btn-sm btn-primary" target="_blank">View</a>
+                                <?php if (!empty($data['file_google_drive'])) : ?>
+                                    <a href="<?php echo $data['file_google_drive']; ?>" class="btn btn-sm btn-primary" target="_blank">Lihat Lampiran</a>
                                 <?php else : ?>
                                     Tidak ada lampiran
                                 <?php endif; ?>
@@ -87,11 +87,12 @@ $stmt->close();
                     <?php endforeach; ?>
                 <?php else : ?>
                     <tr>
-                        <td colspan="5">Tidak ada data laporan yang telah disetujui.</td>
+                        <td colspan="7">Tidak ada data laporan yang telah disetujui.</td>
                     </tr>
                 <?php endif; ?>
             </tbody>
         </table>
     </div>
 </div>
+
 <?php include("footer.php"); ?>

@@ -1,6 +1,6 @@
 <?php
 // Include file koneksi database
-include_once 'koneksi.php';
+include_once '../../config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     // Ambil id surat dari parameter GET

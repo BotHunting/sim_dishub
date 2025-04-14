@@ -1,6 +1,6 @@
 <?php
-include_once 'koneksi.php';
-$id = $tanggal = $pengirim = $penerima = $judul = $isi = $file_upload = $status = "";
+include_once '../../config.php';
+$id = $tanggal = $pengirim = $penerima = $judul = $isi = $file_google_drive = $status = "";
 $error = "";
 
 // Ambil data nama_seksi dari tabel seksi
@@ -28,7 +28,7 @@ if (isset($_GET['id']) && !empty(trim($_GET['id']))) {
                 $penerima = $row['penerima'];
                 $judul = $row['judul'];
                 $isi = $row['isi'];
-                $file_upload = $row['file_upload'];
+                $file_google_drive = $row['file_google_drive'];  // Diperbarui
                 $status = $row['status'];
             } else {
                 header("location: error.php");
@@ -49,30 +49,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $judul = mysqli_real_escape_string($koneksi, $_POST["judul"]);
     $isi = mysqli_real_escape_string($koneksi, $_POST["isi"]);
     $status = mysqli_real_escape_string($koneksi, $_POST["status"]);
-    if ($_FILES["file"]["name"] != '') {
-        $file_name = basename($_FILES["file"]["name"]);
-        $file_temp = $_FILES["file"]["tmp_name"];
-        $file_type = $_FILES["file"]["type"];
-        $target_dir = "lib/disposisi/";
-        // Mencegah potensi serangan dengan menghindari penggunaan variabel yang tidak bersih langsung dalam query
-        $new_file_name = $pengirim . "_" . $id . "_ACC." . pathinfo($file_name, PATHINFO_EXTENSION);
-        $target_file = $target_dir . $new_file_name;
-        if (!empty($file_upload)) {
-            unlink("lib/disposisi/" . $file_upload);
-        }
-        if (move_uploaded_file($file_temp, $target_file)) {
-            $query = "UPDATE disposisi SET tanggal=?, pengirim=?, penerima=?, judul=?, isi=?, file_upload=?, status=? WHERE id=?";
-            if ($stmt = $koneksi->prepare($query)) {
-                $stmt->bind_param("sssssssi", $tanggal, $pengirim, $penerima, $judul, $isi, $new_file_name, $status, $id);
-                if ($stmt->execute()) {
-                    header("location: disposisi.php");
-                    exit();
-                } else {
-                    echo "Oops! Terjadi kesalahan. Silakan coba lagi nanti.";
-                }
+
+    // Cek apakah ada link Google Drive baru
+    $file_google_drive = mysqli_real_escape_string($koneksi, $_POST["file_google_drive"]);  // Menyimpan link
+
+    // Update tanpa file upload jika tidak ada file baru
+    if (!empty($file_google_drive)) {
+        $query = "UPDATE disposisi SET tanggal=?, pengirim=?, penerima=?, judul=?, isi=?, file_google_drive=?, status=? WHERE id=?";
+        if ($stmt = $koneksi->prepare($query)) {
+            $stmt->bind_param("sssssssi", $tanggal, $pengirim, $penerima, $judul, $isi, $file_google_drive, $status, $id);
+            if ($stmt->execute()) {
+                header("location: disposisi.php");
+                exit();
+            } else {
+                echo "Oops! Terjadi kesalahan. Silakan coba lagi nanti.";
             }
-        } else {
-            $error = "Terjadi kesalahan saat mengupload file.";
         }
     } else {
         $query = "UPDATE disposisi SET tanggal=?, pengirim=?, penerima=?, judul=?, isi=?, status=? WHERE id=?";
@@ -93,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include_once 'header.php'; ?>
 <div class="container mt-5">
     <h2>Edit Disposisi</h2>
-    <form method="post" enctype="multipart/form-data">
+    <form method="post">
         <div class="form-group">
             <label for="tanggal">Tanggal</label>
             <input type="date" class="form-control" id="tanggal" name="tanggal" value="<?php echo $tanggal; ?>" required>
@@ -120,15 +111,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div class="mb-3">
             <label>File Sebelumnya:</label>
-            <?php if (!empty($row['file_upload'])) : ?>
-                <a href="lib/disposisi/<?php echo $row['file_upload']; ?>" class="btn btn-info" target="_blank">Lihat File</a>
+            <?php if (!empty($file_google_drive)) : ?>
+                <a href="<?php echo $file_google_drive; ?>" class="btn btn-info" target="_blank">Lihat File</a>
             <?php else : ?>
                 <span class="text-muted">Tidak ada file sebelumnya</span>
             <?php endif; ?>
         </div>
         <div class="mb-3">
-            <label>Upload File Baru (jika ingin diperbarui):</label>
-            <input type="file" class="form-control-file" name="file">
+            <label>Link Google Drive Baru (jika ingin diperbarui):</label>
+            <input type="text" class="form-control" name="file_google_drive" value="<?php echo $file_google_drive; ?>" placeholder="Masukkan URL Google Drive">
         </div>
         <div class="form-group">
             <label for="status">Status</label>

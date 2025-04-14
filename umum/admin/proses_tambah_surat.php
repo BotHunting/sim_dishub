@@ -10,14 +10,15 @@ $penerima = $_POST['penerima'];
 $subjek = $_POST['subjek'];
 $isi = $_POST['isi'];
 $status = 'Draft'; // Set status awal surat menjadi Draft
+$file_google_drive = $_POST['file_google_drive']; // Ambil link Google Drive yang diinputkan
 
 // Gunakan prepared statement untuk mencegah SQL Injection
-$sql = "INSERT INTO suratmenyurat (nomor_surat, tanggal, pengirim, penerima, subjek, isi, status) 
-        VALUES (?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO suratmenyurat (nomor_surat, tanggal, pengirim, penerima, subjek, isi, status, file_google_drive) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
 if ($stmt = $koneksi->prepare($sql)) {
     // Bind parameter ke statement
-    $stmt->bind_param("sssssss", $nomor_surat, $tanggal, $pengirim, $penerima, $subjek, $isi, $status);
+    $stmt->bind_param("ssssssss", $nomor_surat, $tanggal, $pengirim, $penerima, $subjek, $isi, $status, $file_google_drive);
 
     // Eksekusi statement
     if ($stmt->execute()) {
@@ -37,3 +38,4 @@ if ($stmt = $koneksi->prepare($sql)) {
 
 // Tutup koneksi database
 $koneksi->close();
+?>

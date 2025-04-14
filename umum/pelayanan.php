@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'koneksi.php';
+require_once __DIR__ . '/../config.php';
 $query = "SELECT * FROM pelayananumum ORDER BY tanggal DESC";
 $stmt = $koneksi->prepare($query);
 if ($stmt->execute()) {
@@ -41,7 +41,7 @@ $stmt->close();
 
 <div class="container mt-5">
     <h2>Pelayanan Masyarakat</h2>
-    <a href="tambah_pelayanan.php" class="btn btn-primary mb-3">Tambah pelayanan</a>
+    <a href="tambah_pelayanan.php" class="btn btn-primary mb-3">Tambah Pelayanan</a>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -66,8 +66,8 @@ $stmt->close();
                             <td><?php echo htmlspecialchars($data['pemohon']); ?></td>
                             <td><?php echo htmlspecialchars($data['status']); ?></td>
                             <td>
-                                <?php if (!empty($data['file_upload'])) : ?>
-                                    <a href="templates/pelayananumum/<?php echo htmlspecialchars($data['file_upload']); ?>" target="_blank" class="btn btn-info">View</a>
+                                <?php if (!empty($data['file_google_drive'])) : ?>
+                                    <a href="<?php echo htmlspecialchars($data['file_google_drive']); ?>" target="_blank" class="btn btn-info">View</a>
                                 <?php else : ?>
                                     Tidak ada file
                                 <?php endif; ?>

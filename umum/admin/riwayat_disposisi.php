@@ -58,10 +58,10 @@ $result_disposisi = mysqli_query($koneksi, $query_disposisi);
                         <td><?php echo $row['judul']; ?></td>
                         <td><?php echo $row['isi']; ?></td>
                         <td>
-                            <?php if (!empty($row['file_upload'])) : ?>
-                                <a href="lib/disposisi/<?php echo $row['file_upload']; ?>" target="_blank">Lihat File</a>
+                            <?php if (!empty($row['file_google_drive'])) : ?>
+                                <a href="<?php echo $row['file_google_drive']; ?>" target="_blank">Lihat File</a>
                             <?php else : ?>
-                                -
+                                - 
                             <?php endif; ?>
                         </td>
                         <td><?php echo $row['status']; ?></td>
@@ -81,5 +81,4 @@ $result_disposisi = mysqli_query($koneksi, $query_disposisi);
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>

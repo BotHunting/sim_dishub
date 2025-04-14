@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'koneksi.php';
+require_once '../../config.php'; // Update to use config.php
 $query_pegawai = "SELECT id, nama FROM pegawai";
 $stmt = $koneksi->prepare($query_pegawai);
 $stmt->execute();

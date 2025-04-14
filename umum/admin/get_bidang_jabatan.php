@@ -1,6 +1,6 @@
 <?php
 // Sertakan file koneksi ke database
-require_once 'koneksi.php';
+require_once '../../config.php';
 
 // Periksa apakah variabel POST seksi telah diset
 if (isset($_POST['seksi'])) {

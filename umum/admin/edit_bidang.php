@@ -3,7 +3,7 @@
 session_start();
 
 // Sertakan file koneksi ke database
-require_once 'koneksi.php';
+require_once '../../config.php';
 
 // Inisialisasi variabel untuk menyimpan pesan error
 $error = '';

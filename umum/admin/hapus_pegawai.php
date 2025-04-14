@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'koneksi.php';
+require_once '../../config.php';
 
 // Periksa apakah parameter id pegawai telah diterima melalui URL
 if (isset($_GET['id'])) {

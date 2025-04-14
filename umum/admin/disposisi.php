@@ -29,7 +29,7 @@
             <tbody>
                 <?php
                 // Include file koneksi database
-                include_once 'koneksi.php';
+                require_once '../../config.php'; // Update to use config.php
 
                 // Prepare and bind SQL statement
                 $sql = "SELECT * FROM disposisi WHERE status IN ('Pending', 'Rejected') ORDER BY tanggal DESC";
@@ -47,9 +47,11 @@
                         echo "<td>" . htmlspecialchars($row['isi']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['status']) . "</td>";
                         echo "<td>";
-                        if (!empty($row['file_upload'])) {
-                            echo "<a href='lib/disposisi/" . htmlspecialchars($row['file_upload']) . "' class='btn btn-info btn-sm' target='_blank'>View</a>";
+                        if (!empty($row['file_google_drive'])) {
+                            // Jika ada file yang di-upload, tampilkan link Google Drive
+                            echo "<a href='" . htmlspecialchars($row['file_google_drive']) . "' class='btn btn-info btn-sm' target='_blank'>View</a>";
                         } else {
+                            // Jika tidak ada file
                             echo "Tidak ada lampiran";
                         }
                         echo "</td>";

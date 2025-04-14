@@ -1,6 +1,6 @@
 <?php
 include_once 'koneksi.php';
-$tanggal = $pengirim = $penerima = $judul = $isi = "";
+$tanggal = $pengirim = $penerima = $judul = $isi = $file_google_drive = ""; // Definisikan $file_google_drive
 $error = "";
 $status = "Pending";
 
@@ -20,29 +20,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $penerima = $_POST['penerima'];
     $judul = $_POST['judul'];
     $isi = $_POST['isi'];
-    if (empty($tanggal) || empty($pengirim) || empty($penerima) || empty($judul) || empty($isi)) {
+    $file_google_drive = $_POST['file_google_drive']; // Ambil nilai dari form
+
+    if (empty($tanggal) || empty($pengirim) || empty($penerima) || empty($judul) || empty($isi) || empty($file_google_drive)) {
         $error = "Semua kolom harus diisi";
     } else {
-        $targetDir = "lib/disposisi/";
-        $fileName = $pengirim . "_" . uniqid() . ".pdf";
-        $targetFilePath = $targetDir . $fileName;
-        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-        if ($_FILES["file"]["size"] > 5000000) { // 5MB
-            $error = "File terlalu besar. Maksimum 5MB.";
-        } elseif (!in_array($fileType, array('pdf'))) {
-            $error = "Hanya file PDF yang diizinkan.";
+        // Simpan data ke database
+        $sql = "INSERT INTO disposisi (tanggal, pengirim, penerima, judul, isi, file_google_drive, status) 
+                VALUES ('$tanggal', '$pengirim', '$penerima', '$judul', '$isi', '$file_google_drive', '$status')";
+        if (mysqli_query($koneksi, $sql)) {
+            header("Location: disposisi.php");
+            exit;
         } else {
-            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
-                $sql = "INSERT INTO disposisi (tanggal, pengirim, penerima, judul, isi, file_upload, status) VALUES ('$tanggal', '$pengirim', '$penerima', '$judul', '$isi', '$fileName', '$status')";
-                if (mysqli_query($koneksi, $sql)) {
-                    header("Location: disposisi.php");
-                    exit;
-                } else {
-                    $error = "Terjadi kesalahan saat menambahkan data: " . mysqli_error($koneksi);
-                }
-            } else {
-                $error = "Terjadi kesalahan saat mengupload file.";
-            }
+            $error = "Terjadi kesalahan saat menambahkan data: " . mysqli_error($koneksi);
         }
     }
 }
@@ -51,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include_once 'header.php'; ?>
 <div class="container mt-5">
     <h2>Tambah Disposisi</h2>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
+    <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <div class="form-group">
             <label>Tanggal:</label>
             <input type="date" class="form-control" name="tanggal" value="<?php echo date('Y-m-d'); ?>">
@@ -77,8 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea class="form-control" name="isi"><?php echo $isi; ?></textarea>
         </div>
         <div class="form-group">
-            <label>Upload File PDF:</label>
-            <input type="file" class="form-control-file" name="file">
+            <label>Link Google Drive (Pastikan file sudah diupload ke Google Drive):</label>
+            <input type="text" class="form-control" name="file_google_drive" value="<?php echo $file_google_drive; ?>" placeholder="Masukkan link file Google Drive">
         </div>
         <input type="hidden" name="status" value="<?php echo $status; ?>">
         <div class="form-group">

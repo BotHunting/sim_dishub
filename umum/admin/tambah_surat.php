@@ -1,7 +1,7 @@
 <?php
 include_once 'koneksi.php';
 // Inisialisasi variabel dengan nilai default
-$nomor_surat = $tanggal = $pengirim = $penerima = $subjek = $isi = "";
+$nomor_surat = $tanggal = $pengirim = $penerima = $subjek = $isi = $file_google_drive = "";  // Tambahkan inisialisasi variabel $file_google_drive
 $error = "";
 
 // Ambil data nama_seksi dari tabel seksi
@@ -16,6 +16,7 @@ if (mysqli_num_rows($result_seksi) > 0) {
 
 // Set status secara otomatis ke "Draft"
 $status = "Draft";
+
 // Cek apakah form telah disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil nilai dari form
@@ -25,35 +26,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $penerima = $_POST['penerima'];
     $subjek = $_POST['subjek'];
     $isi = $_POST['isi'];
+    $file_google_drive = $_POST['file_google_drive']; // Ambil link Google Drive
+
     // Validasi input
-    if (empty($nomor_surat) || empty($tanggal) || empty($pengirim) || empty($penerima) || empty($subjek) || empty($isi)) {
+    if (empty($nomor_surat) || empty($tanggal) || empty($pengirim) || empty($penerima) || empty($subjek) || empty($isi) || empty($file_google_drive)) {
         $error = "Semua kolom harus diisi";
     } else {
-        // File upload
-        $targetDir = "lib/surat/";
-        $fileName = $pengirim . "_" . uniqid() . ".pdf";
-        $targetFilePath = $targetDir . $fileName;
-        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-        // Validasi file
-        if ($_FILES["file_upload"]["size"] > 5000000) { // 5MB
-            $error = "File terlalu besar. Maksimum 5MB.";
-        } elseif (!in_array($fileType, array('pdf'))) {
-            $error = "Hanya file PDF yang diizinkan.";
+        // Insert data ke database
+        $sql = "INSERT INTO suratmenyurat (nomor_surat, tanggal, pengirim, penerima, subjek, isi, status, file_google_drive) 
+                VALUES ('$nomor_surat', '$tanggal', '$pengirim', '$penerima', '$subjek', '$isi', '$status', '$file_google_drive')";
+        if (mysqli_query($koneksi, $sql)) {
+            // Jika berhasil, redirect ke halaman surat_menyurat.php
+            header("Location: surat_menyurat.php");
+            exit;
         } else {
-            // Upload file ke folder "lib"
-            if (move_uploaded_file($_FILES["file_upload"]["tmp_name"], $targetFilePath)) {
-                // Insert data ke database
-                $sql = "INSERT INTO suratmenyurat (nomor_surat, tanggal, pengirim, penerima, subjek, isi, status, file_upload) VALUES ('$nomor_surat', '$tanggal', '$pengirim', '$penerima', '$subjek', '$isi', '$status', '$fileName')";
-                if (mysqli_query($koneksi, $sql)) {
-                    // Jika berhasil, redirect ke halaman surat_menyurat.php
-                    header("Location: surat_menyurat.php");
-                    exit;
-                } else {
-                    $error = "Terjadi kesalahan saat menambahkan data: " . mysqli_error($koneksi);
-                }
-            } else {
-                $error = "Terjadi kesalahan saat mengupload file.";
-            }
+            $error = "Terjadi kesalahan saat menambahkan data: " . mysqli_error($koneksi);
         }
     }
 }
@@ -90,8 +77,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <textarea class="form-control" id="isi" name="isi" rows="5" required><?php echo $isi; ?></textarea>
         </div>
         <div class="form-group">
-            <label for="file_upload">Upload File PDF</label>
-            <input type="file" class="form-control-file" id="file_upload" name="file_upload" accept="application/pdf" required>
+            <label for="file_google_drive">Link Google Drive (File Surat)</label>
+            <input type="url" class="form-control" id="file_google_drive" name="file_google_drive" value="<?php echo $file_google_drive; ?>" placeholder="Masukkan link Google Drive" required>
         </div>
         <button type="submit" class="btn btn-primary">Simpan</button>
         <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>
@@ -105,5 +92,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
-
 </html>

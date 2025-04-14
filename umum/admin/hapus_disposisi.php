@@ -2,7 +2,7 @@
 // Memeriksa apakah parameter id disposisi telah diterima
 if (isset($_GET['id'])) {
     // Memasukkan file koneksi database
-    include_once '../koneksi.php';
+    include_once '../../config.php';
 
     // Mendapatkan id disposisi dari parameter GET
     $id = $_GET['id'];

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'koneksi.php';
+require_once '../../config.php'; // Update to use config.php from two folders up
 $tanggal = $_POST['tanggal'];
 $pegawai_ids = $_POST['pegawai'];
 function acak_waktu_pagi($status)

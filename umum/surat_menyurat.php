@@ -2,9 +2,10 @@
 session_start();
 
 // Include koneksi ke database
-require_once 'koneksi.php';
+require_once __DIR__ . '/../config.php';
 
 // Membuat prepared statement untuk query dengan parameter placeholder (?)
+// Menampilkan surat yang statusnya 'Sent'
 $query = "SELECT * FROM suratmenyurat WHERE status = ? ORDER BY tanggal DESC";
 
 // Membuat prepared statement
@@ -86,8 +87,8 @@ if ($result->num_rows > 0) {
                             <td><?php echo htmlspecialchars($data['isi']); ?></td>
                             <td><?php echo htmlspecialchars($data['status']); ?></td>
                             <td>
-                                <?php if (!empty($data['file_upload'])) : ?>
-                                    <a href="admin/lib/surat/<?php echo $data['file_upload']; ?>" class="btn btn-info btn-sm" target="_blank">View</a>
+                                <?php if (!empty($data['file_google_drive'])) : ?>
+                                    <a href="<?php echo $data['file_google_drive']; ?>" class="btn btn-info btn-sm" target="_blank">Lihat Lampiran</a>
                                 <?php else : ?>
                                     Tidak ada lampiran
                                 <?php endif; ?>
@@ -103,4 +104,5 @@ if ($result->num_rows > 0) {
         </table>
     </div>
 </div>
+
 <?php include("footer.php"); ?>
