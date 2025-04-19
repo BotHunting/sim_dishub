@@ -1,174 +1,190 @@
-=============================================================================================
-Website Ini Di Dikembangkan Bot Hunting Company Limited
-=============================================================================================
+# 🚦 Website SIM Dishub
 
-Author		: Bot Hunting
-TikTok		: @bot.hunting
-Web/Blog	: https://flying-classy-sage.glitch.me
-Github		: https://github.com/BotHunting/sim_dishub
+Website ini dikembangkan oleh **Bot Hunting Company Limited** untuk mendukung pengelolaan dan pelayanan Dinas Perhubungan secara digital dan efisien.
 
-==============================================================================================
->>> Donate 'https://trakteer/hunty/tip'<<<
-==============================================================================================
+---
 
-Website SIM Dishub
+### 👤 Author
+- **Nama**: Bot Hunting  
+- **TikTok**: [@bot.hunting](https://www.tiktok.com/@bot.hunting)  
+- **Web/Blog**: [flying-classy-sage.glitch.me](https://flying-classy-sage.glitch.me)  
+- **GitHub**: [BotHunting/sim_dishub](https://github.com/BotHunting/sim_dishub)
 
-Versi 3.9
-- perapian koneksi.php ke config.php
-- penambahan tabel cctv
-- perapian backend cctv
+---
 
-Versi 3.8
-- ganti semua file upload dengan link gdrive
-- ganti nama kolom data base file_upload ke file_google_drive
+### ☕ Dukung Kami
+Jika kamu suka dengan proyek ini, kamu bisa memberikan donasi melalui:  
+🔗 [https://trakteer/hunty/tip](https://trakteer/hunty/tip)
 
-Versi 3.7
-- ganti file anjab dengan link gdrive
-- capcha tambah layanan
+---
 
-Versi 3.6
-- upgrade ui umum
-- fix bug edt hapus testimoni
+## 🧭 Tentang Aplikasi
+**SIM Dishub** (Sistem Informasi Manajemen Dinas Perhubungan) adalah aplikasi berbasis web untuk membantu pengelolaan layanan transportasi, perparkiran, ATCS, serta berbagai administrasi internal seperti data pegawai, laporan, peminjaman, dan lainnya.
 
-Versi 3.5
-- update tabel testimoni
-- tambahh testimoni + upgrade ui
-- tambah edit hapus testimoni
-- tambah edit admin
-- hash pw
+---
 
-Versi 3.4
+## 🛠️ Versi dan Perubahan
+
+### 🔷 Versi 3.x
+
+#### 📌 v3.9
+- Perapian `koneksi.php` ke `config.php`
+- Penambahan tabel CCTV
+- Perapian backend CCTV
+
+#### 📌 v3.8
+- Ganti semua file upload dengan link Google Drive
+- Ganti nama kolom `file_upload` ke `file_google_drive`
+
+#### 📌 v3.7
+- Ganti file Anjab dengan link Google Drive
+- Captcha tambah layanan
+
+#### 📌 v3.6
+- Upgrade UI umum
+- Fix bug edit & hapus testimoni
+
+#### 📌 v3.5
+- Update tabel testimoni
+- Tambah testimoni & upgrade UI
+- Tambah fitur edit & hapus testimoni
+- Edit admin
+- Hash password
+
+#### 📌 v3.4
 - Upgrade tampilan parkir
-- tambah tabel parkir
-- fix bug header
-- fix pembayaran
+- Tambah tabel parkir
+- Fix bug header & pembayaran
 
-Versi 3.3
-- upgrade tampilan terminal
-- tambah kolom alamat di tabel terminal
-- fix bug css
-- fix data update realtime armada
+#### 📌 v3.3
+- Upgrade tampilan terminal
+- Tambah kolom alamat di tabel terminal
+- Fix bug CSS dan update data armada realtime
 
-Versi 3.2
-- tambah peminjaman + tabel peminjaman
+#### 📌 v3.2
+- Tambah fitur peminjaman & tabel peminjaman
 
-Versi 3.1
-- update foto
-- fix balik
-- fix grafik
-- fix absensi
+#### 📌 v3.1
+- Update foto
+- Fix balik & grafik
+- Fix absensi
 
-Versi 3.0
-- upgrade UI/UX
-- update about us, pegawai, testimoni, pelayanan, contact
+#### 📌 v3.0
+- Upgrade UI/UX besar-besaran
+- Update halaman: About Us, Pegawai, Testimoni, Pelayanan, Kontak
 
-Versi 2.13
-- perapian kode
+---
 
-Versi 2.12
-- fix tombol aksi
-- tambah riwayat
-- ganti pilih seksi pada disposisi
-- tambah laporan inventaris dan cetak
-- urutan tahun
-- fix tambah edit barang
-- tambah search
-- tambah tabael tahun di tabel pengelolaan
+### 🔷 Versi 2.x
 
-Versi 2.11
-- fix hapus absensi
-- amankan sql injeksi bagian umum
-- perbaikan ui tabel
-- fix bug edit file anjab
-- tambah simpan absensi
-- tambah tabel riwayat absensi
-- fix cetak absensi lembaran dan cetak dari tabel
+#### 📌 v2.13
+- Perapian kode
 
-Versi 2.10
-- fix laopran sdm
-- fix urutan bidang setak laporan
-- absensi pegawai
-- fix trigger tabel jabatan
+#### 📌 v2.12
+- Fix tombol aksi
+- Tambah riwayat
+- Pilih seksi di disposisi
+- Tambah laporan inventaris & cetak
+- Urutan tahun
+- Fix tambah/edit barang
+- Tambah search
+- Tambah tabel tahun pengelolaan
 
-Versi 2.9
-- tambah tabel pegawai
-- tambah tabel jabatan
-- ui pegawai dan jabatan
-- tambah file anjab
-- fix foler upload
-- tambah laporan sdm
+#### 📌 v2.11
+- Fix hapus absensi
+- Amankan dari SQL Injection
+- Perbaikan UI tabel
+- Fix edit file anjab
+- Simpan absensi + riwayat
+- Fix cetak absensi
 
-Versi 2.8
-- fix ui header
-- fix ui tabel
-- tambah daftar dan tambah lokasi parkir
-- tambah tabel lokasi parkir
-- fix laporan dan cetak parkir
+#### 📌 v2.10
+- Fix laporan SDM
+- Fix urutan bidang di cetak laporan
+- Fitur absensi pegawai
+- Fix trigger tabel jabatan
 
-Versi 2.7
-- fix ui cctv
-- fix ui laporan
-- fix kolom tambah petugas parkir
-- tambah tombol grub wa
-- fix ui atcs
-- perbaikan lalin
+#### 📌 v2.9
+- Tambah tabel pegawai & jabatan
+- UI pegawai dan jabatan
+- Tambah file Anjab
+- Fix folder upload
+- Tambah laporan SDM
 
-Versi 2.6
-- edit foto barang
-- lampiran laporan
-- tambah tabel laporan
-- fix edit laporan
+#### 📌 v2.8
+- Fix UI header & tabel
+- Tambah daftar dan lokasi parkir
+- Tambah tabel lokasi parkir
+- Fix laporan dan cetak parkir
 
-versi 2.5
-- penambahan rule
-- fix bug navbar
-- tambah tabel sql
-- fix tombol rules
+#### 📌 v2.7
+- Fix UI CCTV, laporan, petugas parkir
+- Tambah tombol grup WhatsApp
+- Fix UI ATCS & perbaikan lalin
 
-Versi 2.4
-- daftar via wa
-- tambahan tab lalin
-- pindah daftar admin
-- fix ui terminal
-- fix ui parkir
-- perbaikan kontak lalin
-- fix bug upload
-- penambahan tampilan file
-- fitur upload file
-- fix bug upload
+#### 📌 v2.6
+- Edit foto barang
+- Lampiran laporan
+- Tambah tabel laporan
+- Fix edit laporan
 
-Versi 2.3
-- fix tampilan index
-- tambah tam pelayanan admin
-- fix fitur umum
-- tambah tabel
-- tambah fitur
-- tambah tab admin umum
-- fix bug cetak laporan terminal
-- tambah surat, barang, dll
-- pebaikan tabel sql
-- tambah web umum
-- fitur awal
+#### 📌 v2.5
+- Tambah rule
+- Fix bug navbar
+- Tambah tabel SQL
+- Fix tombol rules
 
-versi 2.2
-- logo browser
-- auto refres tampil kendaraan
-- fitur awal web lalin
+#### 📌 v2.4
+- Daftar via WhatsApp
+- Tambahan tab lalu lintas
+- Pindah daftar admin
+- Perbaikan UI terminal & parkir
+- Kontak lalu lintas
+- Fitur upload & tampil file
+- Fix bug upload
 
-Versi 2.1
-- tambah kolom asal terminal
-- perbaikan laporan dan cetak
-- tambah edit hapus petugas parkir
-- set jam wit
+#### 📌 v2.3
+- Fix tampilan index
+- Tambah layanan admin
+- Fitur umum & tambahan tab admin
+- Bug cetak laporan terminal
+- Tambah surat, barang, dan fitur awal umum
 
-Versi 2.0
-- nganti nama tabel laporan
-- perbaikan laporan
-- fix bug jam
-- fix login parkir
-- tambah tabel admin
+#### 📌 v2.2
+- Tambah logo browser
+- Auto-refresh data kendaraan
+- Fitur awal web lalu lintas
 
-Versi 1.0
-- perbaikna tabel
-- perbaikan navbar
-- fitur basic
+#### 📌 v2.1
+- Tambah kolom asal terminal
+- Perbaikan laporan & cetak
+- Tambah fitur edit & hapus petugas parkir
+- Set zona waktu WIT
+
+#### 📌 v2.0
+- Ganti nama tabel laporan
+- Perbaikan laporan
+- Fix bug jam
+- Fix login parkir
+- Tambah tabel admin
+
+---
+
+### 🟢 Versi 1.0
+- Perbaikan tabel awal
+- Perbaikan navbar
+- Fitur-fitur dasar
+
+---
+
+## 🧩 Teknologi yang Digunakan
+- **PHP** (Native)
+- **MySQL**
+- **Bootstrap** untuk UI
+- **JavaScript** untuk interaktivitas
+- **Google Drive** untuk manajemen file
+
+---
+
+> Dibuat dengan semangat pelayanan dan efisiensi oleh **Bot Hunting Company Limited** 🚀
+
