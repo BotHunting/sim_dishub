@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 12 Apr 2025 pada 09.05
+-- Waktu pembuatan: 15 Apr 2025 pada 00.54
 -- Versi server: 8.0.40
 -- Versi PHP: 8.3.14
 
@@ -83,28 +83,6 @@ INSERT INTO `bidang` (`id`, `nama_bidang`) VALUES
 (4, 'Prasarana'),
 (5, 'Pengembangan dan Keselamatan'),
 (8, 'UPTD Pengujian Kendaraan Bermotor');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `cctv_embed`
---
-
-CREATE TABLE `cctv_embed` (
-  `id` int NOT NULL,
-  `nama_lokasi` varchar(100) NOT NULL,
-  `link_embed` text NOT NULL,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data untuk tabel `cctv_embed`
---
-
-INSERT INTO `cctv_embed` (`id`, `nama_lokasi`, `link_embed`, `updated_at`) VALUES
-(1, 'Lokasi 1', 'https://www.youtube.com/embed/y_VvvKp1GNc', '2025-04-12 07:21:20'),
-(2, 'Lokasi 2', 'https://www.youtube.com/embed/DNXIi5MJQO8', '2025-04-12 07:21:20'),
-(3, 'Lokasi 3', 'https://www.youtube.com/embed/83WOspaMYpM', '2025-04-12 07:21:20');
 
 -- --------------------------------------------------------
 
@@ -321,7 +299,8 @@ INSERT INTO `kendaraan_keluar` (`id`, `nomor_kendaraan`, `trayek`, `waktu_kebera
 (43, 'PB3252F', 'A', '2024-03-30 01:36:00', 3, 'Terminal Puncak', 2000, '2024-03-30 01:01:00', 2, 'Terminal Wartutin'),
 (44, 'PB2145F', 'C', '2024-03-30 01:39:00', 6, 'Terminal Bomberai', 2000, '2024-03-30 01:16:00', 3, 'Terminal Thumburuni'),
 (45, 'PB 6464 F', 'A', '2025-03-14 13:29:00', 0, 'Terminal Kokas', 2000, '2025-03-14 13:29:00', 3, 'Terminal Bomberai'),
-(46, 'PB3517F', 'A', '2025-03-14 13:30:00', 9, 'Terminal Kokas', 2000, '2024-03-30 00:59:00', 3, 'Terminal Thumburuni');
+(46, 'PB3517F', 'A', '2025-03-14 13:30:00', 9, 'Terminal Kokas', 2000, '2024-03-30 00:59:00', 3, 'Terminal Thumburuni'),
+(47, 'PB4614F', 'E', '2025-04-14 23:54:00', 0, 'Terminal Torea', 2000, '2024-03-30 01:01:00', 5, 'Terminal Bomberai');
 
 -- --------------------------------------------------------
 
@@ -346,11 +325,12 @@ INSERT INTO `kendaraan_masuk` (`id`, `nomor_kendaraan`, `trayek`, `waktu_kedatan
 (45, 'PB9645F', 'B', '2024-03-30 00:59:00', 3, 'Terminal Torea'),
 (46, 'PB3254F', 'C', '2024-03-30 00:59:00', 3, 'Terminal Puncak'),
 (48, 'PB8524F', 'E', '2024-03-30 01:00:00', 4, 'Terminal Kokas'),
-(49, 'PB4614F', 'E', '2024-03-30 01:01:00', 5, 'Terminal Bomberai'),
 (52, 'PB8547F', 'C', '2024-03-30 01:18:00', 3, 'Terminal Thumburuni'),
 (53, 'PB5252F', 'B', '2024-03-30 01:24:00', 2, 'Terminal Thumburuni'),
 (54, 'PB7485F', 'A', '2024-03-30 01:30:00', 6, 'Terminal Thumburuni'),
-(55, 'PB 9999 F', 'A', '2024-07-25 04:22:01', 5, 'Terminal Kokas');
+(55, 'PB 9999 F', 'A', '2024-07-25 04:22:01', 5, 'Terminal Kokas'),
+(57, 'PB 6969 F', 'A', '2025-04-14 17:41:00', 3, 'Terminal Bomberai'),
+(58, 'PB 5488 F', 'C', '2025-04-14 23:53:00', 6, 'Terminal Puncak');
 
 -- --------------------------------------------------------
 
@@ -678,7 +658,7 @@ CREATE TABLE `petugas` (
 --
 
 INSERT INTO `petugas` (`id`, `nama`, `nip`, `jabatan`, `jadwal_kerja`, `telepon`, `foto`) VALUES
-(3, 'AMINUDIN TANGGAHMA', '197702152007011015', 'Pengawas Angkutan dan Terminal', 'Terminal Kokas', '321548', 0x3139373730323135323030373031313031352e6a7067),
+(3, 'AMINUDIN TANGGAHMA', '197702152007011015', 'Pengawas Angkutan dan Terminal', 'Terminal Kokas', '1231313', 0x3139373730323135323030373031313031352e6a7067),
 (4, 'ABDUL MUTI RUMADAN', '197003062006051002', 'Pengawas Angkutan dan Terminal', 'Terminal Thumburuni', '02784132', 0x3139373030333036323030363035313030322e6a7067),
 (6, 'LA KARIM', '197711292007011005', 'Pengawas Angkutan dan Terminal', 'Terminal Wartutin', '08234567', 0x3139373731313239323030373031313030352e6a7067),
 (7, 'FARIDS FIRMANSYAH SUPARMAN', '198405152007011006', 'Pengawas Angkutan dan Terminal', 'Terminal Sebrang', '0864251', 0x3139383430353135323030373031313030362e6a7067),
@@ -1148,6 +1128,31 @@ INSERT INTO `testimoni_sistem` (`id`, `nama`, `jabatan`, `keterangan`, `foto`) V
 (4, 'Saiffudin Soemardi, S. Sos', 'Kepala Bidang Prasarana', 'Masyarakat dapat memantau perkembangan pembangunan dan kondisi prasarana perhubungan secara real-time melalui sistem informasi yang transparan.', 'Saiffudin Soemardi, S. Sos_testimonials-4.jpg'),
 (5, 'Japari Biarpruga, S. E', 'Kepala Bidang Pengembangan dan Keselamatan', 'Sistem informasi yang komprehensif akan membantu dalam merumuskan kebijakan dan program pengembangan di bidang perhubungan yang tepat sasaran.', 'Japari Biarpruga, S. E_testimonials-5.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `video_cctv`
+--
+
+CREATE TABLE `video_cctv` (
+  `id` int NOT NULL,
+  `lokasi` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `link_embed` text COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `video_cctv`
+--
+
+INSERT INTO `video_cctv` (`id`, `lokasi`, `link_embed`) VALUES
+(1, 'Lokasi 1', 'https://pafakfak.cctvbadilag2.my.id/402902PAFAKFAK/play.html?name=461300353505477167188420'),
+(2, 'Lokasi 2', 'https://www.youtube.com/embed/munLLWuVsLc?si=jLXj7MA0GSqpJAmv'),
+(3, 'Lokasi 3', 'https://www.youtube.com/embed/utV8wPiR2GQ'),
+(4, 'Lokasi 4', 'https://pafakfak.cctvbadilag2.my.id/402902PAFAKFAK/play.html?name=621067841927225613440010'),
+(5, 'Lokasi 5', 'https://server.cctvbadilag.my.id/663712DITJENBADILAG/play.html?name=065100049927742715620154'),
+(6, 'Lokasi 6', 'https://www.youtube.com/embed/uo3NOY'),
+(9, 'Lokasi 7', 'https://www.youtube.com/embed/munLLWuVsLc?si=jLXj7MA0GSqpJAmv');
+
 --
 -- Indexes for dumped tables
 --
@@ -1162,12 +1167,6 @@ ALTER TABLE `admin`
 -- Indeks untuk tabel `bidang`
 --
 ALTER TABLE `bidang`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indeks untuk tabel `cctv_embed`
---
-ALTER TABLE `cctv_embed`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1318,6 +1317,12 @@ ALTER TABLE `testimoni_sistem`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `video_cctv`
+--
+ALTER TABLE `video_cctv`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
@@ -1332,12 +1337,6 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `bidang`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT untuk tabel `cctv_embed`
---
-ALTER TABLE `cctv_embed`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `disposisi`
@@ -1361,13 +1360,13 @@ ALTER TABLE `kendaraan`
 -- AUTO_INCREMENT untuk tabel `kendaraan_keluar`
 --
 ALTER TABLE `kendaraan_keluar`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT untuk tabel `kendaraan_masuk`
 --
 ALTER TABLE `kendaraan_masuk`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 
 --
 -- AUTO_INCREMENT untuk tabel `laporan`
@@ -1482,6 +1481,12 @@ ALTER TABLE `testimoni_pelayanan`
 --
 ALTER TABLE `testimoni_sistem`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT untuk tabel `video_cctv`
+--
+ALTER TABLE `video_cctv`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

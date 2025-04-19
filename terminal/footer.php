@@ -54,7 +54,7 @@
                     <li><a href="../umum/index.php">Umum</a></li>
                     <li><a href="../terminal/index.php">Terminal</a></li>
                     <li><a href="../parkir/index.php">Parkir</a></li>
-                    <li><a href="http://ngekironline.co.id/" target="_blank">Pengujian</a></li>
+                    <li><a href="https://play.google.com/store/apps/details?id=com.inotafstudio.kirgresik&pcampaignid=web_share" target="_blank">Pengujian</a></li>
                     <li><a href="../lalin/index.php">Lalu Lintas</a></li>
                 </ul>
             </div>

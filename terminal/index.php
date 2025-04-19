@@ -56,8 +56,11 @@ if ($result->num_rows > 0) {
     <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
 
     <div class="container">
-      <h2 data-aos="fade-up" data-aos-delay="100" class="">Terminal Penumpang,<br>Dinas Perhubungan Kabupaten Fakfak</h2>
-      <p data-aos="fade-up" data-aos-delay="200">Bingung mau bepergian jauh tapi takut kehabisan tiket? Atau pusing cari informasi seputar terminal? Website Sistem Terminal Dinas Perhubungan hadir sebagai solusi cerdas untuk Anda!</p>
+      <h2 data-aos="fade-up" data-aos-delay="100" class="">Terminal Penumpang,<br>Dinas Perhubungan Kabupaten Fakfak
+      </h2>
+      <p data-aos="fade-up" data-aos-delay="200">Bingung mau bepergian jauh tapi takut kehabisan tiket? Atau pusing cari
+        informasi seputar terminal? Website Sistem Terminal Dinas Perhubungan hadir sebagai solusi cerdas untuk Anda!
+      </p>
       <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
         <?php
         // Periksa apakah pengguna sudah login
@@ -89,11 +92,16 @@ if ($result->num_rows > 0) {
         <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
           <h3>Bernavigasi Lancar di Terminal - Website Sistem Terminal Dinas Perhubungan!</h3>
           <p class="fst-italic">
-            Selamat datang di website resmi Sistem Terminal Dinas Perhubungan! Di sini, perjalanan Anda akan terasa lebih mudah dan terencana. Website kami dirancang khusus untuk memenuhi kebutuhan Anda, para pengguna setia terminal.</p>
+            Selamat datang di website resmi Sistem Terminal Dinas Perhubungan! Di sini, perjalanan Anda akan terasa
+            lebih mudah dan terencana. Website kami dirancang khusus untuk memenuhi kebutuhan Anda, para pengguna setia
+            terminal.</p>
           <ul>
-            <li><i class="bi bi-check-circle"></i> <span>Statistik Real-time: Lihat statistik jumlah penumpang, kendaraan, dan pendapatan terminal secara langsung.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Tetap Terhubung: Dapatkan berita terbaru terkait terminal dan Dinas Perhubungan.</span></li>
-            <li><i class="bi bi-check-circle"></i> <span>Jangkau Kami: Hubungi Dinas Perhubungan dan terminal melalui informasi kontak yang tersedia.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Statistik Real-time: Lihat statistik jumlah penumpang,
+                kendaraan, dan pendapatan terminal secara langsung.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Tetap Terhubung: Dapatkan berita terbaru terkait terminal dan
+                Dinas Perhubungan.</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Jangkau Kami: Hubungi Dinas Perhubungan dan terminal melalui
+                informasi kontak yang tersedia.</span></li>
           </ul>
           <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
         </div>
@@ -113,28 +121,32 @@ if ($result->num_rows > 0) {
 
         <div class="col-lg-3 col-md-6">
           <div class="stats-item text-center w-100 h-100">
-            <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_petugas; ?>" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_petugas; ?>"
+              data-purecounter-duration="1" class="purecounter"></span>
             <p class="">Petugas</p>
           </div>
         </div><!-- End Stats Item -->
 
         <div class="col-lg-3 col-md-6">
           <div class="stats-item text-center w-100 h-100">
-            <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_terminal; ?>" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_terminal; ?>"
+              data-purecounter-duration="1" class="purecounter"></span>
             <p class="">Terminal</p>
           </div>
         </div><!-- End Stats Item -->
 
         <div class="col-lg-3 col-md-6">
           <div class="stats-item text-center w-100 h-100">
-            <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_armada; ?>" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_armada; ?>"
+              data-purecounter-duration="1" class="purecounter"></span>
             <p class="">Armada</p>
           </div>
         </div><!-- End Stats Item -->
 
         <div class="col-lg-3 col-md-6">
           <div class="stats-item text-center w-100 h-100">
-            <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_berangkat; ?>" data-purecounter-duration="1" class="purecounter"></span>
+            <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_berangkat; ?>"
+              data-purecounter-duration="1" class="purecounter"></span>
             <p class="">Berangkat</p>
           </div>
         </div><!-- End Stats Item -->
@@ -156,7 +168,8 @@ if ($result->num_rows > 0) {
           <div class="why-box">
             <h3>Rencanakan perjalanan Anda dengan cerdas</h3>
             <p>
-              Website ini juga responsif, sehingga dapat diakses dengan mudah melalui smartphone, tablet, maupun komputer Anda.
+              Website ini juga responsif, sehingga dapat diakses dengan mudah melalui smartphone, tablet, maupun
+              komputer Anda.
             </p>
             <div class="text-center">
               <a href="#" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
@@ -187,7 +200,8 @@ if ($result->num_rows > 0) {
               <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                 <i class="bi bi-inboxes"></i>
                 <h4>Layanan Lengkap</h4>
-                <p>Pelajari berbagai layanan yang tersedia di terminal, seperti pembelian tiket, penitipan barang, dan pusat informasi perjalanan</p>
+                <p>Pelajari berbagai layanan yang tersedia di terminal, seperti pembelian tiket, penitipan barang, dan
+                  pusat informasi perjalanan</p>
               </div>
             </div><!-- End Icon Box -->
 

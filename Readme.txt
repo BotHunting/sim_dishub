@@ -4,7 +4,8 @@ Website Ini Di Dikembangkan Bot Hunting Company Limited
 
 Author		: Bot Hunting
 TikTok		: @bot.hunting
-Web/Blog	: https://github.com/BotHunting
+Web/Blog	: https://flying-classy-sage.glitch.me
+Github		: https://github.com/BotHunting/sim_dishub
 
 ==============================================================================================
 >>> Donate 'https://trakteer/hunty/tip'<<<
@@ -14,8 +15,8 @@ Website SIM Dishub
 
 Versi 3.9
 - perapian koneksi.php ke config.php
-- tambah tabel cctv
-- perapian ui cctv
+- penambahan tabel cctv
+- perapian backend cctv
 
 Versi 3.8
 - ganti semua file upload dengan link gdrive
