@@ -1,208 +1,93 @@
-To connect to your database use these details; bot.hunting@mailnesia.com
-Your account number is: 1278375
-Host: sql12.freesqldatabase.com
-Database name: sql12772394
-Database user: sql12772394
-Database password: rjALslf1bV
-Port number: 3306
+# 🚦 SIM Dishub - Sistem Informasi Manajemen Dinas Perhubungan
 
-
-# 🚦 Website SIM Dishub
+![GitHub repo size](https://img.shields.io/github/repo-size/BotHunting/sim_dishub)
+![GitHub last commit](https://img.shields.io/github/last-commit/BotHunting/sim_dishub)
+![GitHub stars](https://img.shields.io/github/stars/BotHunting/sim_dishub?style=social)
+![GitHub issues](https://img.shields.io/github/issues/BotHunting/sim_dishub)
+![GitHub license](https://img.shields.io/github/license/BotHunting/sim_dishub)
 
 Website ini dikembangkan oleh **Bot Hunting Company Limited** untuk mendukung pengelolaan dan pelayanan Dinas Perhubungan secara digital dan efisien.
 
 ---
 
-### 👤 Author
+## 👤 Author
 - **Nama**: Bot Hunting  
 - **TikTok**: [@bot.hunting](https://www.tiktok.com/@bot.hunting)  
 - **Web/Blog**: [flying-classy-sage.glitch.me](https://flying-classy-sage.glitch.me)  
-- **GitHub**: [BotHunting/sim_dishub](https://github.com/BotHunting/sim_dishub)
+- **GitHub**: [BotHunting](https://github.com/BotHunting)
 
 ---
 
-### ☕ Dukung Kami
-Jika kamu suka dengan proyek ini, kamu bisa memberikan donasi melalui:  
-🔗 [https://trakteer/hunty/tip](https://trakteer/hunty/tip)
+## ☕ Dukung Kami
+Kalau kamu suka dengan proyek ini, dukung kami lewat:  
+🎁 [https://trakteer/hunty/tip](https://trakteer.id/hunty/tip)
 
 ---
 
-## 🧭 Tentang Aplikasi
-**SIM Dishub** (Sistem Informasi Manajemen Dinas Perhubungan) adalah aplikasi berbasis web untuk membantu pengelolaan layanan transportasi, perparkiran, ATCS, serta berbagai administrasi internal seperti data pegawai, laporan, peminjaman, dan lainnya.
+## 📦 Tentang Aplikasi
+
+**SIM Dishub** adalah aplikasi berbasis web yang dirancang untuk membantu pengelolaan layanan transportasi, perparkiran, ATCS, dan administrasi internal Dinas Perhubungan, termasuk data pegawai, laporan, peminjaman, dan lainnya.
 
 ---
 
-To connect to your database use these details; bot.hunting@mailnesia.com
-Your account number is: 1278375
-Host: sql12.freesqldatabase.com
-Database name: sql12772394
-Database user: sql12772394
-Database password: rjALslf1bV
-Port number: 3306
+## 🔐 Informasi Koneksi (Contoh)
+> ⚠️ **Hanya untuk dokumentasi, jangan gunakan di lingkungan produksi tanpa keamanan.**
+
+- Host: `sql12.freesqldatabase.com`
+- Database Name: `sql12772394`
+- User: `sql12772394`
+- Password: `rjALslf1bV`
+- Port: `3306`
+- Email: `bot.hunting@mailnesia.com`
+- Account ID: `1278375`
 
 ---
 
-## 🛠️ Versi dan Perubahan
+## 🛠️ Versi & Changelog
 
 ### 🔷 Versi 3.x
+<details>
+<summary><strong>📌 v3.9 - v3.0</strong></summary>
 
-#### 📌 v3.9
-- Perapian `koneksi.php` ke `config.php`
-- Penambahan tabel CCTV
-- Perapian backend CCTV
-
-#### 📌 v3.8
-- Ganti semua file upload dengan link Google Drive
-- Ganti nama kolom `file_upload` ke `file_google_drive`
-
-#### 📌 v3.7
-- Ganti file Anjab dengan link Google Drive
-- Captcha tambah layanan
-
-#### 📌 v3.6
-- Upgrade UI umum
-- Fix bug edit & hapus testimoni
-
-#### 📌 v3.5
-- Update tabel testimoni
-- Tambah testimoni & upgrade UI
-- Tambah fitur edit & hapus testimoni
-- Edit admin
-- Hash password
-
-#### 📌 v3.4
-- Upgrade tampilan parkir
-- Tambah tabel parkir
-- Fix bug header & pembayaran
-
-#### 📌 v3.3
-- Upgrade tampilan terminal
-- Tambah kolom alamat di tabel terminal
-- Fix bug CSS dan update data armada realtime
-
-#### 📌 v3.2
-- Tambah fitur peminjaman & tabel peminjaman
-
-#### 📌 v3.1
-- Update foto
-- Fix balik & grafik
-- Fix absensi
-
-#### 📌 v3.0
-- Upgrade UI/UX besar-besaran
-- Update halaman: About Us, Pegawai, Testimoni, Pelayanan, Kontak
+- **v3.9** – Perapian `koneksi.php` jadi `config.php`, tambah tabel & backend CCTV  
+- **v3.8** – Ganti semua file upload jadi link Google Drive  
+- **v3.7** – Integrasi file Anjab via Google Drive, captcha tambah layanan  
+- **v3.6** – UI upgrade, fix edit & hapus testimoni  
+- **v3.5** – Tabel testimoni, fitur CRUD testimoni, hash password  
+- **v3.4** – Upgrade tampilan parkir, bugfix pembayaran  
+- **v3.3** – Upgrade tampilan terminal, kolom alamat, bugfix CSS  
+- **v3.2** – Fitur & tabel peminjaman  
+- **v3.1** – Fix grafik, absensi, dan foto  
+- **v3.0** – UI/UX overhaul untuk halaman utama
+</details>
 
 ---
 
 ### 🔷 Versi 2.x
+<details>
+<summary><strong>📌 v2.13 - v2.0</strong></summary>
 
-#### 📌 v2.13
-- Perapian kode
-
-#### 📌 v2.12
-- Fix tombol aksi
-- Tambah riwayat
-- Pilih seksi di disposisi
-- Tambah laporan inventaris & cetak
-- Urutan tahun
-- Fix tambah/edit barang
-- Tambah search
-- Tambah tabel tahun pengelolaan
-
-#### 📌 v2.11
-- Fix hapus absensi
-- Amankan dari SQL Injection
-- Perbaikan UI tabel
-- Fix edit file anjab
-- Simpan absensi + riwayat
-- Fix cetak absensi
-
-#### 📌 v2.10
-- Fix laporan SDM
-- Fix urutan bidang di cetak laporan
-- Fitur absensi pegawai
-- Fix trigger tabel jabatan
-
-#### 📌 v2.9
-- Tambah tabel pegawai & jabatan
-- UI pegawai dan jabatan
-- Tambah file Anjab
-- Fix folder upload
-- Tambah laporan SDM
-
-#### 📌 v2.8
-- Fix UI header & tabel
-- Tambah daftar dan lokasi parkir
-- Tambah tabel lokasi parkir
-- Fix laporan dan cetak parkir
-
-#### 📌 v2.7
-- Fix UI CCTV, laporan, petugas parkir
-- Tambah tombol grup WhatsApp
-- Fix UI ATCS & perbaikan lalin
-
-#### 📌 v2.6
-- Edit foto barang
-- Lampiran laporan
-- Tambah tabel laporan
-- Fix edit laporan
-
-#### 📌 v2.5
-- Tambah rule
-- Fix bug navbar
-- Tambah tabel SQL
-- Fix tombol rules
-
-#### 📌 v2.4
-- Daftar via WhatsApp
-- Tambahan tab lalu lintas
-- Pindah daftar admin
-- Perbaikan UI terminal & parkir
-- Kontak lalu lintas
-- Fitur upload & tampil file
-- Fix bug upload
-
-#### 📌 v2.3
-- Fix tampilan index
-- Tambah layanan admin
-- Fitur umum & tambahan tab admin
-- Bug cetak laporan terminal
-- Tambah surat, barang, dan fitur awal umum
-
-#### 📌 v2.2
-- Tambah logo browser
-- Auto-refresh data kendaraan
-- Fitur awal web lalu lintas
-
-#### 📌 v2.1
-- Tambah kolom asal terminal
-- Perbaikan laporan & cetak
-- Tambah fitur edit & hapus petugas parkir
-- Set zona waktu WIT
-
-#### 📌 v2.0
-- Ganti nama tabel laporan
-- Perbaikan laporan
-- Fix bug jam
-- Fix login parkir
-- Tambah tabel admin
+- **v2.13 - v2.10** – Perapian kode, fitur riwayat, absensi, SQL injection fix  
+- **v2.9 - v2.5** – Tabel jabatan, pegawai, laporan SDM, rules tambahan  
+- **v2.4 - v2.0** – Tab lalu lintas, fitur WhatsApp, upload file, bug login & waktu
+</details>
 
 ---
 
 ### 🟢 Versi 1.0
-- Perbaikan tabel awal
-- Perbaikan navbar
-- Fitur-fitur dasar
+- Fitur dasar sistem
+- Tabel awal dan navigasi
 
 ---
 
-## 🧩 Teknologi yang Digunakan
-- **PHP** (Native)
-- **MySQL**
-- **Bootstrap** untuk UI
-- **JavaScript** untuk interaktivitas
-- **Google Drive** untuk manajemen file
+## 🧩 Teknologi
+- PHP (Native)
+- MySQL
+- Bootstrap
+- JavaScript
+- Google Drive API
 
 ---
 
-> Dibuat dengan semangat pelayanan dan efisiensi oleh **Bot Hunting Company Limited** 🚀
+> Dibuat dengan ❤️ oleh **Bot Hunting Company Limited**  
+> Demi digitalisasi pelayanan publik 🚀
