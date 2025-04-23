@@ -31,15 +31,19 @@ Kalau kamu suka dengan proyek ini, dukung kami lewat:
 ---
 
 ## 🔐 Informasi Koneksi (Contoh)
-> ⚠️ **Hanya untuk dokumentasi, jangan gunakan di lingkungan produksi tanpa keamanan.**
+> ⚠️ **Catatan Penting:** Untuk mengakses koneksi ini, kamu perlu memasukkan password:  
+> 🔑 **loveyou**
 
-- Host: `sql12.freesqldatabase.com`
-- Database Name: `sql12772394`
-- User: `sql12772394`
-- Password: `rjALslf1bV`
-- Port: `3306`
-- Email: `bot.hunting@mailnesia.com`
-- Account ID: `1278375`
+**Database Settings:**
+- **Host**: `sql12.freesqldatabase.com`  
+- **Port**: `3306`  
+- **Database Name**: `sql12772394`  
+- **Username**: `sql12772394`  
+- **Password**: `rjALslf1bV`  
+
+**Lainnya:**
+- **Email akun**: `bot.hunting@mailnesia.com`  
+- **ID akun**: `1278375`
 
 ---
 
