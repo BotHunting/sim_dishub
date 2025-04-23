@@ -20,7 +20,7 @@ Website ini dikembangkan oleh **Bot Hunting Company Limited** untuk mendukung pe
 
 ## ☕ Dukung Kami
 Kalau kamu suka dengan proyek ini, dukung kami lewat:  
-🎁 [https://trakteer/hunty/tip](https://trakteer.id/hunty/tip)
+🎁 [https://trakteer/hunty/tip](https://trakteer/hunty/tip)
 
 ---
 
@@ -30,25 +30,20 @@ Kalau kamu suka dengan proyek ini, dukung kami lewat:
 
 ---
 
-## 🔐 Informasi Koneksi (Klik untuk membuka)
-
+## 🔐 Informasi Koneksi
 <details>
-<summary><strong>📡 Detail Koneksi Database</strong></summary>
-
-> ⚠️ **Catatan Penting:** Untuk mengakses koneksi ini, kamu perlu memasukkan password:  
-> 🔑 **loveyou**
-
-**Database Settings:**
-- **Host**: `sql12.freesqldatabase.com`  
-- **Port**: `3306`  
-- **Database Name**: `sql12772394`  
-- **Username**: `sql12772394`  
-- **Password**: `rjALslf1bV`  
-
-**Lainnya:**
-- **Email akun**: `bot.hunting@mailnesia.com`  
-- **ID akun**: `1278375`
-
+  <summary>🔑 Klik untuk melihat informasi koneksi database</summary>
+  
+  **Catatan:** Gunakan informasi ini hanya untuk keperluan pengembangan atau dokumentasi. Jangan gunakan di lingkungan produksi tanpa memastikan keamanannya.
+  
+  - **Host**: `sql12.freesqldatabase.com`
+  - **Database Name**: `sql12772394`
+  - **User**: `sql12772394`
+  - **Password**: `rjALslf1bV`
+  - **Port**: `3306`
+  - **Email**: `bot.hunting@mailnesia.com`
+  - **Account ID**: `1278375`
+  
 </details>
 
 ---
