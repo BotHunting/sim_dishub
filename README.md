@@ -14,7 +14,7 @@ Website ini dikembangkan oleh **Bot Hunting Company Limited** untuk mendukung pe
 
 ## ☕ Dukung Kami
 Kalau kamu suka dengan proyek ini, dukung kami lewat:  
-🎁 [https://trakteer/hunty/tip](https://trakteer/hunty/tip)
+🎁 [https://trakteer/hunty/tip](https://trakteer.id/hunty/tip)
 
 ---
 
