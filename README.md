@@ -1,3 +1,12 @@
+To connect to your database use these details; bot.hunting@mailnesia.com
+Your account number is: 1278375
+Host: sql12.freesqldatabase.com
+Database name: sql12772394
+Database user: sql12772394
+Database password: rjALslf1bV
+Port number: 3306
+
+
 # 🚦 Website SIM Dishub
 
 Website ini dikembangkan oleh **Bot Hunting Company Limited** untuk mendukung pengelolaan dan pelayanan Dinas Perhubungan secara digital dan efisien.
@@ -20,6 +29,16 @@ Jika kamu suka dengan proyek ini, kamu bisa memberikan donasi melalui:
 
 ## 🧭 Tentang Aplikasi
 **SIM Dishub** (Sistem Informasi Manajemen Dinas Perhubungan) adalah aplikasi berbasis web untuk membantu pengelolaan layanan transportasi, perparkiran, ATCS, serta berbagai administrasi internal seperti data pegawai, laporan, peminjaman, dan lainnya.
+
+---
+
+To connect to your database use these details; bot.hunting@mailnesia.com
+Your account number is: 1278375
+Host: sql12.freesqldatabase.com
+Database name: sql12772394
+Database user: sql12772394
+Database password: rjALslf1bV
+Port number: 3306
 
 ---
 
@@ -187,4 +206,3 @@ Jika kamu suka dengan proyek ini, kamu bisa memberikan donasi melalui:
 ---
 
 > Dibuat dengan semangat pelayanan dan efisiensi oleh **Bot Hunting Company Limited** 🚀
-
