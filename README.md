@@ -30,7 +30,11 @@ Kalau kamu suka dengan proyek ini, dukung kami lewat:
 
 ---
 
-## 🔐 Informasi Koneksi (Contoh)
+## 🔐 Informasi Koneksi (Klik untuk membuka)
+
+<details>
+<summary><strong>📡 Detail Koneksi Database</strong></summary>
+
 > ⚠️ **Catatan Penting:** Untuk mengakses koneksi ini, kamu perlu memasukkan password:  
 > 🔑 **loveyou**
 
@@ -44,6 +48,8 @@ Kalau kamu suka dengan proyek ini, dukung kami lewat:
 **Lainnya:**
 - **Email akun**: `bot.hunting@mailnesia.com`  
 - **ID akun**: `1278375`
+
+</details>
 
 ---
 
