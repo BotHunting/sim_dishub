@@ -31,37 +31,19 @@ Kalau kamu suka dengan proyek ini, dukung kami lewat:
 ---
 
 ## 🔐 Informasi Koneksi
-
 <details>
-  <summary>🔑 Klik untuk melihat informasi koneksi database (Ketik password untuk mengaksesnya)</summary>
+  <summary>🔑 Klik untuk melihat informasi koneksi database</summary>
   
-  <div id="koneksi" style="display:none;">
-    <p>**Catatan:** Gunakan informasi ini hanya untuk keperluan pengembangan atau dokumentasi. Jangan gunakan di lingkungan produksi tanpa memastikan keamanannya.</p>
-    <ul>
-      <li><strong>Host</strong>: `sql12.freesqldatabase.com`</li>
-      <li><strong>Database Name</strong>: `sql12772394`</li>
-      <li><strong>User</strong>: `sql12772394`</li>
-      <li><strong>Password</strong>: `rjALslf1bV`</li>
-      <li><strong>Port</strong>: `3306`</li>
-      <li><strong>Email</strong>: `bot.hunting@mailnesia.com`</li>
-      <li><strong>Account ID</strong>: `1278375`</li>
-    </ul>
-  </div>
+  **Catatan:** Gunakan informasi ini hanya untuk keperluan pengembangan atau dokumentasi. Jangan gunakan di lingkungan produksi tanpa memastikan keamanannya.
   
-  <input type="password" id="passwordInput" placeholder="Masukkan kata sandi">
-  <button onclick="checkPassword()">Masukkan</button>
-
-  <script>
-    function checkPassword() {
-      var password = document.getElementById('passwordInput').value;
-      if (password === 'loveyou') {
-        document.getElementById('koneksi').style.display = 'block';
-      } else {
-        alert('Kata sandi salah!');
-      }
-    }
-  </script>
-
+  - **Host**: `sql12.freesqldatabase.com`
+  - **Database Name**: `sql12772394`
+  - **User**: `sql12772394`
+  - **Password**: `rjALslf1bV`
+  - **Port**: `3306`
+  - **Email**: `bot.hunting@mailnesia.com`
+  - **Account ID**: `1278375`
+  
 </details>
 
 ---
