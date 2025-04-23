@@ -1,5 +1,11 @@
 # 🚦 SIM Dishub - Sistem Informasi Manajemen Dinas Perhubungan
 
+![GitHub repo size](https://img.shields.io/github/repo-size/BotHunting/sim_dishub)
+![GitHub last commit](https://img.shields.io/github/last-commit/BotHunting/sim_dishub)
+![GitHub stars](https://img.shields.io/github/stars/BotHunting/sim_dishub?style=social)
+![GitHub issues](https://img.shields.io/github/issues/BotHunting/sim_dishub)
+![GitHub license](https://img.shields.io/github/license/BotHunting/sim_dishub)
+
 Website ini dikembangkan oleh **Bot Hunting Company Limited** untuk mendukung pengelolaan dan pelayanan Dinas Perhubungan secara digital dan efisien.
 
 ---
@@ -43,30 +49,16 @@ Kalau kamu suka dengan proyek ini, dukung kami lewat:
 <details>
 <summary><strong>📌 v3.9 - v3.0</strong></summary>
 
-- **v3.9**
-  - Perapian `koneksi.php` jadi `config.php`
-  - Tambah tabel CCTV & backendnya
-
-- **v3.8**
-  - Ganti semua upload file jadi Google Drive
-
-- **v3.7**
-  - Integrasi file Anjab via Google Drive
-  - Captcha untuk tambah layanan
-
-- **v3.6**
-  - UI upgrade
-  - Fix edit & hapus testimoni
-
-- **v3.5**
-  - Tambah tabel testimoni
-  - UI dan fitur edit/hapus
-  - Password hash
-
-- **v3.4 - v3.0**
-  - Upgrade tampilan terminal & parkir
-  - Tabel peminjaman & data pegawai
-  - UI/UX overhaul halaman utama
+- **v3.9** – Perapian `koneksi.php` jadi `config.php`, tambah tabel & backend CCTV  
+- **v3.8** – Ganti semua file upload jadi link Google Drive  
+- **v3.7** – Integrasi file Anjab via Google Drive, captcha tambah layanan  
+- **v3.6** – UI upgrade, fix edit & hapus testimoni  
+- **v3.5** – Tabel testimoni, fitur CRUD testimoni, hash password  
+- **v3.4** – Upgrade tampilan parkir, bugfix pembayaran  
+- **v3.3** – Upgrade tampilan terminal, kolom alamat, bugfix CSS  
+- **v3.2** – Fitur & tabel peminjaman  
+- **v3.1** – Fix grafik, absensi, dan foto  
+- **v3.0** – UI/UX overhaul untuk halaman utama
 </details>
 
 ---
@@ -75,26 +67,16 @@ Kalau kamu suka dengan proyek ini, dukung kami lewat:
 <details>
 <summary><strong>📌 v2.13 - v2.0</strong></summary>
 
-- **v2.13 - v2.10**
-  - Perapian kode & UI
-  - Riwayat, absensi, cetak laporan
-  - SQL injection fix
-
-- **v2.9 - v2.5**
-  - Tabel jabatan, pegawai, laporan SDM
-  - Tambah rule & tombol aksi
-
-- **v2.4 - v2.0**
-  - Tab lalu lintas & layanan admin
-  - Upload file, kontak WhatsApp
-  - Perbaikan bug login & jam
+- **v2.13 - v2.10** – Perapian kode, fitur riwayat, absensi, SQL injection fix  
+- **v2.9 - v2.5** – Tabel jabatan, pegawai, laporan SDM, rules tambahan  
+- **v2.4 - v2.0** – Tab lalu lintas, fitur WhatsApp, upload file, bug login & waktu
 </details>
 
 ---
 
 ### 🟢 Versi 1.0
 - Fitur dasar sistem
-- Tabel awal, navigasi dasar
+- Tabel awal dan navigasi
 
 ---
 
