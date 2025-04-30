@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 15 Apr 2025 pada 00.54
+-- Waktu pembuatan: 30 Apr 2025 pada 12.15
 -- Versi server: 8.0.40
 -- Versi PHP: 8.3.14
 
@@ -330,7 +330,8 @@ INSERT INTO `kendaraan_masuk` (`id`, `nomor_kendaraan`, `trayek`, `waktu_kedatan
 (54, 'PB7485F', 'A', '2024-03-30 01:30:00', 6, 'Terminal Thumburuni'),
 (55, 'PB 9999 F', 'A', '2024-07-25 04:22:01', 5, 'Terminal Kokas'),
 (57, 'PB 6969 F', 'A', '2025-04-14 17:41:00', 3, 'Terminal Bomberai'),
-(58, 'PB 5488 F', 'C', '2025-04-14 23:53:00', 6, 'Terminal Puncak');
+(58, 'PB 5488 F', 'C', '2025-04-14 23:53:00', 6, 'Terminal Puncak'),
+(59, 'PB 11111 F', 'A', '2025-04-15 13:21:00', 0, 'Terminal Bomberai');
 
 -- --------------------------------------------------------
 
@@ -403,6 +404,82 @@ INSERT INTO `laporan_parkir` (`id`, `id_kendaraan`, `nomor_kendaraan`, `jenis_ke
 (125, 138, 'PB4141F', 'Mobil', '2024-03-18 04:13:48', '2024-03-18 04:14:56', 3000, 'Keluar', 3, 2024, 'Thomas Shelby', 'Pasar Thumburuni'),
 (126, 141, 'PB3121F', 'Motor', '2024-03-19 01:12:50', '2024-03-25 04:39:41', 296000, 'Keluar', 3, 2024, 'Arthur Shelby', 'Jalan Reklamasi'),
 (127, 139, 'PB7891F', 'Motor', '2024-03-18 04:13:56', '2024-03-30 02:55:03', 574000, 'Keluar', 3, 2024, 'AMINUDIN TANGGAHMA', 'Pasar Tanjung Wagom');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mutasi_keluar`
+--
+
+CREATE TABLE `mutasi_keluar` (
+  `id` int NOT NULL,
+  `nomor_kendaraan` varchar(50) NOT NULL,
+  `nomor_uji` varchar(50) NOT NULL,
+  `nama_pemilik` varchar(100) NOT NULL,
+  `tujuan` varchar(100) NOT NULL,
+  `nomor_surat` varchar(50) NOT NULL,
+  `link_file_gdrive` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `mutasi_masuk`
+--
+
+CREATE TABLE `mutasi_masuk` (
+  `id` int NOT NULL,
+  `nomor_kendaraan` varchar(255) DEFAULT NULL,
+  `nomor_uji` varchar(255) DEFAULT NULL,
+  `nama_pemilik` varchar(255) DEFAULT NULL,
+  `tujuan` varchar(255) DEFAULT NULL,
+  `nomor_surat` varchar(255) DEFAULT NULL,
+  `link_file_gdrive` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data untuk tabel `mutasi_masuk`
+--
+
+INSERT INTO `mutasi_masuk` (`id`, `nomor_kendaraan`, `nomor_uji`, `nama_pemilik`, `tujuan`, `nomor_surat`, `link_file_gdrive`, `created_at`) VALUES
+(1, 'W 1234 A', 'SB 12345 G', 'DENNY ES TEH', 'JOGJA', '1552.23/1709/437.55.04/NPU/2024', 'https://drive.google.com/file/d/1cvWZ2gfXFxPXiVcCXS-VixqppRje2a_f/view?usp=drive_link', '2024-12-05 02:22:15'),
+(2, 'W 4321 B', 'SB 54321 G', 'KEPIN', 'MOJOKERTO', '1552.23/1267/437.55.04/NPU/2024', 'https://drive.google.com/file/d/10KUdQeAa3XzBDPT59uzjJDriQkMQwsoY/view?usp=drive_link', '2024-12-05 02:22:15');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `numpanguji_keluar`
+--
+
+CREATE TABLE `numpanguji_keluar` (
+  `id` int NOT NULL,
+  `nomor_kendaraan` varchar(50) NOT NULL,
+  `nomor_uji` varchar(50) NOT NULL,
+  `nama_pemilik` varchar(100) NOT NULL,
+  `tujuan` varchar(100) NOT NULL,
+  `nomor_surat` varchar(50) NOT NULL,
+  `link_file_gdrive` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `numpanguji_masuk`
+--
+
+CREATE TABLE `numpanguji_masuk` (
+  `id` int NOT NULL,
+  `nomor_kendaraan` varchar(50) NOT NULL,
+  `nomor_uji` varchar(50) NOT NULL,
+  `nama_pemilik` varchar(100) NOT NULL,
+  `tujuan` varchar(100) NOT NULL,
+  `nomor_surat` varchar(50) NOT NULL,
+  `link_file_gdrive` text NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -532,6 +609,41 @@ CREATE TRIGGER `update_jumlah_pegawai_insert` AFTER INSERT ON `pegawai` FOR EACH
 END
 $$
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `pegawai_pkb`
+--
+
+CREATE TABLE `pegawai_pkb` (
+  `id` int NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `jabatan` varchar(255) NOT NULL,
+  `deskripsi` text NOT NULL,
+  `foto` varchar(255) NOT NULL,
+  `twitter` varchar(255) DEFAULT '',
+  `facebook` varchar(255) DEFAULT '',
+  `instagram` varchar(255) DEFAULT '',
+  `linkedin` varchar(255) DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data untuk tabel `pegawai_pkb`
+--
+
+INSERT INTO `pegawai_pkb` (`id`, `nama`, `jabatan`, `deskripsi`, `foto`, `twitter`, `facebook`, `instagram`, `linkedin`) VALUES
+(1, 'ISBIKA PRIHANDONO', 'Pensiun', '-', 'Cuplikan layar 2024-12-05 173619.png', '', '', '', ''),
+(2, 'DWI FERI ARDIANSAH', 'Kepala UPT', '-', 'IMG_9340 (1).jpg', '', '', '', ''),
+(3, 'PATRIOT TEGUH SANTOSO', 'Penguji', '-', 'IMG-20220124-WA0040.jpg', '', '', '', ''),
+(4, 'YULIANTO', 'PENGADMINISTRASI', '-', 'IMG_9336.JPG', '', '', '', ''),
+(5, 'R.SUGENG RIYADI', 'KEARSIPAN', '-', 'IMG_9176.JPG', '', '', '', ''),
+(6, 'DENI ESTU PRASETYO', 'Penguji', '-', 'IMG_9448.JPG', '', '', '', ''),
+(7, 'PRIYO ADI NUGROHO', 'Penguji', '-', '199006232024211006.jpg', '', '', '', ''),
+(8, 'KEVIN PRAYOGA', 'Penguji', '-', 'IMG_9280.JPG', '', '', '', ''),
+(9, 'ACHMAD FARIS ZUBAIDI', 'Penguji', '-', 'IMG_9094.JPG', '', '', '', ''),
+(10, 'Silfi Maulidatur Rohmah', 'REKOM NUMPANG UJI', '-', 'IMG_9324.JPG', '', '', '', ''),
+(11, 'SURYA DENI ERDIANTO', 'PENGUJI', '-', 'IMG_9093.jpg', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -937,6 +1049,42 @@ INSERT INTO `riwayat_absensi` (`id`, `nama`, `pangkat`, `nip`, `jabatan`, `bidan
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `rubah_bentuk`
+--
+
+CREATE TABLE `rubah_bentuk` (
+  `id` int NOT NULL,
+  `nomor_kendaraan` varchar(50) NOT NULL,
+  `nomor_uji` varchar(50) NOT NULL,
+  `nama_pemilik` varchar(100) NOT NULL,
+  `rubah_bentuk_ke` varchar(100) NOT NULL,
+  `nomor_surat` varchar(100) NOT NULL,
+  `link_file_gdrive` text,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `rubah_sifat`
+--
+
+CREATE TABLE `rubah_sifat` (
+  `id` int NOT NULL,
+  `nomor_kendaraan` varchar(20) NOT NULL,
+  `nomor_uji` varchar(20) NOT NULL,
+  `nama_pemilik` varchar(255) NOT NULL,
+  `rubah_sifat` varchar(255) NOT NULL,
+  `nomor_surat` varchar(50) NOT NULL,
+  `link_file_gdrive` text,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `seksi`
 --
 
@@ -1212,6 +1360,30 @@ ALTER TABLE `laporan_parkir`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `mutasi_keluar`
+--
+ALTER TABLE `mutasi_keluar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `mutasi_masuk`
+--
+ALTER TABLE `mutasi_masuk`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `numpanguji_keluar`
+--
+ALTER TABLE `numpanguji_keluar`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `numpanguji_masuk`
+--
+ALTER TABLE `numpanguji_masuk`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `parkir`
 --
 ALTER TABLE `parkir`
@@ -1272,6 +1444,18 @@ ALTER TABLE `pinjaman`
 -- Indeks untuk tabel `riwayat_absensi`
 --
 ALTER TABLE `riwayat_absensi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `rubah_bentuk`
+--
+ALTER TABLE `rubah_bentuk`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `rubah_sifat`
+--
+ALTER TABLE `rubah_sifat`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1366,7 +1550,7 @@ ALTER TABLE `kendaraan_keluar`
 -- AUTO_INCREMENT untuk tabel `kendaraan_masuk`
 --
 ALTER TABLE `kendaraan_masuk`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT untuk tabel `laporan`
@@ -1379,6 +1563,30 @@ ALTER TABLE `laporan`
 --
 ALTER TABLE `laporan_parkir`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+
+--
+-- AUTO_INCREMENT untuk tabel `mutasi_keluar`
+--
+ALTER TABLE `mutasi_keluar`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `mutasi_masuk`
+--
+ALTER TABLE `mutasi_masuk`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `numpanguji_keluar`
+--
+ALTER TABLE `numpanguji_keluar`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `numpanguji_masuk`
+--
+ALTER TABLE `numpanguji_masuk`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `parkir`
@@ -1439,6 +1647,18 @@ ALTER TABLE `pinjaman`
 --
 ALTER TABLE `riwayat_absensi`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1303;
+
+--
+-- AUTO_INCREMENT untuk tabel `rubah_bentuk`
+--
+ALTER TABLE `rubah_bentuk`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `rubah_sifat`
+--
+ALTER TABLE `rubah_sifat`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `seksi`

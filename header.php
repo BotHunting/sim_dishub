@@ -68,7 +68,7 @@ if (isset($_SESSION['username'])) {
                             <li><a href="umum/index.php">Umum</a></li>
                             <li><a href="terminal/index.php">Terminal</a></li>
                             <li><a href="parkir/index.php">Parkir</a></li>
-                            <li><a href="http://ngekironline.co.id/" target="_blank">Pengujian</a></li>
+                            <li><a href="pkb/">Pengujian</a></li>
                             <li><a href="lalin/index.php">Lalu Lintas</a></li>
                             <li class="dropdown has-dropdown"><a href="#"><span>Sosial Media</span> <i class="bi bi-chevron-down"></i></a>
                                 <ul>

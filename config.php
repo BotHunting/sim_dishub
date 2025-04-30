@@ -17,3 +17,10 @@ $koneksi = new mysqli($db_host, $db_username, $db_password, $db_database);
 if ($koneksi->connect_error) {
     die("Koneksi ke database gagal: " . $koneksi->connect_error);
 }
+
+// Pastikan tabel `pegawai_pkb` tersedia
+$result = $koneksi->query("SHOW TABLES LIKE 'pegawai_pkb'");
+if ($result->num_rows == 0) {
+    die("Tabel `pegawai_pkb` tidak ditemukan di database. Pastikan tabel sudah dibuat.");
+}
+?>
