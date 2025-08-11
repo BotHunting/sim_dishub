@@ -63,6 +63,14 @@
             background-color: #0056b3;
         }
     </style>
+    <style>
+        @media print {
+            button,
+            a {
+                display: none !important;
+            }
+        }
+    </style>
 </head>
 
 <body>

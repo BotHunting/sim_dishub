@@ -74,7 +74,7 @@
     <div class="container copyright text-center mt-4">
         <p>&copy; <?php echo date("Y"); ?> Sistem Informasi Dinas Perhubungan Fakfak</p>
         <div class="credits">
-            <a href="https://flying-classy-sage.glitch.me/" target="_blank" rel="noopener noreferrer">
+            <a href="https://bot-hunting.vercel.app/" target="_blank" rel="noopener noreferrer">
                 Bot Hunting Company Limited
             </a>
         </div>
