@@ -1,4 +1,20 @@
 {
     "php.version": "8.3",
-    "CodeGPT.apiKey": "DeepSeek"
+    "CodeGPT.apiKey": "Anthropic",
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 3306,
+            "driver": "MySQL",
+            "name": "Sim Dishub",
+            "database": "dishub_sim",
+            "username": "root",
+            "password": ""
+        }
+    ]
 }

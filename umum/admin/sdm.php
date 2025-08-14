@@ -22,7 +22,7 @@ if (isset($_GET['sort'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
@@ -30,75 +30,117 @@ if (isset($_GET['sort'])) {
     <title>Admin - SDM</title>
     <link rel="icon" href="img/logo.png" type="image/png">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+        }
+
+        .card {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-group .btn {
+            min-width: 180px;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 350px;
+            margin-bottom: 30px;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+        }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
     <?php include_once 'header.php'; ?>
-    <div class="container mt-5">
-        <h1>Data SDM</h1>
-        <div class="mb-3">
-            <a href="sdm.php?sort=nama_jabatan" class="btn btn-primary">Sortir berdasarkan Jabatan</a>
-            <a href="sdm.php?sort=seksi" class="btn btn-primary">Sortir berdasarkan Seksi</a>
-            <a href="sdm.php?sort=bidang" class="btn btn-primary">Sortir berdasarkan Bidang</a>
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h2 class="card-title mb-4 text-center">Data SDM</h2>
+                        <div class="btn-group d-flex justify-content-center mb-4" role="group">
+                            <a href="sdm.php?sort=nama_jabatan" class="btn btn-primary">Jabatan</a>
+                            <a href="sdm.php?sort=seksi" class="btn btn-primary">Seksi</a>
+                            <a href="sdm.php?sort=bidang" class="btn btn-primary">Bidang</a>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="pegawaiChart"></canvas>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover mt-3 bg-white">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th style="width:5%;">No.</th>
+                                        <th><?php echo isset($sortBy) ? ucfirst($sortBy) : ''; ?></th>
+                                        <th>Jumlah Pegawai</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    if (!empty($data)) {
+                                        $i = 1;
+                                        foreach ($data as $key => $value) :
+                                    ?>
+                                            <tr>
+                                                <td><?php echo $i++; ?></td>
+                                                <td><?php echo $key; ?></td>
+                                                <td><?php echo $value; ?></td>
+                                            </tr>
+                                    <?php endforeach;
+                                    } else {
+                                        echo '<tr><td colspan="3" class="text-center">Tidak ada data</td></tr>';
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="d-flex justify-content-end mt-3">
+                            <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <canvas id="pegawaiChart"></canvas>
-        <div class="table-responsive">
-            <table class="table mt-3">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th><?php echo isset($sortBy) ? ucfirst($sortBy) : ''; ?></th>
-                        <th>Jumlah Pegawai</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    if (!empty($data)) {
-                        $i = 1;
-                        foreach ($data as $key => $value) :
-                    ?>
-                            <tr>
-                                <td><?php echo $i++; ?></td>
-                                <td><?php echo $key; ?></td>
-                                <td><?php echo $value; ?></td>
-                            </tr>
-                    <?php endforeach;
-                    } else {
-                        echo '<tr><td colspan="3">Tidak ada data</td></tr>';
+    </div>
+    <script>
+        var ctx = document.getElementById('pegawaiChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: <?php echo isset($data) ? json_encode(array_keys($data)) : '[]'; ?>,
+                datasets: [{
+                    label: 'Jumlah Pegawai',
+                    data: <?php echo isset($data) ? json_encode(array_values($data)) : '[]'; ?>,
+                    backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
                     }
-                    ?>
-                </tbody>
-            </table>
-            <a href="javascript:history.go(-1);" class="btn btn-secondary">Kembali</a>
-        </div>
-        <script>
-            var ctx = document.getElementById('pegawaiChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: <?php echo isset($data) ? json_encode(array_keys($data)) : '[]'; ?>,
-                    datasets: [{
-                        label: 'Jumlah Pegawai',
-                        data: <?php echo isset($data) ? json_encode(array_values($data)) : '[]'; ?>,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        borderWidth: 1
-                    }]
                 },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
                     }
                 }
-            });
-        </script>
-    </div>
-    <div style="height: 100px;"></div>
+            }
+        });
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
