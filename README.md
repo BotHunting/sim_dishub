@@ -33,6 +33,15 @@ Port number: 3306
 
 ---
 
+## 🧩 Teknologi yang Digunakan
+- **PHP** (Native)
+- **MySQL**
+- **Bootstrap** untuk UI
+- **JavaScript** untuk interaktivitas
+- **Google Drive** untuk manajemen file
+
+---
+
 ## 🛠️ Versi dan Perubahan
 
 ### 🔷 Versi 3.x
@@ -189,15 +198,6 @@ Port number: 3306
 - Perbaikan tabel awal
 - Perbaikan navbar
 - Fitur-fitur dasar
-
----
-
-## 🧩 Teknologi yang Digunakan
-- **PHP** (Native)
-- **MySQL**
-- **Bootstrap** untuk UI
-- **JavaScript** untuk interaktivitas
-- **Google Drive** untuk manajemen file
 
 ---
 
