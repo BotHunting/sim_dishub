@@ -7,7 +7,7 @@ Website ini dikembangkan oleh **Bot Hunting Company Limited** untuk mendukung pe
 ### 👤 Author
 - **Nama**: Bot Hunting  
 - **TikTok**: [@bot.hunting](https://www.tiktok.com/@bot.hunting)  
-- **Web/Blog**: [flying-classy-sage.glitch.me](https://flying-classy-sage.glitch.me)  
+- **Web/Blog**: [Bot Hunting](https://bot-hunting.vercel.app/)  
 - **GitHub**: [BotHunting/sim_dishub](https://github.com/BotHunting/sim_dishub)
 
 ---
