@@ -49,7 +49,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <!-- Navigasi -->
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="../index.php" class="active">Home</a></li>
+                    <li><a href="index.php" class="active">Home</a></li>
                     <li><a href="mutasi_masuk.php">Mutasi Masuk</a></li>
                     <li><a href="mutasi_keluar.php">Mutasi Keluar</a></li>
                 </ul>
@@ -57,7 +57,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
             <!-- Tombol Login/Logout -->
             <?php if (isset($_SESSION['username'])): ?>
-                <a class="btn-getstarted" href="../proses_logout.php">Logout</a>
+                <a class="btn-getstarted" href="../">Home</a>
             <?php else: ?>
                 <a class="btn-getstarted" href="../index.php">Home</a>
             <?php endif; ?>

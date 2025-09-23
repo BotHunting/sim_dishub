@@ -51,7 +51,7 @@ $result = $koneksi->query($sql);
 
             <!-- Jika pengguna sudah login, tampilkan tombol logout -->
             <?php if (isset($_SESSION['username'])): ?>
-                <a class="btn-getstarted" href="../proses_logout.php">Logout</a>
+                <a class="btn-getstarted" href="../">Home</a>
             <?php else: ?>
                 <a class="btn-getstarted" href="../index.php">Home</a>
             <?php endif; ?>

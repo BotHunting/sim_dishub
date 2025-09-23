@@ -70,7 +70,6 @@ if (file_exists($rootPath)) {
                         <?php else: ?>
                             <li><a href="rubah_bentuk/">Rubah Bentuk</a></li>
                             <li><a href="rubah_sifat/">Rubah Sifat</a></li>
-                            <li><a href="tidak_aktif/">Tidak Aktif</a></li>
                         <?php endif; ?>
                     </ul>
                 </li>

@@ -256,7 +256,7 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="features-item">
                         <i class="bi bi-clipboard-check" style="color: #e74c3c;"></i>
-                        <h3><a href="pengujian/" class="stretched-link">Pengujian Kendaraan</a></h3>
+                        <h3><a href="pkb/" class="stretched-link">Pengujian Kendaraan</a></h3>
                         <p>Layanan uji berkala, numpang uji, dan mutasi kendaraan</p>
                     </div>
                 </div>
@@ -265,7 +265,7 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
                     <div class="features-item">
                         <i class="bi bi-signpost-split" style="color: #8e44ad;"></i>
-                        <h3><a href="lalulintas/" class="stretched-link">Lalu Lintas</a></h3>
+                        <h3><a href="lalin/" class="stretched-link">Lalu Lintas</a></h3>
                         <p>Manajemen lalu lintas dan rekayasa jalan</p>
                     </div>
                 </div>

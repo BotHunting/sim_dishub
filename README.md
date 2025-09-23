@@ -50,6 +50,7 @@ Port number: 3306
 - tambah fitur nodin PKB
 - tambah tabel database rekom pkb
 - perbaikan ui
+- perbaikan header fitur PKB
 
 #### 📌 v3.9
 - Perapian `koneksi.php` ke `config.php`

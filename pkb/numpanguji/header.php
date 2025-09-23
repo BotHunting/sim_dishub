@@ -50,7 +50,7 @@ $result = $koneksi->query($sql);
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <!-- Tab Home -->
-                    <li><a href="../index.php" class="active">Home<br></a></li>
+                    <li><a href="index.php" class="active">Home<br></a></li>
 
                     <!-- Tab Numpang Uji Masuk -->
                     <li>
@@ -65,18 +65,6 @@ $result = $koneksi->query($sql);
                             Numpang Uji Keluar
                         </a>
                     </li>
-                    <!-- Menyesuaikan link berdasarkan status login -->
-                    <?php
-                    if (isset($_SESSION['username'])) {
-                        // Jika sudah login, arahkan ke dashboard
-                        echo '<li><a href="../rubah_bentuk/dashboard.php">Rubah Bentuk</a></li>';
-                        echo '<li><a href="../rubah_sifat/dashboard.php">Rubah Sifat</a></li>';
-                    } else {
-                        // Jika belum login, arahkan ke halaman utama
-                        echo '<li><a href="../rubah_bentuk/">Rubah Bentuk</a></li>';
-                        echo '<li><a href="../rubah_sifat/">Rubah Sifat</a></li>';
-                    }
-                    ?>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
@@ -84,7 +72,7 @@ $result = $koneksi->query($sql);
             <?php
             // Jika pengguna sudah login, tampilkan tombol logout
             if (isset($_SESSION['username'])) {
-                echo '<a class="btn-getstarted" href="../proses_logout.php">Logout</a>';
+                echo '<a class="btn-getstarted" href="../">Home</a>';
             } else {
                 // Jika pengguna belum login, tampilkan tombol Home
                 echo '<a class="btn-getstarted" href="../index.php">Home</a>';

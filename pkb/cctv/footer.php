@@ -60,7 +60,9 @@
     <div class="container copyright text-center mt-4">
         <p>&copy; <?php echo date("Y"); ?> Sistem Informasi Rekomendasi UPTD PKB Gresik</p>
         <div class="credits">
-            Designed by Bot Hunting Company Limited
+            <a href="https://bot-hunting.vercel.app/" target="_blank" rel="noopener noreferrer">
+                Bot Hunting Company Limited
+            </a>
         </div>
     </div>
 
