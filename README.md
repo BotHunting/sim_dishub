@@ -1,205 +1,98 @@
-# 🚦 Website SIM Dishub
+# 🚦 SIM Dishub (Sistem Informasi Manajemen Dinas Perhubungan)
 
-Website ini dikembangkan oleh **Bot Hunting Company Limited** untuk mendukung pengelolaan dan pelayanan Dinas Perhubungan secara digital dan efisien.
+Sistem informasi berbasis web untuk pengelolaan layanan transportasi dan administrasi Dinas Perhubungan.
 
----
-
-### 👤 Author
-- **Nama**: Bot Hunting  
-- **TikTok**: [@bot.hunting](https://www.tiktok.com/@bot.hunting)  
-- **Web/Blog**: [Bot Hunting](https://bot-hunting.vercel.app/)  
-- **GitHub**: [BotHunting/sim_dishub](https://github.com/BotHunting/sim_dishub)
-
----
-
-### ☕ Dukung Kami
-Jika kamu suka dengan proyek ini, kamu bisa memberikan donasi melalui:  
-🔗 [https://trakteer/hunty/tip](https://trakteer/hunty/tip)
-
----
+## 📑 Daftar Isi
+- [Tentang Aplikasi](#-tentang-aplikasi)
+- [Teknologi](#-teknologi)
+- [Database](#-database)
+- [Fitur Utama](#-fitur-utama)
+- [Riwayat Versi](#-riwayat-versi)
+- [Pengembang](#-pengembang)
+- [Dukungan](#-dukungan)
 
 ## 🧭 Tentang Aplikasi
-**SIM Dishub** (Sistem Informasi Manajemen Dinas Perhubungan) adalah aplikasi berbasis web untuk membantu pengelolaan layanan transportasi, perparkiran, ATCS, serta berbagai administrasi internal seperti data pegawai, laporan, peminjaman, dan lainnya.
+SIM Dishub adalah platform terintegrasi untuk mengelola:
+- Layanan transportasi & perparkiran
+- Sistem ATCS (Area Traffic Control System)
+- Administrasi internal & kepegawaian
+- Manajemen dokumen & pelaporan
+- Sistem peminjaman inventaris
 
----
+## 💻 Teknologi
+- **Backend:** PHP Native
+- **Database:** MySQL
+- **Frontend:** Bootstrap & JavaScript
+- **Storage:** Google Drive API
+- **Server:** Apache/Nginx
 
-To connect to your database use these details; bot.hunting@mailnesia.com
-Your account number is: 1278375
+## 🗄️ Database
+```sql
 Host: sql12.freesqldatabase.com
-Database name: sql12772394
-Database user: sql12772394
-Database password: rjALslf1bV
-Port number: 3306
+Database: sql12772394
+Username: sql12772394
+Password: rjALslf1bV
+Port: 3306
+```
+
+## 🎯 Fitur Utama
+1. **Administrasi Umum**
+   - Manajemen pegawai
+   - Disposisi surat
+   - Pengelolaan inventaris
+   - Sistem absensi
+
+2. **Layanan Transportasi**
+   - Manajemen terminal
+   - Sistem perparkiran
+   - Pengujian kendaraan
+   - Manajemen lalu lintas
+
+3. **Sistem Monitoring**
+   - CCTV monitoring
+   - ATCS control
+   - Laporan realtime
+   - Statistik & grafik
+
+## 📚 Riwayat Versi
+
+### Versi 3.x
+| Versi | Fitur Utama |
+|-------|-------------|
+| 3.10 | - Fitur nodin PKB<br>- Tabel rekom PKB<br>- Perbaikan UI PKB |
+| 3.9  | - Migrasi ke config.php<br>- Sistem CCTV |
+| 3.8  | - Integrasi Google Drive |
+| 3.7  | - Link Anjab<br>- Captcha layanan |
+| 3.6  | - Upgrade UI umum |
+| 3.5  | - Sistem testimoni<br>- Hash password |
+| 3.4  | - Upgrade modul parkir |
+| 3.3  | - Upgrade terminal<br>- Data armada realtime |
+| 3.2  | - Sistem peminjaman |
+| 3.1  | - Fix absensi & grafik |
+| 3.0  | - Upgrade UI/UX major |
+
+### Versi 2.x
+| Versi | Fitur Utama |
+|-------|-------------|
+| 2.13-2.10 | - Perbaikan kode<br>- Sistem absensi<br>- Laporan SDM |
+| 2.9-2.7 | - Modul kepegawaian<br>- Sistem parkir<br>- CCTV & ATCS |
+| 2.6-2.4 | - Upload file<br>- Rules sistem<br>- Integrasi WhatsApp |
+| 2.3-2.0 | - Layanan admin<br>- Auto-refresh data<br>- Sistem laporan |
+
+### Versi 1.x
+- Fitur dasar sistem
+- Tabel database awal
+- Navigasi dasar
+
+## 👥 Pengembang
+**Bot Hunting Company Limited**
+- 🌐 [Website](https://bot-hunting.vercel.app)
+- 📱 [TikTok](https://www.tiktok.com/@bot.hunting)
+- 💻 [GitHub](https://github.com/BotHunting/sim_dishub)
+
+## ☕ Dukungan
+Dukung pengembangan project ini melalui:
+[Trakteer](https://trakteer/hunty/tip)
 
 ---
-
-## 🧩 Teknologi yang Digunakan
-- **PHP** (Native)
-- **MySQL**
-- **Bootstrap** untuk UI
-- **JavaScript** untuk interaktivitas
-- **Google Drive** untuk manajemen file
-
----
-
-## 🛠️ Versi dan Perubahan
-
-### 🔷 Versi 3.x
-
-#### 📌 v3.10
-- tambah fitur nodin PKB
-- tambah tabel database rekom pkb
-- perbaikan ui
-- perbaikan header fitur PKB
-
-#### 📌 v3.9
-- Perapian `koneksi.php` ke `config.php`
-- Penambahan tabel CCTV
-- Perapian backend CCTV
-
-#### 📌 v3.8
-- Ganti semua file upload dengan link Google Drive
-- Ganti nama kolom `file_upload` ke `file_google_drive`
-
-#### 📌 v3.7
-- Ganti file Anjab dengan link Google Drive
-- Captcha tambah layanan
-
-#### 📌 v3.6
-- Upgrade UI umum
-- Fix bug edit & hapus testimoni
-
-#### 📌 v3.5
-- Update tabel testimoni
-- Tambah testimoni & upgrade UI
-- Tambah fitur edit & hapus testimoni
-- Edit admin
-- Hash password
-
-#### 📌 v3.4
-- Upgrade tampilan parkir
-- Tambah tabel parkir
-- Fix bug header & pembayaran
-
-#### 📌 v3.3
-- Upgrade tampilan terminal
-- Tambah kolom alamat di tabel terminal
-- Fix bug CSS dan update data armada realtime
-
-#### 📌 v3.2
-- Tambah fitur peminjaman & tabel peminjaman
-
-#### 📌 v3.1
-- Update foto
-- Fix balik & grafik
-- Fix absensi
-
-#### 📌 v3.0
-- Upgrade UI/UX besar-besaran
-- Update halaman: About Us, Pegawai, Testimoni, Pelayanan, Kontak
-
----
-
-### 🔷 Versi 2.x
-
-#### 📌 v2.13
-- Perapian kode
-
-#### 📌 v2.12
-- Fix tombol aksi
-- Tambah riwayat
-- Pilih seksi di disposisi
-- Tambah laporan inventaris & cetak
-- Urutan tahun
-- Fix tambah/edit barang
-- Tambah search
-- Tambah tabel tahun pengelolaan
-
-#### 📌 v2.11
-- Fix hapus absensi
-- Amankan dari SQL Injection
-- Perbaikan UI tabel
-- Fix edit file anjab
-- Simpan absensi + riwayat
-- Fix cetak absensi
-
-#### 📌 v2.10
-- Fix laporan SDM
-- Fix urutan bidang di cetak laporan
-- Fitur absensi pegawai
-- Fix trigger tabel jabatan
-
-#### 📌 v2.9
-- Tambah tabel pegawai & jabatan
-- UI pegawai dan jabatan
-- Tambah file Anjab
-- Fix folder upload
-- Tambah laporan SDM
-
-#### 📌 v2.8
-- Fix UI header & tabel
-- Tambah daftar dan lokasi parkir
-- Tambah tabel lokasi parkir
-- Fix laporan dan cetak parkir
-
-#### 📌 v2.7
-- Fix UI CCTV, laporan, petugas parkir
-- Tambah tombol grup WhatsApp
-- Fix UI ATCS & perbaikan lalin
-
-#### 📌 v2.6
-- Edit foto barang
-- Lampiran laporan
-- Tambah tabel laporan
-- Fix edit laporan
-
-#### 📌 v2.5
-- Tambah rule
-- Fix bug navbar
-- Tambah tabel SQL
-- Fix tombol rules
-
-#### 📌 v2.4
-- Daftar via WhatsApp
-- Tambahan tab lalu lintas
-- Pindah daftar admin
-- Perbaikan UI terminal & parkir
-- Kontak lalu lintas
-- Fitur upload & tampil file
-- Fix bug upload
-
-#### 📌 v2.3
-- Fix tampilan index
-- Tambah layanan admin
-- Fitur umum & tambahan tab admin
-- Bug cetak laporan terminal
-- Tambah surat, barang, dan fitur awal umum
-
-#### 📌 v2.2
-- Tambah logo browser
-- Auto-refresh data kendaraan
-- Fitur awal web lalu lintas
-
-#### 📌 v2.1
-- Tambah kolom asal terminal
-- Perbaikan laporan & cetak
-- Tambah fitur edit & hapus petugas parkir
-- Set zona waktu WIT
-
-#### 📌 v2.0
-- Ganti nama tabel laporan
-- Perbaikan laporan
-- Fix bug jam
-- Fix login parkir
-- Tambah tabel admin
-
----
-
-### 🟢 Versi 1.0
-- Perbaikan tabel awal
-- Perbaikan navbar
-- Fitur-fitur dasar
-
----
-
-> Dibuat dengan semangat pelayanan dan efisiensi oleh **Bot Hunting Company Limited** 🚀
+*Dikembangkan dengan ❤️ oleh Bot Hunting Company Limited*
