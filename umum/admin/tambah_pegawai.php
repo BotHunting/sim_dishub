@@ -79,10 +79,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form-group">
             <label for="seksi">Seksi:</label>
             <input type="text" class="form-control" id="seksi" name="seksi" required>
+            <small class="form-text text-muted">Seksi akan terisi otomatis berdasarkan jabatan, namun dapat diubah jika diperlukan</small>
         </div>
         <div class="form-group">
             <label for="bidang">Bidang:</label>
             <input type="text" class="form-control" id="bidang" name="bidang" required>
+            <small class="form-text text-muted">Bidang akan terisi otomatis berdasarkan jabatan, namun dapat diubah jika diperlukan</small>
         </div>
         <?php if ($error) : ?>
             <div class="alert alert-danger" role="alert">
@@ -96,33 +98,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <script>
     document.getElementById('jabatan').addEventListener('change', function() {
         var jabatan = this.value;
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
+        
+        // Get Bidang
+        var xhrBidang = new XMLHttpRequest();
+        xhrBidang.onreadystatechange = function() {
+            if (xhrBidang.readyState === XMLHttpRequest.DONE) {
+                if (xhrBidang.status === 200) {
                     var bidangInput = document.getElementById('bidang');
-                    bidangInput.value = xhr.responseText;
+                    bidangInput.value = xhrBidang.responseText;
+                    bidangInput.removeAttribute('readonly'); // Ensure field is editable
                 }
             }
         };
-        xhr.open('GET', 'get_bidang.php?jabatan=' + jabatan, true);
-        xhr.send();
-    });
-</script>
-<script>
-    document.getElementById('jabatan').addEventListener('change', function() {
-        var jabatan = this.value;
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    var bidangInput = document.getElementById('seksi');
-                    bidangInput.value = xhr.responseText;
+        xhrBidang.open('GET', 'get_bidang.php?jabatan=' + jabatan, true);
+        xhrBidang.send();
+        
+        // Get Seksi
+        var xhrSeksi = new XMLHttpRequest();
+        xhrSeksi.onreadystatechange = function() {
+            if (xhrSeksi.readyState === XMLHttpRequest.DONE) {
+                if (xhrSeksi.status === 200) {
+                    var seksiInput = document.getElementById('seksi');
+                    seksiInput.value = xhrSeksi.responseText;
+                    seksiInput.removeAttribute('readonly'); // Ensure field is editable
                 }
             }
         };
-        xhr.open('GET', 'get_seksi.php?jabatan=' + jabatan, true);
-        xhr.send();
+        xhrSeksi.open('GET', 'get_seksi.php?jabatan=' + jabatan, true);
+        xhrSeksi.send();
     });
 </script>
 <div style="height: 100px;"></div>

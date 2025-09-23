@@ -62,8 +62,10 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
         <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
 
         <div class="container">
-            <h2 data-aos="fade-up" data-aos-delay="100" class="">Sistem Informasi,<br>Dinas Perhubungan Kabupten Fakfak</h2>
-            <p data-aos="fade-up" data-aos-delay="200">Menuju Fakfak yang Terhubung dan Nyaman: Bersinergi Mewujudkan Sistem Transportasi yang Aman, Efisien, dan Berkelanjutan</p>
+            <h2 data-aos="fade-up" data-aos-delay="100" class="">Sistem Informasi,<br>Dinas Perhubungan Kabupten Fakfak
+            </h2>
+            <p data-aos="fade-up" data-aos-delay="200">Menuju Fakfak yang Terhubung dan Nyaman: Bersinergi Mewujudkan
+                Sistem Transportasi yang Aman, Efisien, dan Berkelanjutan</p>
             <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
                 <a href="umum/index.php" class="btn-get-started">Get Started</a>
             </div>
@@ -85,13 +87,18 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
                 <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
                     <h3>Visi dan Misi</h3>
                     <p class="fst-italic">
-                        Menjadi Dinas Perhubungan yang unggul dalam mewujudkan sistem transportasi yang aman, efisien, dan berkelanjutan untuk mendukung pembangunan daerah Kabupaten Fakfak.
+                        Menjadi Dinas Perhubungan yang unggul dalam mewujudkan sistem transportasi yang aman, efisien,
+                        dan berkelanjutan untuk mendukung pembangunan daerah Kabupaten Fakfak.
                     </p>
                     <ul>
-                        <li><i class="bi bi-check-circle"></i> <span>Meningkatkan kualitas pelayanan dan keselamatan transportasi.</span></li>
-                        <li><i class="bi bi-check-circle"></i> <span>Mengembangkan sistem transportasi yang terintegrasi dan berkelanjutan.</span></li>
-                        <li><i class="bi bi-check-circle"></i> <span>Meningkatkan peran serta masyarakat dalam penyelenggaraan transportasi.</span></li>
-                        <li><i class="bi bi-check-circle"></i> <span>Mewujudkan tata kelola pemerintahan yang baik dan bersih di bidang perhubungan.</span></li>
+                        <li><i class="bi bi-check-circle"></i> <span>Meningkatkan kualitas pelayanan dan keselamatan
+                                transportasi.</span></li>
+                        <li><i class="bi bi-check-circle"></i> <span>Mengembangkan sistem transportasi yang terintegrasi
+                                dan berkelanjutan.</span></li>
+                        <li><i class="bi bi-check-circle"></i> <span>Meningkatkan peran serta masyarakat dalam
+                                penyelenggaraan transportasi.</span></li>
+                        <li><i class="bi bi-check-circle"></i> <span>Mewujudkan tata kelola pemerintahan yang baik dan
+                                bersih di bidang perhubungan.</span></li>
                     </ul>
                     <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
                 </div>
@@ -111,28 +118,32 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
 
                 <div class="col-lg-3 col-md-6">
                     <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_pegawai; ?>" data-purecounter-duration="1" class="purecounter"></span>
+                        <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_pegawai; ?>"
+                            data-purecounter-duration="1" class="purecounter"></span>
                         <p class="">Pegawai</p>
                     </div>
                 </div><!-- End Stats Item -->
 
                 <div class="col-lg-3 col-md-6">
                     <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_pelayanan; ?>" data-purecounter-duration="1" class="purecounter"></span>
+                        <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_pelayanan; ?>"
+                            data-purecounter-duration="1" class="purecounter"></span>
                         <p class="">Pelayanan</p>
                     </div>
                 </div><!-- End Stats Item -->
 
                 <div class="col-lg-3 col-md-6">
                     <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_pelayanan_approved; ?>" data-purecounter-duration="1" class="purecounter"></span>
+                        <span data-purecounter-start="0" data-purecounter-end="<?php echo $total_pelayanan_approved; ?>"
+                            data-purecounter-duration="1" class="purecounter"></span>
                         <p class="">Selesai</p>
                     </div>
                 </div><!-- End Stats Item -->
 
                 <div class="col-lg-3 col-md-6">
                     <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="<?php echo $jumlah_inventaris; ?>" data-purecounter-duration="1" class="purecounter"></span>
+                        <span data-purecounter-start="0" data-purecounter-end="<?php echo $jumlah_inventaris; ?>"
+                            data-purecounter-duration="1" class="purecounter"></span>
                         <p class="">Inventaris</p>
                     </div>
                 </div><!-- End Stats Item -->
@@ -154,7 +165,9 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
                     <div class="why-box">
                         <h3>Dishub Fakfak</h3>
                         <p>
-                            Dinas Perhubungan Kabupaten Fakfak selalu berbenah dan berinovasi untuk memberikan pelayanan terbaik bagi masyarakat. Mari bersama-sama membangun Fakfak yang terhubung, aman, dan nyaman untuk masa depan yang lebih gemilang.
+                            Dinas Perhubungan Kabupaten Fakfak selalu berbenah dan berinovasi untuk memberikan pelayanan
+                            terbaik bagi masyarakat. Mari bersama-sama membangun Fakfak yang terhubung, aman, dan nyaman
+                            untuk masa depan yang lebih gemilang.
                         </p>
                         <div class="text-center">
                             <a href="#" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
@@ -169,7 +182,8 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
                             <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                                 <i class="bi bi-clipboard-data"></i>
                                 <h4>Pengembangan Sarpras</h4>
-                                <p>Menuju Fakfak yang Terhubung: Membangun Infrastruktur Transportasi yang Aman dan Nyaman</p>
+                                <p>Menuju Fakfak yang Terhubung: Membangun Infrastruktur Transportasi yang Aman dan
+                                    Nyaman</p>
                             </div>
                         </div><!-- End Icon Box -->
 
@@ -177,7 +191,8 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
                             <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                                 <i class="bi bi-gem"></i>
                                 <h4>Perizinan</h4>
-                                <p>Melangkah Maju Bersama: Dapatkan Izin Usaha Transportasi Anda dengan Mudah dan Cepat</p>
+                                <p>Melangkah Maju Bersama: Dapatkan Izin Usaha Transportasi Anda dengan Mudah dan Cepat
+                                </p>
                             </div>
                         </div><!-- End Icon Box -->
 
@@ -185,7 +200,8 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
                             <div class="icon-box d-flex flex-column justify-content-center align-items-center">
                                 <i class="bi bi-inboxes"></i>
                                 <h4>Penegakan Hukum</h4>
-                                <p>Tertib Lalu Lintas, Fakfak Makin Keren: Bersama Menjaga Keselamatan dan Kenyamanan di Jalan</p>
+                                <p>Tertib Lalu Lintas, Fakfak Makin Keren: Bersama Menjaga Keselamatan dan Kenyamanan di
+                                    Jalan</p>
                             </div>
                         </div><!-- End Icon Box -->
 
@@ -197,6 +213,76 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
         </div>
 
     </section><!-- /Why Us Section -->
+
+    <!-- Features Section -->
+    <section id="features" class="features section">
+
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Layanan</h2>
+                <p>Pelayanan Dinas Perhubungan</p>
+            </div>
+
+            <div class="row gy-4">
+
+                <!-- Umum -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="features-item">
+                        <i class="bi bi-building" style="color: #2980b9;"></i>
+                        <h3><a href="umum/" class="stretched-link">Pelayanan Umum</a></h3>
+                        <p>Layanan administrasi, surat menyurat, dan informasi umum</p>
+                    </div>
+                </div>
+
+                <!-- Terminal -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="features-item">
+                        <i class="bi bi-truck" style="color: #27ae60;"></i>
+                        <h3><a href="terminal/" class="stretched-link">Terminal</a></h3>
+                        <p>Layanan terminal, retribusi, dan manajemen angkutan</p>
+                    </div>
+                </div>
+
+                <!-- Parkir -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="features-item">
+                        <i class="bi bi-p-square" style="color: #f39c12;"></i>
+                        <h3><a href="parkir/" class="stretched-link">Perparkiran</a></h3>
+                        <p>Layanan parkir, retribusi, dan manajemen area parkir</p>
+                    </div>
+                </div>
+
+                <!-- Pengujian -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="features-item">
+                        <i class="bi bi-clipboard-check" style="color: #e74c3c;"></i>
+                        <h3><a href="pengujian/" class="stretched-link">Pengujian Kendaraan</a></h3>
+                        <p>Layanan uji berkala, numpang uji, dan mutasi kendaraan</p>
+                    </div>
+                </div>
+
+                <!-- Lalu Lintas -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="features-item">
+                        <i class="bi bi-signpost-split" style="color: #8e44ad;"></i>
+                        <h3><a href="lalulintas/" class="stretched-link">Lalu Lintas</a></h3>
+                        <p>Manajemen lalu lintas dan rekayasa jalan</p>
+                    </div>
+                </div>
+
+                <!-- Coming Soon -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="features-item">
+                        <i class="bi bi-clock-history" style="color: #7f8c8d;"></i>
+                        <h3><a href="#" class="stretched-link">Coming Soon</a></h3>
+                        <p>Layanan baru akan segera hadir</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section><!-- /Features Section -->
 
     <!-- Courses Section -->
     <section id="courses" class="courses section">
@@ -220,7 +306,7 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
                 if ($result->num_rows > 0) {
                     // Loop untuk menampilkan data dalam bentuk card
                     while ($row = $result->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                             <div class="course-item">
                                 <img src="assets/img/pelayanan/<?php echo $row['gambar']; ?>" class="img-fluid" alt="">
@@ -240,7 +326,7 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
                                 </div>
                             </div>
                         </div> <!-- End Course Item-->
-                <?php
+                        <?php
                     }
                 } else {
                     echo "Data tidak ditemukan.";
@@ -269,7 +355,7 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                ?>
+                        ?>
                         <div class="col-lg-4 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
                             <div class="member">
                                 <img src="assets/img/testihome/<?php echo $row['foto']; ?>" class="img-fluid" alt="">
@@ -287,7 +373,7 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
                                 </div>
                             </div>
                         </div><!-- End Team Member -->
-                <?php
+                        <?php
                     }
                 } else {
                     echo "Belum ada testimoni.";
