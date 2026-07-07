@@ -2,7 +2,7 @@
 session_start();
 
 // Include file konfigurasi
-include_once 'config.php';
+include_once 'assets/config.php';
 
 // Cek apakah pengguna sudah login, jika tidak redirect ke halaman login
 if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {

@@ -1,6 +1,6 @@
 <?php
 // Sertakan file koneksi.php
-include_once 'config.php';
+include_once 'assets/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Periksa apakah nama pegawai telah dikirim melalui AJAX request

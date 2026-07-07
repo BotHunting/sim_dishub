@@ -110,7 +110,7 @@ if (isset($_SESSION['username'])) {
                 </script>
                 <div class="swiper-wrapper">
                     <?php
-                    include_once 'config.php';
+                    include_once 'assets/config.php';
 
                     // Query untuk mengambil data testimoni dari tabel testimoni_sistem
                     $sql = "SELECT * FROM testimoni_sistem";

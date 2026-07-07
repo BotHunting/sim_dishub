@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once 'config.php';
+include_once 'assets/config.php';
 // Inisialisasi variabel $logout_button
 $logout_button = '';
 
@@ -74,7 +74,7 @@ if (isset($_SESSION['username'])) {
             <div class="row">
                 <?php
                 // Mengambil data testimoni dari database
-                include_once 'config.php';
+                include_once 'assets/config.php';
                 $sql = "SELECT * FROM testimoni_home";
                 $result = $koneksi->query($sql);
 

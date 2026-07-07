@@ -1,7 +1,7 @@
 <?php
 session_start();
+include_once 'assets/config.php';
 
-include_once 'config.php';
 // Inisialisasi variabel $logout_button
 $logout_button = '';
 
@@ -297,7 +297,7 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
             <div class="row">
 
                 <?php
-                include_once 'config.php';
+                include_once 'assets/config.php';
 
                 // Query untuk mengambil data dari tabel testimoni_pelayanan
                 $sql = "SELECT * FROM testimoni_pelayanan";
@@ -349,7 +349,7 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
             <div class="row">
                 <?php
                 // Mengambil data testimoni dari database
-                include_once 'config.php';
+                include_once 'assets/config.php';
                 $sql = "SELECT * FROM testimoni_home";
                 $result = $koneksi->query($sql);
 

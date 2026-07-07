@@ -1,5 +1,5 @@
 <?php
-include_once 'config.php';
+include_once 'assets/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama = $_POST['nama'];

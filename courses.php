@@ -53,8 +53,7 @@ if (isset($_SESSION['username'])) {
         <div class="container">
             <div class="row">
 
-                <?php
-                include_once 'config.php';
+                <?php include_once 'assets/config.php';
 
                 // Query untuk mengambil data dari tabel testimoni_pelayanan
                 $sql = "SELECT * FROM testimoni_pelayanan";

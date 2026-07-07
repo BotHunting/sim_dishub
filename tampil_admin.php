@@ -67,7 +67,7 @@
             <tbody>
                 <?php
                 // Sertakan file koneksi.php
-                include_once 'config.php';
+                include_once 'assets/config.php';
                 // Query untuk mengambil data admin dari database
                 $sql = "SELECT nama, username FROM Admin";
                 $result = $koneksi->query($sql);

@@ -2,7 +2,7 @@
 session_start();
 
 // Sertakan file konfigurasi database
-include_once 'config.php';
+include_once 'assets/config.php';
 
 // Periksa apakah pengguna sudah login atau belum
 if (!isset($_SESSION['username'])) {

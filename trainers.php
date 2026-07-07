@@ -50,7 +50,7 @@ if (isset($_SESSION['username'])) {
 
                 <?php
                 // Include file konfigurasi database
-                include_once 'config.php';
+                include_once 'assets/config.php';
 
                 // Query untuk mengambil data dari tabel testimoni_pegawai
                 $sql = "SELECT * FROM testimoni_pegawai";

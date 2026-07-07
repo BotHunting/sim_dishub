@@ -1,5 +1,5 @@
 <?php
-require_once('config.php');
+require_once('assets/config.php');
 $username = $password = $confirm_password = $nama = $nip = '';
 $username_err = $password_err = $confirm_password_err = $nama_err = $nip_err = $rules_err = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -166,7 +166,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <tbody>
                 <?php
                 // Sertakan file koneksi.php
-                include_once 'config.php';
+                include_once 'assets/config.php';
                 // Query untuk mengambil data admin dari database
                 $sql = "SELECT nama, username, rules FROM admin";
                 $result = $koneksi->query($sql);

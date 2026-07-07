@@ -1,5 +1,5 @@
 <?php
-include_once 'config.php';
+include_once 'assets/config.php';
 
 // Memeriksa apakah parameter id telah diberikan
 if (isset($_GET['id'])) {

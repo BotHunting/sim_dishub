@@ -1,6 +1,6 @@
 <?php
 // Sertakan file koneksi.php untuk terhubung ke database
-require_once('config.php');
+require_once('assets/config.php');
 
 // Inisialisasi variabel
 $username = $password = $confirm_password = $nama = $nip = $rules = '';

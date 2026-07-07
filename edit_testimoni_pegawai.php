@@ -1,6 +1,6 @@
 <?php
 // Include file konfigurasi database
-include_once 'config.php';
+include_once 'assets/config.php';
 
 // Deklarasi variabel id dan inisialisasi dengan nilai kosong
 $id = "";

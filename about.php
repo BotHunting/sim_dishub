@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once 'config.php';
+include_once 'assets/config.php';
 
 // Inisialisasi variabel $logout_button
 $logout_button = '';
@@ -192,8 +192,9 @@ if ($result_jumlah_inventaris && mysqli_num_rows($result_jumlah_inventaris) > 0)
                 <div class="swiper-wrapper">
 
                     <?php
-                    include_once 'config.php';
-
+                    include_once 'assets/config.php';
+                    // Note: The config.php is already included at the top of about.php.
+                    // This include_once here is redundant but harmless.
                     // Query untuk mengambil data testimoni dari tabel testimoni_sistem
                     $sql = "SELECT * FROM testimoni_sistem";
                     $result = $koneksi->query($sql);

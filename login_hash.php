@@ -8,7 +8,7 @@ if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true) {
 }
 
 // Sertakan file koneksi.php
-include_once 'config.php';
+include_once 'assets/config.php';
 
 // Definisikan variabel kosong untuk menyimpan pesan error
 $username = $password = "";

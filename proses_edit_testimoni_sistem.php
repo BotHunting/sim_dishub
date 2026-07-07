@@ -1,5 +1,5 @@
 <?php
-include_once 'config.php';
+include_once 'assets/config.php';
 
 // Pastikan semua field yang diperlukan telah diisi
 if (isset($_POST['id'], $_POST['nama'], $_POST['jabatan'], $_POST['keterangan'])) {

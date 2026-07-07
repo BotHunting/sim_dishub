@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include_once 'config.php';
+include_once 'assets/config.php';
 $logged_in = false;
 $rules = "";
 if (isset($_SESSION['username'])) {

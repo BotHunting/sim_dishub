@@ -2,7 +2,7 @@
 session_start();
 
 // Inisialisasi variabel $logout_button
-$logout_button = '';
+include_once 'assets/config.php'; // Added this line as it was missing from the original context, but likely needed for $koneksi if any DB operations were here.
 
 // Cek apakah pengguna sudah login atau belum
 if (isset($_SESSION['username'])) {

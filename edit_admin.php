@@ -1,5 +1,5 @@
 <?php
-include_once 'config.php';
+include_once 'assets/config.php';
 
 $nip = $nama = $username = $password = $rules = '';
 $nip_err = $nama_err = $username_err = $password_err = $rules_err = '';

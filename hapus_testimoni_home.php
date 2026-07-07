@@ -1,6 +1,6 @@
 <?php
 // Include file konfigurasi database
-include_once 'config.php';
+include_once 'assets/config.php';
 
 // Periksa apakah parameter id diterima dari URL
 if (isset($_GET['id']) && !empty($_GET['id'])) {

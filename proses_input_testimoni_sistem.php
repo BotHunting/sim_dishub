@@ -1,6 +1,6 @@
 <?php
 // Include file koneksi database
-include_once 'config.php';
+include_once 'assets/config.php';
 
 // Cek jika form telah disubmit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
