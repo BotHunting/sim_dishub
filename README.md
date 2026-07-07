@@ -26,15 +26,6 @@ SIM Dishub adalah platform terintegrasi untuk mengelola:
 - **Storage:** Google Drive API
 - **Server:** Apache/Nginx
 
-## 🗄️ Database
-```sql
-Host: sql12.freesqldatabase.com
-Database: sql12772394
-Username: sql12772394
-Password: rjALslf1bV
-Port: 3306
-```
-
 ## 🎯 Fitur Utama
 1. **Administrasi Umum**
    - Manajemen pegawai
