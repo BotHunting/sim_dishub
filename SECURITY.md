@@ -57,5 +57,18 @@ Untuk pertanyaan tentang keamanan:
 - 📱 WhatsApp: +62 812-9032-0438
 - 🌐 Website: https://bot-hunting.vercel.app
 
+## 🛡️ Security Advisories
+
+Kami mempublikasikan detail kerentanan keamanan yang telah diperbaiki melalui [GitHub Security Advisories](https://github.com/BotHunting/sim_dishub/security/advisories). Anda dapat melihat daftar lengkap advisories di sana.
+
+Berikut adalah contoh format detail advisory:
+
+| ID | Deskripsi | Severity | Versi Terdampak | Versi Perbaikan | Tanggal |
+|----|-----------|----------|-----------------|-----------------|---------|
+| [GHSA-xxxx-xxxx-xxxx](https://github.com/BotHunting/sim_dishub/security/advisories/GHSA-xxxx-xxxx-xxxx) | SQL Injection pada modul pencarian PKB | **High** | <= 3.10 | 3.11 | 2024-05-31 |
+| | | | | | |
+
+Kami sangat menyarankan untuk selalu menggunakan versi terbaru dari aplikasi untuk memastikan semua patch keamanan telah diterapkan.
+
 ---
 *Dokumen ini terakhir diperbarui: September 2025*
