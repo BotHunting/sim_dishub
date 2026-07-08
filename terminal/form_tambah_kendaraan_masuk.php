@@ -24,7 +24,7 @@
                     <select id="asal_terminal" name="asal_terminal" class="form-select" required>
                         <?php
                         // Sertakan file koneksi.php untuk terhubung ke database
-                        require_once('koneksi.php');
+                        require_once('../assets/config.php');
 
                         // Query untuk mengambil data terminal dari database
                         $sql = "SELECT * FROM terminal";

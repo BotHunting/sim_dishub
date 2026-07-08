@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../assets/config.php';
 
 // Inisialisasi variabel untuk menyimpan data pegawai berdasarkan jabatan, seksi, atau bidang
 $data = [];

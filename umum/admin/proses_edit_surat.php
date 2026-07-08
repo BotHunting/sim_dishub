@@ -1,5 +1,5 @@
 <?php
-include_once 'koneksi.php';
+include_once '../../assets/config.php'; // This file includes config.php, so no direct change here.
 $id = $nomor_surat = $tanggal = $pengirim = $penerima = $subjek = $isi = $status = $file_upload = "";
 $error = "";
 if (isset($_POST['id']) && !empty(trim($_POST['id']))) {

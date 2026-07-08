@@ -4,7 +4,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Periksa apakah ID petugas telah dikirim melalui metode POST
     if (isset($_POST['id'])) {
         // Sertakan file koneksi.php
-        include_once 'koneksi.php';
+        include_once '../assets/config.php';
 
         // Escape input pengguna untuk menghindari serangan SQL Injection
         $id = $_POST['id'];

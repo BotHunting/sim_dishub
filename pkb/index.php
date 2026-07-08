@@ -1,74 +1,42 @@
 <?php
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../assets/config.php';
 
-// Inisialisasi variabel $logout_button
-$logout_button = '';
-
-// Cek apakah pengguna sudah login atau belum
-if (isset($_SESSION['username'])) {
-    // Jika sudah login, tampilkan tombol logout
-    $logout_button = '<a class="btn-getstarted" href="logout.php">Logout</a>';
-} else {
-    // Jika belum login, tampilkan tombol login
-    $logout_button = '<a class="btn-getstarted" href="login.php">Login</a>';
+// Helper function to get count from a table
+function get_count($koneksi, $query)
+{
+    $result = $koneksi->query($query);
+    if ($result) {
+        $row = $result->fetch_assoc();
+        return (int)($row['total'] ?? 0);
+    }
+    return 0;
 }
 
 // Query untuk menghitung jumlah pegawai
-$query = "SELECT COUNT(*) AS total_pegawai FROM pegawai_pkb";
-$result = mysqli_query($koneksi, $query);
-
-$total_pegawai = 0;
-if ($result && mysqli_num_rows($result) > 0) {
-    $row = mysqli_fetch_assoc($result);
-    $total_pegawai = $row['total_pegawai'];
-}
+$total_pegawai = get_count($koneksi, "SELECT COUNT(*) AS total FROM pegawai_pkb");
 
 // Query untuk menghitung jumlah mutasi masuk dan mutasi keluar
-$sql_mutasi_masuk = "SELECT COUNT(*) AS total_mutasi_masuk FROM mutasi_masuk";
-$result_mutasi_masuk = mysqli_query($koneksi, $sql_mutasi_masuk);
-$row_mutasi_masuk = mysqli_fetch_assoc($result_mutasi_masuk);
-$total_mutasi_masuk = $row_mutasi_masuk['total_mutasi_masuk'];
-
-$sql_mutasi_keluar = "SELECT COUNT(*) AS total_mutasi_keluar FROM mutasi_keluar";
-$result_mutasi_keluar = mysqli_query($koneksi, $sql_mutasi_keluar);
-$row_mutasi_keluar = mysqli_fetch_assoc($result_mutasi_keluar);
-$total_mutasi_keluar = $row_mutasi_keluar['total_mutasi_keluar'];
-
+$total_mutasi_masuk = get_count($koneksi, "SELECT COUNT(*) AS total FROM mutasi_masuk");
+$total_mutasi_keluar = get_count($koneksi, "SELECT COUNT(*) AS total FROM mutasi_keluar");
 // Menjumlahkan mutasi masuk dan mutasi keluar
 $total_mutasi = $total_mutasi_masuk + $total_mutasi_keluar;
 
 // Query untuk menghitung jumlah numpang uji masuk dan keluar
-$sql_numpanguji_masuk = "SELECT COUNT(*) AS total_numpanguji_masuk FROM numpanguji_masuk";
-$result_numpanguji_masuk = mysqli_query($koneksi, $sql_numpanguji_masuk);
-$row_numpanguji_masuk = mysqli_fetch_assoc($result_numpanguji_masuk);
-$total_numpanguji_masuk = $row_numpanguji_masuk['total_numpanguji_masuk'];
-
-$sql_numpanguji_keluar = "SELECT COUNT(*) AS total_numpanguji_keluar FROM numpanguji_keluar";
-$result_numpanguji_keluar = mysqli_query($koneksi, $sql_numpanguji_keluar);
-$row_numpanguji_keluar = mysqli_fetch_assoc($result_numpanguji_keluar);
-$total_numpanguji_keluar = $row_numpanguji_keluar['total_numpanguji_keluar'];
-
+$total_numpanguji_masuk = get_count($koneksi, "SELECT COUNT(*) AS total FROM numpanguji_masuk");
+$total_numpanguji_keluar = get_count($koneksi, "SELECT COUNT(*) AS total FROM numpanguji_keluar");
 // Menjumlahkan numpang uji masuk dan keluar
 $total_numpanguji = $total_numpanguji_masuk + $total_numpanguji_keluar;
 
 // Query untuk menghitung jumlah Rubah Bentuk
-$sql_rubah_bentuk = "SELECT COUNT(*) AS total_rubah_bentuk FROM rubah_bentuk";
-$result_rubah_bentuk = mysqli_query($koneksi, $sql_rubah_bentuk);
-$row_rubah_bentuk = mysqli_fetch_assoc($result_rubah_bentuk);
-$total_rubah_bentuk = $row_rubah_bentuk['total_rubah_bentuk'];
+$total_rubah_bentuk = get_count($koneksi, "SELECT COUNT(*) AS total FROM rubah_bentuk");
 
 // Query untuk menghitung jumlah Rubah Sifat
-$sql_rubah_sifat = "SELECT COUNT(*) AS total_rubah_sifat FROM rubah_sifat";
-$result_rubah_sifat = mysqli_query($koneksi, $sql_rubah_sifat);
-$row_rubah_sifat = mysqli_fetch_assoc($result_rubah_sifat);
-$total_rubah_sifat = $row_rubah_sifat['total_rubah_sifat'];
+$total_rubah_sifat = get_count($koneksi, "SELECT COUNT(*) AS total FROM rubah_sifat");
 
 // Query untuk menghitung jumlah Tidak Aktif
-$sql_tidak_aktif = "SELECT COUNT(*) AS total_tidak_aktif FROM kendaraan WHERE status = 'Keluar'";
-$result_tidak_aktif = mysqli_query($koneksi, $sql_tidak_aktif);
-$row_tidak_aktif = mysqli_fetch_assoc($result_tidak_aktif);
-$total_tidak_aktif = $row_tidak_aktif['total_tidak_aktif'];
+$total_tidak_aktif = get_count($koneksi, "SELECT COUNT(*) AS total FROM kendaraan WHERE status = 'Keluar'");
 
+$koneksi->close();
 ?>
 
 <?php include("header.php"); ?>

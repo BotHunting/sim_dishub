@@ -1,5 +1,5 @@
 <?php
-include_once 'koneksi.php';
+include_once '../assets/config.php';
 
 $sql = "SELECT * FROM kendaraan_keluar ORDER BY waktu_keberangkatan DESC LIMIT 5";
 $result = $koneksi->query($sql);

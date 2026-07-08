@@ -2,7 +2,7 @@
 // Pastikan form telah di-submit
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Include koneksi database
-    require_once 'koneksi.php';
+    require_once '../../assets/config.php';
 
     // Tangkap data dari form
     $nomor_inventaris = $_POST['nomor_inventaris'];

@@ -1,6 +1,6 @@
 <?php
 // Include file koneksi.php untuk menghubungkan ke database
-include_once 'koneksi.php';
+include_once '../assets/config.php';
 
 // Mendapatkan ID admin dari parameter URL
 $id = $_GET['id'];

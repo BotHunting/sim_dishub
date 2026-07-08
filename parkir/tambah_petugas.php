@@ -31,7 +31,7 @@
                 <select class="form-select" id="pegawai" name="pegawai" required>
                     <option value="">Pilih Pegawai</option>
                     <?php
-                    include_once 'koneksi.php';
+                    include_once '../assets/config.php';
                     // Query untuk mengambil data pegawai dari tabel pegawai
                     $sql = "SELECT * FROM pegawai";
                     $result = $koneksi->query($sql);
@@ -86,7 +86,7 @@
                 <div class="row gy-5">
                     <?php
                     // Sertakan file koneksi.php
-                    include_once 'koneksi.php';
+                    include_once '../assets/config.php';
 
                     // Query untuk mengambil data petugas dari database
                     $sql = "SELECT * FROM Petugas_parkir";

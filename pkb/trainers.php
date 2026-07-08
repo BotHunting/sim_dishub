@@ -1,6 +1,5 @@
 <?php
 include("header.php");
-require_once __DIR__ . '/../config.php'; // Pastikan file config.php di-include
 
 // Mengambil data pegawai aktif
 $sql_aktif = "SELECT * FROM pegawai_pkb WHERE jabatan != 'Pensiun'";

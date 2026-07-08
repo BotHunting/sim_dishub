@@ -2,7 +2,7 @@
 session_start();
 
 // Include koneksi ke database
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../assets/config.php';
 
 // Membuat prepared statement untuk query dengan parameter placeholder (?)
 // Menampilkan surat yang statusnya 'Sent'

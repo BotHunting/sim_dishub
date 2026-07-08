@@ -1,5 +1,5 @@
 <?php
-include_once 'koneksi.php';
+require_once '../../assets/config.php';
 
 // Mendapatkan daftar bulan unik dari tabel pelayananumum
 $query_months = "SELECT DISTINCT MONTH(tanggal) AS month, YEAR(tanggal) AS year FROM pelayananumum WHERE status IN ('Approved', 'Rejected') ORDER BY year, month ASC";

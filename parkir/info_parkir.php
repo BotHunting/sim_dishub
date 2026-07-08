@@ -51,7 +51,7 @@
                                     <label for="parkir" class="form-label">Pilih Parkir:</label>
                                     <select class="form-select" id="parkir" name="parkir">
                                         <?php
-                                        include_once 'koneksi.php';
+                                        include_once '../assets/config.php';
                                         $sql = "SELECT DISTINCT lokasi FROM parkir";
                                         $result = $koneksi->query($sql);
 

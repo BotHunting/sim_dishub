@@ -1,6 +1,6 @@
 <?php
 // Include koneksi ke database
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../assets/config.php';
 
 // Konfigurasi koneksi ke database
 $host = DB_HOST; // Host database (diambil dari config.php)

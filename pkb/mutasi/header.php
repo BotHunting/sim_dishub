@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start(); // Memulai sesi hanya jika belum dimulai
 }
 
-
+require_once __DIR__ . '/../../assets/config.php'; // Mengimpor koneksi database dari root/assets/
 ?>
 
 <!DOCTYPE html>
@@ -50,19 +50,15 @@ if (session_status() === PHP_SESSION_NONE) {
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="index.php" class="active">Home</a></li>
-                    <li><a href="mutasi_masuk.php">Mutasi Masuk</a></li>
-                    <li><a href="mutasi_keluar.php">Mutasi Keluar</a></li>
+                    <li><a href="dashboard.php">Mutasi Masuk</a></li>
+                    <li><a href="dashboard.php#keluar-tab-pane">Mutasi Keluar</a></li>
                 </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav><!-- End Navigasi -->
 
             <!-- Tombol Login/Logout -->
-            <?php if (isset($_SESSION['username'])): ?>
-                <a class="btn-getstarted" href="../">Home</a>
-            <?php else: ?>
-                <a class="btn-getstarted" href="../index.php">Home</a>
-            <?php endif; ?>
+            <a class="btn-getstarted" href="../index.php">Kembali ke PKB</a>
 
             <!-- Mobile Navigation -->
-            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </div>
     </header>

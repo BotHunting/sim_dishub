@@ -9,7 +9,7 @@
                 <select id="nomor_kendaraan" name="nomor_kendaraan" class="form-select" required>
                     <option value="">Pilih Nomor Kendaraan</option>
                     <?php
-                    include_once 'koneksi.php';
+                    include_once '../assets/config.php';
                     $sql = "SELECT * FROM kendaraan_masuk";
                     $result = $koneksi->query($sql);
                     if ($result->num_rows > 0) {

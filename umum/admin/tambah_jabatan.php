@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'koneksi.php';
+require_once '../../assets/config.php';
 $error = '';
 
 $query_seksi = "SELECT DISTINCT nama_seksi FROM seksi";

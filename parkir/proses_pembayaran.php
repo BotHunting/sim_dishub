@@ -1,6 +1,6 @@
 <?php
 // Sertakan file koneksi.php untuk terhubung ke database
-require_once('koneksi.php');
+require_once('../assets/config.php');
 
 // Inisialisasi variabel
 $id_kendaraan = $waktu_masuk = $waktu_keluar = $biaya = $status = $bulan_laporan = $tahun_laporan = $nama = '';

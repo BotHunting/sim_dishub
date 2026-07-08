@@ -1,6 +1,6 @@
 <?php
 // Include file koneksi database
-include_once '../../config.php';
+include_once '../../assets/config.php';
 
 // Tangkap ID laporan yang akan diedit
 $id = $_GET['id'];

@@ -3,7 +3,7 @@
 <div class="container">
     <h1>Edit Petugas</h1>
     <?php
-    include_once 'koneksi.php';
+    include_once '../assets/config.php';
 
     $id = $_GET['id'];
     $sql = "SELECT * FROM petugas WHERE id = ?";

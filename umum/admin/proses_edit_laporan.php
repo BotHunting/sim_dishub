@@ -1,6 +1,6 @@
 <?php
 // Include file koneksi database
-include_once 'koneksi.php';
+include_once '../../assets/config.php'; // This file includes config.php, so no direct change here.
 
 // Tangkap data yang dikirimkan dari form
 $id = $_POST['id'];

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config.php'; // Update to use config.php
+require_once '../../assets/config.php'; // Update to use config.php
 $id = $nomor_surat = $jenis_pengawasan = $tanggal = $deskripsi = $status = $file_google_drive = '';
 $error = '';
 if (isset($_GET['id']) && !empty($_GET['id'])) {

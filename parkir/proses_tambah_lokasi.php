@@ -1,6 +1,6 @@
 <?php
 // Sertakan file koneksi.php
-include_once 'koneksi.php';
+include_once '../assets/config.php';
 
 // Inisialisasi variabel untuk notifikasi
 $message = "";

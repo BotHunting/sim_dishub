@@ -1,4 +1,4 @@
-<?php
+<?php // This file includes koneksi.php, which includes config.php, so no direct change here.
 require_once 'koneksi.php';
 
 function getTahun()

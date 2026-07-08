@@ -23,13 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     $nomor_surat = strtoupper(trim($_POST['nomor_surat']));
     $link_file_gdrive = trim($_POST['link_file_gdrive']);
 
-    // Query untuk mengupdate data ke tabel mutasi_masuk
-    $sql_update = "UPDATE mutasi_masuk SET nomor_kendaraan = ?, nomor_uji = ?, nama_pemilik = ?, tujuan = ?, nomor_surat = ?, link_file_gdrive = ? WHERE id = ?";
+    // Query untuk mengupdate data ke tabel mutasi_keluar
+    $sql_update = "UPDATE mutasi_keluar SET nomor_kendaraan = ?, nomor_uji = ?, nama_pemilik = ?, tujuan = ?, nomor_surat = ?, link_file_gdrive = ? WHERE id = ?";
 
     if ($stmt = $koneksi->prepare($sql_update)) {
         $stmt->bind_param("ssssssi", $nomor_kendaraan, $nomor_uji, $nama_pemilik, $tujuan, $nomor_surat, $link_file_gdrive, $id);
         if ($stmt->execute()) {
-            echo "<script>alert('Data berhasil diperbarui!'); window.location.href = 'dashboard.php';</script>";
+            echo "<script>alert('Data berhasil diperbarui!'); window.location.href = 'dashboard.php#keluar-tab-pane';</script>";
         } else {
             echo "<script>alert('Terjadi kesalahan: " . $stmt->error . "');</script>";
         }
@@ -37,8 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submit'])) {
     }
 }
 
-// Mengambil data mutasi masuk berdasarkan ID
-$sql_select = "SELECT * FROM mutasi_masuk WHERE id = ?";
+// Mengambil data mutasi keluar berdasarkan ID
+$sql_select = "SELECT * FROM mutasi_keluar WHERE id = ?";
 if ($stmt_select = $koneksi->prepare($sql_select)) {
     $stmt_select->bind_param("i", $id);
     $stmt_select->execute();
@@ -56,7 +56,7 @@ $koneksi->close();
 ?>
 
 <head>
-    <title>Edit Mutasi Masuk - UPT PKB Gresik</title>
+    <title>Edit Mutasi Keluar - UPT PKB Gresik</title>
     <!-- JavaScript untuk membuat input otomatis menjadi huruf kapital -->
     <script>
         function toUpperCaseInput(event) {
@@ -67,8 +67,8 @@ $koneksi->close();
 
 <main class="main">
     <div class="container mt-5">
-        <h2>Edit Mutasi Masuk</h2>
-        <form action="edit_mutasi_masuk.php?id=<?php echo $id; ?>" method="POST">
+        <h2>Edit Mutasi Keluar</h2>
+        <form action="edit_mutasi_keluar.php?id=<?php echo $id; ?>" method="POST">
             <div class="mb-3">
                 <label for="nomor_kendaraan" class="form-label">Nomor Kendaraan</label>
                 <input type="text" class="form-control" id="nomor_kendaraan" name="nomor_kendaraan" value="<?php echo htmlspecialchars($row['nomor_kendaraan']); ?>" required oninput="toUpperCaseInput(event)">
@@ -82,7 +82,7 @@ $koneksi->close();
                 <input type="text" class="form-control" id="nama_pemilik" name="nama_pemilik" value="<?php echo htmlspecialchars($row['nama_pemilik']); ?>" required oninput="toUpperCaseInput(event)">
             </div>
             <div class="mb-3">
-                <label for="tujuan" class="form-label">Asal</label>
+                <label for="tujuan" class="form-label">Tujuan</label>
                 <input type="text" class="form-control" id="tujuan" name="tujuan" value="<?php echo htmlspecialchars($row['tujuan']); ?>" required oninput="toUpperCaseInput(event)">
             </div>
             <div class="mb-3">
@@ -94,7 +94,7 @@ $koneksi->close();
                 <input type="url" class="form-control" id="link_file_gdrive" name="link_file_gdrive" value="<?php echo htmlspecialchars($row['link_file_gdrive']); ?>" required>
             </div>
             <button type="submit" class="btn btn-primary" name="submit">Simpan Perubahan</button>
-            <a href="dashboard.php" class="btn btn-secondary">Kembali</a>
+            <a href="dashboard.php#keluar-tab-pane" class="btn btn-secondary">Kembali</a>
         </form>
     </div>
 </main>

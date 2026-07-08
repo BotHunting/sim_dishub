@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../assets/config.php';
 
 $query_bidang = "SELECT * FROM bidang";
 $result_bidang = $koneksi->query($query_bidang);

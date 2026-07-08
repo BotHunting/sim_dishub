@@ -1,6 +1,6 @@
 <?php
-session_start();
-require_once '../../config.php';
+session_start(); // This file includes config.php directly.
+require_once '../../assets/config.php';
 $error = '';
 $id = $_GET['id'] ?? '';
 $query = "SELECT * FROM pegawai WHERE id = ?";

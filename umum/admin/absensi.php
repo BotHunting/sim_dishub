@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../../config.php';
+require_once '../../assets/config.php';
 
 // Fungsi untuk mengacak waktu pagi
 function acak_waktu_pagi()

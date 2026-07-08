@@ -3,7 +3,7 @@
 session_start();
 
 // Sertakan file koneksi ke database
-require_once '../../config.php'; // Update to use config.php
+require_once '../../assets/config.php'; // Update to use config.php
 
 // Periksa apakah ID seksi telah diterima melalui parameter
 if (!isset($_GET['id'])) {

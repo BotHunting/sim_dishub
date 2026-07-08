@@ -30,7 +30,7 @@
             <div class="row gy-5">
                 <?php
                 // Sertakan file koneksi.php
-                include_once 'koneksi.php';
+                include_once '../assets/config.php';
 
                 // Query untuk mengambil data petugas dari database
                 $sql = "SELECT * FROM Petugas_parkir";

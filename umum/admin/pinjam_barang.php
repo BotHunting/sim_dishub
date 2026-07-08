@@ -1,6 +1,6 @@
 <?php
 include_once 'header.php';
-require_once 'koneksi.php';
+require_once '../../assets/config.php';
 
 // Ambil data barang dari tabel pengelolaan
 $sql_barang = "SELECT * FROM pengelolaan";

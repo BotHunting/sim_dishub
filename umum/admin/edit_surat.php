@@ -1,5 +1,5 @@
 <?php
-include_once '../../config.php'; // Update to use config.php
+include_once '../../assets/config.php'; // Update to use config.php
 $id = $nomor_surat = $tanggal = $pengirim = $penerima = $subjek = $isi = $status = $file_google_drive = "";
 $error = "";
 

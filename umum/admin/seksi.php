@@ -3,7 +3,7 @@
 session_start();
 
 // Sertakan file koneksi ke database
-require_once 'koneksi.php';
+require_once '../../assets/config.php';
 
 // Query untuk mengambil daftar seksi beserta jumlah jabatan dalam setiap seksi
 $query_seksi = "SELECT seksi.*, COUNT(jabatan.id) AS jumlah_jabatan 

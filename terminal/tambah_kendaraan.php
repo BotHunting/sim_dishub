@@ -1,4 +1,7 @@
-<?php include_once 'header.php'; ?>
+<?php
+include_once 'header.php';
+include_once 'koneksi.php';
+?>
 <div class="container">
     <h1 class="mt-5">Tambah Kendaraan</h1>
     <div class="mb-4">
@@ -21,17 +24,16 @@
                     </thead>
                     <tbody>
                         <?php
-                        include_once 'koneksi.php';
                         $sql = "SELECT * FROM kendaraan_masuk ORDER BY waktu_kedatangan DESC";
                         $result = $koneksi->query($sql);
                         if ($result->num_rows > 0) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr>";
-                                echo "<td>" . $row['nomor_kendaraan'] . "</td>";
-                                echo "<td>" . $row['trayek'] . "</td>";
-                                echo "<td>" . $row['waktu_kedatangan'] . "</td>";
-                                echo "<td>" . $row['jumlah_penumpang_masuk'] . "</td>";
-                                echo "<td>" . $row['asal_terminal'] . "</td>";
+                                echo "<td>" . htmlspecialchars($row['nomor_kendaraan']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['trayek']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['waktu_kedatangan']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['jumlah_penumpang_masuk']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['asal_terminal']) . "</td>";
                                 echo "</tr>";
                             }
                         } else {
@@ -64,21 +66,24 @@
                     <tbody>
                         <?php
                         $bulan_ini = date('Y-m');
-                        $sql = "SELECT * FROM kendaraan_keluar WHERE DATE_FORMAT(waktu_keberangkatan, '%Y-%m') = '$bulan_ini' ORDER BY waktu_keberangkatan DESC";
-                        $result = $koneksi->query($sql);
+                        $sql = "SELECT * FROM kendaraan_keluar WHERE DATE_FORMAT(waktu_keberangkatan, '%Y-%m') = ? ORDER BY waktu_keberangkatan DESC";
+                        $stmt = $koneksi->prepare($sql);
+                        $stmt->bind_param("s", $bulan_ini);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
                         if ($result->num_rows > 0) {
                             $total_retribusi = 0;
                             while ($row = $result->fetch_assoc()) {
                                 $total_retribusi += $row['retribusi'];
                                 echo "<tr>";
-                                echo "<td>" . $row['nomor_kendaraan'] . "</td>";
-                                echo "<td>" . $row['trayek'] . "</td>";
-                                echo "<td>" . $row['waktu_kedatangan'] . "</td>";
-                                echo "<td>" . $row['jumlah_penumpang_masuk'] . "</td>";
-                                echo "<td>" . $row['asal_terminal'] . "</td>";
-                                echo "<td>" . $row['waktu_keberangkatan'] . "</td>";
-                                echo "<td>" . $row['jumlah_penumpang_keluar'] . "</td>";
-                                echo "<td>" . $row['tujuan_terminal'] . "</td>";
+                                echo "<td>" . htmlspecialchars($row['nomor_kendaraan']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['trayek']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['waktu_kedatangan']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['jumlah_penumpang_masuk']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['asal_terminal']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['waktu_keberangkatan']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['jumlah_penumpang_keluar']) . "</td>";
+                                echo "<td>" . htmlspecialchars($row['tujuan_terminal']) . "</td>";
                                 echo "<td>Rp " . number_format($row['retribusi'], 0, ',', '.') . "</td>";
                                 echo "</tr>";
                             }
@@ -86,7 +91,7 @@
                         } else {
                             echo "<tr><td colspan='9'>Tidak ada data kendaraan keluar bulan ini.</td></tr>";
                         }
-                        $koneksi->close();
+                        $stmt->close();
                         ?>
                     </tbody>
                 </table>
@@ -94,4 +99,7 @@
         </div>
     </div>
 </div>
-<?php include_once 'footer.php'; ?>
+<?php
+$koneksi->close();
+include_once 'footer.php';
+?>

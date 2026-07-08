@@ -1,5 +1,5 @@
 <?php
-include_once 'header.php';
+include_once 'header.php'; // This file includes config.php, so no direct change here.
 require_once 'koneksi.php';
 
 // Ambil data pinjaman dengan status "Belum Dikembalikan"

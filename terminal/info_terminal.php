@@ -51,7 +51,7 @@
                                     <label for="terminal" class="form-label">Pilih Terminal:</label>
                                     <select class="form-select" id="terminal" name="terminal">
                                         <?php
-                                        include_once 'koneksi.php';
+                                        include_once '../assets/config.php';
                                         $sql = "SELECT DISTINCT asal_terminal FROM kendaraan_masuk";
                                         $result = $koneksi->query($sql);
 

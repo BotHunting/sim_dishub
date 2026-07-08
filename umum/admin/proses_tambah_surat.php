@@ -1,6 +1,6 @@
 <?php
 // Include file koneksi database
-include_once 'koneksi.php';
+require_once '../../assets/config.php';
 
 // Ambil data yang dikirimkan melalui method POST
 $nomor_surat = $_POST['nomor_surat'];

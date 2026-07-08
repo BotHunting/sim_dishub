@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../assets/config.php';
 $logged_in = false;
 $rules = "";
 if (isset($_SESSION['username'])) {

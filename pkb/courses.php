@@ -16,7 +16,7 @@
         <nav class="breadcrumbs">
             <div class="container">
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.php">Home</a></li>
                     <li class="current">Rekomendasi</li>
                 </ol>
             </div>
@@ -43,7 +43,6 @@
                         <div class="course-content">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <p class="category">Mutasi</p>
-                                <p class="price">$</p>
                             </div>
 
                             <h3><a href="mutasi/">Mutasi Kendaraan Bermotor</a></h3>
@@ -69,7 +68,6 @@
                         <div class="course-content">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <p class="category">Numpang Uji</p>
-                                <p class="price">$</p>
                             </div>
 
                             <h3><a href="numpanguji/">Numpang Uji Kendaraan Bermotor</a></h3>
@@ -95,7 +93,6 @@
                         <div class="course-content">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <p class="category">Rubah Bentuk</p>
-                                <p class="price">$</p>
                             </div>
 
                             <h3><a href="rubah_bentuk/">Rubah Bentuk Kendaraan Bermotor</a></h3>

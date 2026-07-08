@@ -50,6 +50,7 @@ SIM Dishub adalah platform terintegrasi untuk mengelola:
 ### Versi 3.x
 | Versi | Fitur Utama |
 |-------|-------------|
+| 3.11 | - Refactoring modul PKB (Mutasi, Numpang Uji) ke dashboard terpadu<br>- Peningkatan keamanan (Prepared Statements)<br>- Konsolidasi koneksi database & perbaikan UI |
 | 3.10 | - Fitur nodin PKB<br>- Tabel rekom PKB<br>- Perbaikan UI PKB |
 | 3.9  | - Migrasi ke config.php<br>- Sistem CCTV |
 | 3.8  | - Integrasi Google Drive |

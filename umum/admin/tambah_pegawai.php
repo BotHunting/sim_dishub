@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'koneksi.php';
+require_once '../../assets/config.php';
 
 $error = '';
 $jabatan_options = [];

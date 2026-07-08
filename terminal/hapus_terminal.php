@@ -1,6 +1,6 @@
 <?php
 // Sertakan file koneksi.php
-include_once 'koneksi.php';
+include_once '../assets/config.php';
 
 if (isset($_GET['id'])) {
     // Ambil ID terminal dari parameter URL

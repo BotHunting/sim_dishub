@@ -1,6 +1,5 @@
 <?php
 include("header.php");
-include("config.php"); // Mengimpor koneksi database dari config.php
 ?>
 
 <main class="main">

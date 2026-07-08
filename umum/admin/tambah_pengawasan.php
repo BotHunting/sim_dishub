@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Include file koneksi database
-require_once 'koneksi.php';
+require_once '../../assets/config.php'; // koneksi.php akan diperbarui untuk menunjuk ke config.php yang baru
 // Inisialisasi variabel
 $nomor_surat = $jenis_pengawasan = $tanggal = $deskripsi = $status = $file_google_drive = '';
 $error = '';

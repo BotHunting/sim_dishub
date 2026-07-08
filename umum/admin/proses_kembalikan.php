@@ -1,6 +1,6 @@
 <?php
-include_once 'header.php';
-require_once 'koneksi.php';
+include_once 'header.php'; // This file includes config.php, so no direct change here.
+require_once '../../assets/config.php';
 
 // Ambil id pinjaman dari URL
 $id_pinjaman = $_GET['id'];

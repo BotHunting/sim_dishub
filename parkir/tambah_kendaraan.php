@@ -1,5 +1,5 @@
 <?php
-require_once('koneksi.php');
+require_once('../assets/config.php');
 $nomor_kendaraan = $jenis_kendaraan = '';
 $nomor_kendaraan_err = $jenis_kendaraan_err = '';
 $success_message = '';

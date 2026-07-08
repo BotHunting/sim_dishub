@@ -1,6 +1,6 @@
 <?php
 // Sertakan file koneksi.php
-include_once 'koneksi.php';
+include_once '../assets/config.php';
 
 // Ambil data dari formulir tambah parkir
 $lokasi = $_POST['lokasi'];

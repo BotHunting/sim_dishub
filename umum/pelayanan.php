@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../assets/config.php';
 $query = "SELECT * FROM pelayananumum ORDER BY tanggal DESC";
 $stmt = $koneksi->prepare($query);
 if ($stmt->execute()) {

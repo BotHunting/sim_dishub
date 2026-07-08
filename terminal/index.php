@@ -1,5 +1,5 @@
 <?php
-include_once 'koneksi.php';
+include_once '../assets/config.php';
 session_start();
 
 // Query SQL untuk mengambil jumlah semua petugas

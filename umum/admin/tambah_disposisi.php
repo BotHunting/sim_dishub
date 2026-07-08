@@ -1,5 +1,5 @@
 <?php
-include_once 'koneksi.php';
+require_once '../../assets/config.php';
 $tanggal = $pengirim = $penerima = $judul = $isi = $file_google_drive = ""; // Definisikan $file_google_drive
 $error = "";
 $status = "Pending";

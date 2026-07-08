@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../assets/config.php';
 // Inisialisasi variabel $logout_button
 $logout_button = '';
 

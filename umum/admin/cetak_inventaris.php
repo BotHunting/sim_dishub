@@ -1,5 +1,5 @@
 <?php
-require_once '../../config.php'; // Update to use config.php
+require_once '../../assets/config.php'; // Update to use config.php
 
 // Memeriksa apakah ada data yang dikirimkan melalui metode POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

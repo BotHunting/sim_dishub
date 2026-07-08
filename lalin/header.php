@@ -1,57 +1,70 @@
 <?php
-session_start();
-
-// Inisialisasi variabel $logged_in dan $role
-$logged_in = false;
-$role = ''; // Menyimpan role pengguna
-
-// Periksa apakah pengguna sudah login
-if (isset($_SESSION['username'])) {
-    $logged_in = true;
-    $role = isset($_SESSION['role']) ? $_SESSION['role'] : ''; // Ambil role dari session jika ada
+// Mulai sesi jika belum aktif
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 
+require_once __DIR__ . '../../assets/config.php'; // Mengimpor koneksi database dari root/assets/
+
+// Periksa apakah pengguna sudah login
+$logged_in = isset($_SESSION['username']);
+$role = $logged_in ? ($_SESSION['role'] ?? '') : ''; // Ambil role dari session jika ada
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lalu Lintas Dishub Fakfak</title>
-    <link rel="icon" href="images/logo.png" type="image/png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" >
+    <title>ATCS - Dishub Fakfak</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="../assets/img/favicon.png" rel="icon">
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="../assets/css/main.css" rel="stylesheet">
 </head>
 
-<body>
-    <header class="container-fluid bg-dark text-light py-3">
-        <div class="container d-flex align-items-center justify-content-between">
-            <a href="index.php" class="text-light text-decoration-none fs-4">
-                <img src="images/logo.png" alt="Logo" height="50" class="me-2">
-                Lalu-Lintas Dinas Perhubungan Fakfak
+<body class="index-page">
+
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+            <!-- Logo -->
+            <a href="index.php" class="logo d-flex align-items-center me-auto">
+                <h1 class="sitename">ATCS Dishub Fakfak</h1>
             </a>
-            <nav class="nav">
-                <a class="nav-link text-light" href="index.php">Beranda</a>
-                <a class="nav-link text-light" href="tentang_atcs.php">Tentang ATCS</a>
-                <a class="nav-link text-light" href="layanan.php">Layanan</a>
-                <a class="nav-link text-light" href="kontak.php">Kontak</a>
 
-                <!-- Menampilkan menu berdasarkan role -->
-                <?php if ($logged_in): ?>
-                    <?php if ($role === 'Kepala'): ?>
-                        <a class="nav-link text-light" href="dishub/lalin/live.php">Live CCTV</a>
-                        <a class="nav-link text-light" href="dishub/lalin/tambah_video.php">Tambah Video</a>
-                    <?php endif; ?>
+            <!-- Navigasi -->
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="index.php" class="active">Beranda</a></li>
+                    <li><a href="live.php">Live CCTV</a></li>
+                    <li><a href="layanan.php">Layanan</a></li>
+                    <li><a href="kontak.php">Kontak</a></li>
+                </ul>
+            </nav><!-- End Navigasi -->
 
-                    <!-- Menampilkan tombol logout jika sudah login -->
-                    <a class="nav-link text-light" href="../index.php">Home</a>
-                <?php else: ?>
-                    <!-- Menampilkan tombol login jika belum login -->
-                    <a class="nav-link text-light" href="../index.php">Home</a>
-                <?php endif; ?>
-            </nav>
+            <!-- Tombol Kembali -->
+            <a class="btn-getstarted" href="../index.php">Kembali ke Home</a>
+
+            <!-- Mobile Navigation -->
+            <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
         </div>
     </header>
-    <div class="container mt-5">

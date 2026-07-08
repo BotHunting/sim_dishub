@@ -1,6 +1,6 @@
 <?php
 // Sertakan file koneksi.php
-include_once 'koneksi.php';
+include_once '../assets/config.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Ambil data yang dikirim melalui form

@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include_once '../../config.php'; // Menggunakan config.php dari dua folder sebelumnya
+include_once '../../assets/config.php'; // Menggunakan config.php dari dua folder sebelumnya
 $logged_in = false;
 $rules = "";
 if (isset($_SESSION['username'])) {

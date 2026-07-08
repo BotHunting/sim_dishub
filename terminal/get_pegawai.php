@@ -1,6 +1,6 @@
 <?php
 // Sertakan file koneksi.php
-include_once 'koneksi.php';
+include_once '../assets/config.php';
 
 // Periksa apakah ada pengiriman data melalui metode POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

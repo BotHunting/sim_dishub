@@ -1,5 +1,5 @@
 <?php
-require_once 'koneksi.php';
+require_once '../../assets/config.php';
 
 // Inisialisasi variabel untuk menyimpan data pegawai berdasarkan jabatan, seksi, atau bidang
 $data = [];

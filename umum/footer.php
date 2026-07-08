@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../assets/config.php';
 ?>
 <footer id="footer" class="footer position-relative">
     <div class="container footer-top">

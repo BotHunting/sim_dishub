@@ -1,5 +1,5 @@
 <?php
-require_once('koneksi.php');
+require_once('../assets/config.php');
 
 // Query untuk mengambil data kendaraan dari database
 $sql_kendaraan = "SELECT * FROM kendaraan";

@@ -1,11 +1,10 @@
 <?php
-include "header.php";
-require 'koneksi.php';
+include("header.php");
 
 // Cek login
 $logged_in = isset($_SESSION['username']);
 
-// Hapus video jika ada parameter hapus dan id valid
+// Hapus video jika sudah login dan ada parameter hapus
 if ($logged_in && isset($_GET['hapus']) && is_numeric($_GET['hapus'])) {
     $hapus_id = $_GET['hapus'];
     $stmt = $koneksi->prepare("DELETE FROM video_cctv WHERE id = ?");
@@ -21,100 +20,67 @@ $stmt->execute();
 $videos = $stmt->get_result();
 ?>
 
-<div class="banner">
-    <img src="images/atcs.jpg" alt="ATCS" class="img-fluid">
-</div>
+<main class="main">
 
-<div class="main-content">
-    <div class="container mt-5">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2>Live CCTV ATCS</h2>
-            <?php if ($logged_in): ?>
-                <a href="tambah_video.php" class="btn btn-success">+ Tambah Video</a>
-            <?php endif; ?>
-        </div>
-
-        <div class="row">
-            <?php while ($video = $videos->fetch_assoc()): ?>
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= htmlspecialchars($video['lokasi']) ?></h5>
-
-                            <div class="mb-3">
-                                <?= getVideoPreview($video['link_embed']) ?>
-                            </div>
-
-                            <?php if ($logged_in): ?>
-                                <div class="d-grid gap-2">
-                                    <a href="edit_video.php?id=<?= $video['id'] ?>" class="btn btn-warning">Edit Link</a>
-                                    <a href="live.php?hapus=<?= $video['id'] ?>" class="btn btn-danger" onclick="return confirm('Yakin ingin menghapus video ini?')">Hapus</a>
-                                </div>
-                            <?php endif; ?>
-                        </div>
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>Live CCTV</h1>
+                        <p class="mb-0">Pantau layanan UPT PKB Gresik secara langsung melalui CCTV yang tersedia di berbagai lokasi strategis.</p>
                     </div>
                 </div>
-            <?php endwhile; ?>
+            </div>
         </div>
-    </div>
-</div>
+        <nav class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="index.php">Home</a></li>
+                    <li class="current">Live CCTV</li>
+                </ol>
+            </div>
+        </nav>
+    </div><!-- End Page Title -->
 
-<?php
-function getVideoPreview($src) {
-    if (!$src) return '<div class="text-danger">Link tidak tersedia</div>';
+    <!-- Section Live CCTV -->
+    <section id="live-cctv" class="section courses">
+        <?php if ($logged_in): ?>
+            <div class="col-lg-12 text-center mb-4">
+                <a href="tambah_video.php" class="btn btn-primary">+ Tambah Video</a>
+            </div>
+        <?php endif; ?>
+        <div class="container">
+            <div class="row">
+                <?php if ($videos->num_rows > 0): ?>
+                    <?php while ($video = $videos->fetch_assoc()): ?>
+                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="course-item w-100">
+                                <div class="ratio ratio-16x9">
+                                    <iframe src="<?= htmlspecialchars($video['link_embed']) ?>" title="<?= htmlspecialchars($video['lokasi']) ?>" allowfullscreen></iframe>
+                                </div>
+                                <div class="course-content">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h3 class="m-0"><a href="#"><?= htmlspecialchars($video['lokasi']) ?></a></h3>
+                                        <?php if ($logged_in): ?>
+                                            <div>
+                                                <a href="edit_video.php?id=<?= $video['id'] ?>" class="btn btn-warning btn-sm">Edit</a>
+                                                <a href="live.php?hapus=<?= $video['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus video ini?')">Hapus</a>
+                                            </div>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <p class="text-center">Tidak ada data CCTV yang tersedia.</p>
+                <?php endif; ?>
+            </div>
+        </div>
+    </section><!-- End Section Live CCTV -->
 
-    $safeSrc = htmlspecialchars($src);
+</main>
 
-    // YouTube
-    if (preg_match('/(youtube\.com|youtu\.be)/', $src)) {
-        $embedLink = preg_replace('/watch\?v=/', 'embed/', $src);
-        return "<iframe class='w-100' height='200' src='{$embedLink}' allowfullscreen allow='autoplay'></iframe>";
-    }
-
-    // m3u8 HLS (via hls.js atau player iframe jika punya server player)
-    if (strpos($src, '.m3u8') !== false) {
-        return "
-        <video class='w-100' height='200' autoplay muted controls playsinline id='video_" . md5($src) . "'></video>
-        <script src='https://cdn.jsdelivr.net/npm/hls.js@latest'></script>
-        <script>
-            const videoEl = document.getElementById('video_" . md5($src) . "');
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource('{$safeSrc}');
-                hls.attachMedia(videoEl);
-            } else if (videoEl.canPlayType('application/vnd.apple.mpegurl')) {
-                videoEl.src = '{$safeSrc}';
-            }
-        </script>";
-    }
-
-    // MP4 / WEBM
-    if (preg_match('/\.(mp4|webm)$/i', $src)) {
-        $type = pathinfo($src, PATHINFO_EXTENSION);
-        return "<video class='w-100' height='200' controls autoplay muted>
-                    <source src='{$safeSrc}' type='video/{$type}'>
-                    Browser tidak mendukung video ini.
-                </video>";
-    }
-
-    // HTML custom player (play.html, index.html, dll)
-    if (preg_match('/\.html?$/i', $src) || strpos($src, 'play.html') !== false) {
-        return "<iframe class='w-100' height='200' src='{$safeSrc}' allow='autoplay; fullscreen'></iframe>";
-    }
-
-    // WebRTC via iframe (misalnya wss:// atau gateway Janus/MediaSoup)
-    if (strpos($src, 'webrtc') !== false || strpos($src, 'wss://') !== false || strpos($src, 'rtc') !== false) {
-        return "<iframe class='w-100' height='200' src='{$safeSrc}' allow='camera; microphone; autoplay; fullscreen'></iframe>";
-    }
-
-    // RTSP link (biasanya perlu player gateway)
-    if (strpos($src, 'rtsp://') !== false) {
-        return "<div class='text-warning'>RTSP tidak bisa langsung diputar di browser. Gunakan gateway WebRTC/RTMP seperti Ant Media Server, Wowza, Janus, atau restream ke HLS/m3u8.</div>";
-    }
-
-    // Default (iframe fallback)
-    return "<iframe class='w-100' height='200' src='{$safeSrc}' allowfullscreen allow='autoplay'></iframe>";
-}
-?>
-
-<?php include "footer.php"; ?>
+<?php include("footer.php"); ?>

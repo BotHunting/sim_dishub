@@ -37,7 +37,7 @@ include("header.php"); // Memuat header
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="<?php echo isset($_SESSION['username']) ? 'mutasi_masuk.php' : 'mutasi_masuk_find.php'; ?>">
+                                <a href="dashboard.php">
                                     Mutasi Masuk
                                 </a>
                             </h5>
@@ -53,7 +53,7 @@ include("header.php"); // Memuat header
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">
-                                <a href="<?php echo isset($_SESSION['username']) ? 'mutasi_keluar.php' : 'mutasi_keluar_find.php'; ?>">
+                                <a href="dashboard.php#keluar-tab-pane">
                                     Mutasi Keluar
                                 </a>
                             </h5>

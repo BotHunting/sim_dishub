@@ -1,6 +1,6 @@
 <?php
 // Sertakan file koneksi ke database
-require_once '../../config.php';
+require_once '../../assets/config.php';
 
 // Periksa apakah parameter jabatan telah dikirim melalui metode GET
 if (isset($_GET['jabatan'])) {

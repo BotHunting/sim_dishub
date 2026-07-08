@@ -1,6 +1,6 @@
 <?php
 include_once 'header.php';
-require_once 'koneksi.php';
+require_once '../../assets/config.php';
 
 // Ambil data pinjaman dengan status "Sudah Dikembalikan"
 $sql = "SELECT pinjaman.id, pengelolaan.nama_barang, pegawai.nama AS nama_pegawai, pinjaman.waktu_pinjam, pinjaman.waktu_kembali

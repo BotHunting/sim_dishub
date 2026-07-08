@@ -28,7 +28,7 @@
     <div class="container">
       <div class="row">
         <?php
-        include_once 'koneksi.php';
+        include_once '../assets/config.php';
 
         $sql = "SELECT * FROM parkir";
         $result = $koneksi->query($sql);

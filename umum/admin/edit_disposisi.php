@@ -1,5 +1,5 @@
 <?php
-include_once '../../config.php';
+include_once '../../assets/config.php';
 $id = $tanggal = $pengirim = $penerima = $judul = $isi = $file_google_drive = $status = "";
 $error = "";
 

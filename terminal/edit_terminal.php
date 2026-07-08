@@ -3,7 +3,7 @@
 <div class="container">
     <h1>Edit Terminal</h1>
     <?php
-    include_once 'koneksi.php';
+    include_once '../assets/config.php';
 
     // Cek apakah parameter id telah diterima dari URL
     if (isset($_GET['id'])) {

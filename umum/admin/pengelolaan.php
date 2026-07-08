@@ -1,4 +1,4 @@
-<?php include_once 'header.php'; ?>
+<?php include_once 'header.php'; // header.php akan diperbarui untuk menunjuk ke config.php yang baru ?>
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-11">

@@ -1,5 +1,5 @@
 <?php
-require_once('koneksi.php');
+require_once('../assets/config.php');
 $nama = $jabatan = $nip = $jadwal_kerja = $telepon = '';
 $nama_err = $jabatan_err = $nip_err = $jadwal_kerja_err = $telepon_err = '';
 $success_message = '';

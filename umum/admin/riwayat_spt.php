@@ -1,5 +1,5 @@
 <?php
-include_once 'koneksi.php';
+require_once '../../assets/config.php';
 
 // Mendapatkan daftar bulan unik dari tabel pengawasan
 $query_months = "SELECT DISTINCT MONTH(tanggal) AS month FROM pengawasan WHERE status = 'Approved' ORDER BY month ASC";

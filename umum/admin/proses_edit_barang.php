@@ -1,6 +1,6 @@
 <?php
-session_start();
-require_once 'koneksi.php';
+session_start(); // This file includes koneksi.php, which includes config.php, so no direct change here.
+require_once '../../assets/config.php';
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) { // Periksa apakah id barang adalah numerik
     $id_barang = $_GET['id'];

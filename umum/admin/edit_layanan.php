@@ -2,9 +2,9 @@
 <div class="container mt-5">
     <h2>Edit Layanan</h2>
     <link rel="icon" href="img/logo.png" type="image/png">
-    <?php
+    <?php // This file includes config.php directly.
     // Include file koneksi database
-    include_once '../../config.php';
+    include_once '../../assets/config.php';
     // Periksa apakah parameter id telah diberikan
     if (isset($_GET['id'])) {
         // Menggunakan prepared statement untuk menghindari SQL Injection

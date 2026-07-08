@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'koneksi.php';
+require_once '../../assets/config.php';
 
 // Escape input untuk mencegah SQL Injection
 $nomor_surat = mysqli_real_escape_string($koneksi, $_POST['nomor_surat']);

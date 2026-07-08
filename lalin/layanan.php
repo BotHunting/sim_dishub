@@ -1,72 +1,64 @@
 <?php include "header.php"; ?>
 
-<div class="banner">
-    <h1>Layanan ATCS</h1>
-</div>
+<main class="main">
 
-<div class="main-content">
-    <div class="container">
-        <div class="row">
-            <!-- Kolom Kiri -->
-            <div class="col-md-8">
-                
-                <!-- Box 1: Informasi Lalu Lintas Real-time -->
-                <div class="box">
-                    <h2>Informasi Lalu Lintas Real-time</h2>
-                    <p>Dapatkan informasi terkini mengenai kondisi lalu lintas di berbagai ruas jalan di kota Anda. Informasi ini dapat diakses melalui:</p>
-                    <ul>
-                        <li>Website ATCS</li>
-                        <li>Aplikasi mobile ATCS (jika tersedia)</li>
-                        <li>CCTV lalu lintas yang tersebar di berbagai titik</li>
-                    </ul>
-                    <p>Informasi lalu lintas real-time ini dapat membantu Anda untuk:</p>
-                    <ul>
-                        <li>Memilih rute perjalanan yang optimal</li>
-                        <li>Mengantisipasi kemacetan lalu lintas</li>
-                        <li>Memperkirakan waktu tempuh perjalanan</li>
-                    </ul>
-                </div>
-
-                <!-- Box 2: Pengaduan Masyarakat -->
-                <div class="box">
-                    <h2>Pengaduan Masyarakat</h2>
-                    <p>Laporkan permasalahan terkait lalu lintas di kota Anda melalui layanan pengaduan ATCS. Anda dapat melaporkan hal-hal seperti:</p>
-                    <ul>
-                        <li>Lampu lalu lintas yang tidak berfungsi</li>
-                        <li>Rambu lalu lintas yang rusak</li>
-                        <li>Pelanggaran lalu lintas</li>
-                        <li>Kemacetan lalu lintas yang tidak biasa</li>
-                    </ul>
-                    <p>Laporan masyarakat akan ditindaklanjuti oleh petugas terkait untuk mengatasi permasalahan lalu lintas secara efektif.</p>
-                    <p><b>Cara Melaporkan:</b></p>
-                    <ul>
-                        <li>Melalui Funpage Facebook <a href="https://www.facebook.com/dishub.fakfak" class="btn btn-primary">Disini</a></li>
-                        <li>Melalui email ke alamat <a href="mailto:dishubfakfak.lalulintas@gmail.com">dishubfakfak.lalulintas@gmail.com</a></li>
-                        <li>Melalui hotline ATCS di nomor telepon <b>(0956) 22214</b></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Kolom Kanan -->
-            <div class="col-md-4">
-                
-                <!-- Box 3: Unduh Aplikasi Mobile ATCS -->
-                <div class="box">
-                    <h2>Unduh Aplikasi Mobile ATCS (Jika Tersedia)</h2>
-                    <p>Dapatkan informasi lalu lintas secara lebih mudah dan praktis melalui aplikasi mobile ATCS. Aplikasi ini menyediakan berbagai fitur, seperti:</p>
-                    <ul>
-                        <li>Peta lalu lintas real-time</li>
-                        <li>Peringatan kemacetan lalu lintas</li>
-                        <li>Perkiraan waktu tempuh perjalanan</li>
-                        <li>Pelaporan permasalahan lalu lintas</li>
-                    </ul>
-                    <p><i>(Jika belum tersedia, bagian ini akan dihapus atau disesuaikan)</i></p>
-                    <p><a href="#" class="btn btn-primary">Download di App Store</a></p>
-                    <p><a href="#" class="btn btn-primary">Download di Google Play</a></p>
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+        <div class="heading">
+            <div class="container">
+                <div class="row d-flex justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h1>Layanan CCTV</h1>
+                        <p class="mb-0">Informasi mengenai layanan pemantauan CCTV di UPT PKB Gresik untuk mendukung transparansi, efisiensi, dan keamanan.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+        <nav class="breadcrumbs">
+            <div class="container">
+                <ol>
+                    <li><a href="index.php">Home</a></li>
+                    <li class="current">Layanan</li>
+                </ol>
+            </div>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section id="layanan-info" class="section">
+        <div class="container" data-aos="fade-up">
+            <div class="row gy-4">
+                <div class="col-lg-12">
+
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Manfaat CCTV Pelayanan</h3>
+                            <p class="card-text">UPT Pengujian Kendaraan Bermotor Gresik menyediakan fasilitas CCTV untuk memantau berbagai aktivitas pelayanan dan pengujian kendaraan bermotor di kantor. Dengan adanya CCTV, diharapkan pelayanan dapat berjalan lebih transparan dan aman. Berikut adalah beberapa manfaat CCTV di kantor kami:</p>
+                            <ul>
+                                <li>Memonitor jalannya pelayanan pengujian kendaraan secara real-time.</li>
+                                <li>Meningkatkan keamanan di area kantor.</li>
+                                <li>Mendokumentasikan proses pengujian kendaraan bermotor.</li>
+                                <li>Mendukung pengawasan operasional yang lebih efisien.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Pengaduan Masyarakat</h3>
+                            <p class="card-text">Untuk meningkatkan kualitas pelayanan, masyarakat dapat melaporkan masalah atau keluhan terkait pengujian kendaraan atau pengawasan yang berkaitan dengan CCTV yang ada. Berikut adalah cara pengaduan yang dapat dilakukan:</p>
+                            <ul>
+                                <li>Melalui Funpage Facebook <a href="https://www.facebook.com/dishub.fakfak" target="_blank">Disini</a></li>
+                                <li>Melalui email ke alamat <a href="mailto:uptpkbgresik@gmail.com">uptpkbgresik@gmail.com</a></li>
+                                <li>Melalui hotline ATCS di nomor telepon <b>(0956) 22214</b></li>
+                            </ul>
+                            <p>Semua pengaduan yang diterima akan ditindaklanjuti untuk memastikan pelayanan berjalan dengan baik dan sesuai dengan harapan masyarakat.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 
 <?php include "footer.php"; ?>

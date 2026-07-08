@@ -128,7 +128,7 @@
         <header>
             <h1>Laporan Pendapatan Terminal</h1>
             <?php
-            include_once 'koneksi.php';
+            include_once '../assets/config.php';
             $bulan = isset($_GET['bulan']) ? $_GET['bulan'] : date('m');
             $tahun = isset($_GET['tahun']) ? $_GET['tahun'] : date('Y');
             $petugas_data = [];

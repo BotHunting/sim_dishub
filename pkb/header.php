@@ -4,13 +4,8 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Pastikan file config bisa ditemukan dari direktori manapun
-$rootPath = __DIR__ . '/config.php';
-if (file_exists($rootPath)) {
-    include($rootPath);
-} elseif (file_exists(__DIR__ . '/../config.php')) {
-    include(__DIR__ . '/../config.php');
-}
+// Sertakan file konfigurasi utama dari direktori assets
+require_once __DIR__ . '/../assets/config.php';
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +54,6 @@ if (file_exists($rootPath)) {
                 <li><a href="courses.php">Services</a></li>
                 <li><a href="events.php">Pelayanan</a></li>
                 <li><a href="trainers.php">Pegawai</a></li>
-                <li><a href="cctv/">CCTV</a></li>
                 <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                     <ul>
                         <li><a href="mutasi/">Mutasi</a></li>

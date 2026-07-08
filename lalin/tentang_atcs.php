@@ -1,57 +1,50 @@
 <?php include "header.php"; ?>
 
 <div class="banner">
-    <h1>Tentang ATCS</h1>
+    <h1>Tentang CCTV Pelayanan UPT PKB Gresik</h1>
 </div>
 
 <div class="main-content">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <!-- Box 1: Apa itu ATCS -->
+                <!-- Box 1: Apa itu CCTV Pelayanan UPT PKB Gresik -->
                 <div class="box">
-                    <h2>Apa itu ATCS?</h2>
-                    <p>ATCS (Area Traffic Control System) adalah sistem kontrol lalu lintas berbasis teknologi yang dirancang untuk meningkatkan kelancaran dan keselamatan lalu lintas di perkotaan. Sistem ini bekerja dengan cara memantau kondisi lalu lintas secara real-time dan mengatur pengaturan lampu lalu lintas secara otomatis untuk mengurangi kemacetan dan meningkatkan efisiensi perjalanan.</p>
-                    <p>Beberapa teknologi yang digunakan dalam ATCS meliputi:</p>
-                    <ul>
-                        <li>Detektor kendaraan yang terpasang di ruas jalan</li>
-                        <li>CCTV untuk pemantauan kondisi lalu lintas</li>
-                        <li>Sensor pengatur lampu lalu lintas</li>
-                    </ul>
-                    <p>Data yang diperoleh dari sensor tersebut akan dianalisis dan diolah oleh pusat kendali ATCS untuk mengatur pengaturan lampu lalu lintas yang lebih optimal, sesuai dengan kondisi riil di lapangan.</p>
+                    <h2>Apa itu CCTV Pelayanan UPT PKB Gresik?</h2>
+                    <p>CCTV Pelayanan di UPT Pengujian Kendaraan Bermotor Gresik adalah sistem pemantauan berbasis video yang digunakan untuk meningkatkan transparansi, efisiensi, dan keamanan dalam proses pengujian kendaraan bermotor. Sistem ini berfungsi untuk memantau aktivitas di berbagai area strategis seperti area pendaftaran, jalur uji kendaraan, ruang tunggu, dan kantor pelayanan secara real-time.</p>
+                    <p>CCTV ini membantu untuk memantau kondisi lalu lintas kendaraan uji, memverifikasi keberadaan kendaraan, serta memberikan laporan visual kepada petugas yang berwenang. Sistem ini juga bertujuan untuk memberikan rasa aman dan nyaman kepada masyarakat yang menggunakan jasa pengujian kendaraan bermotor.</p>
                 </div>
 
-                <!-- Box 2: Tujuan dan Manfaat ATCS -->
+                <!-- Box 2: Tujuan dan Manfaat CCTV Pelayanan UPT PKB Gresik -->
                 <div class="box">
-                    <h2>Tujuan dan Manfaat ATCS</h2>
-                    <p>ATCS memiliki berbagai tujuan penting, antara lain:</p>
+                    <h2>Tujuan dan Manfaat CCTV Pelayanan</h2>
+                    <p>CCTV Pelayanan di UPT PKB Gresik memiliki berbagai tujuan penting, antara lain:</p>
                     <ul>
-                        <li>Meningkatkan kelancaran dan efisiensi lalu lintas</li>
-                        <li>Meningkatkan keselamatan pengendara dan pejalan kaki</li>
-                        <li>Meminimalkan kemacetan dengan pengaturan lampu lalu lintas yang lebih dinamis</li>
-                        <li>Mengurangi emisi gas buang kendaraan dengan mempercepat aliran lalu lintas</li>
+                        <li>Meningkatkan transparansi dalam proses pengujian kendaraan bermotor</li>
+                        <li>Memastikan keamanan dan kenyamanan dalam pelayanan publik</li>
+                        <li>Memantau kondisi lalu lintas kendaraan secara real-time</li>
+                        <li>Mendukung efisiensi operasional pengujian kendaraan</li>
                     </ul>
-                    <p>Beberapa manfaat yang dapat dirasakan dari penerapan ATCS, antara lain:</p>
+                    <p>Manfaat yang dapat dirasakan dari penggunaan CCTV Pelayanan antara lain:</p>
                     <ul>
-                        <li>Perjalanan lebih cepat dan waktu tempuh yang lebih singkat</li>
-                        <li>Penghematan bahan bakar kendaraan</li>
-                        <li>Pengurangan polusi udara akibat emisi kendaraan</li>
-                        <li>Peningkatan kualitas hidup masyarakat perkotaan</li>
+                        <li>Pengawasan lebih baik terhadap proses pengujian kendaraan</li>
+                        <li>Memberikan kepercayaan kepada masyarakat atas proses yang dilakukan</li>
+                        <li>Mempermudah monitoring dan evaluasi bagi petugas</li>
+                        <li>Memastikan ketertiban dan keamanan di area pengujian</li>
                     </ul>
                 </div>
 
-                <!-- Box 3: Komponen Sistem ATCS -->
+                <!-- Box 3: Komponen Sistem CCTV Pelayanan -->
                 <div class="box">
-                    <h2>Komponen Sistem ATCS</h2>
-                    <p>Sistem ATCS terdiri dari beberapa komponen penting yang bekerja secara sinergis untuk mengatur lalu lintas secara efisien. Beberapa komponen utama tersebut antara lain:</p>
+                    <h2>Komponen Sistem CCTV Pelayanan</h2>
+                    <p>Sistem CCTV Pelayanan di UPT PKB Gresik terdiri dari beberapa komponen utama yang bekerja bersama untuk memberikan pemantauan yang efektif dan efisien. Beberapa komponen tersebut antara lain:</p>
                     <ul>
-                        <li><strong>Sensor Lalu Lintas</strong>: Sensor yang dipasang di jalan raya untuk mendeteksi jumlah kendaraan, kecepatan, dan kepadatan lalu lintas di suatu area tertentu.</li>
-                        <li><strong>Detektor Kendaraan</strong>: Alat yang mendeteksi keberadaan kendaraan pada persimpangan atau ruas jalan tertentu. Data dari detektor ini digunakan untuk mengatur durasi lampu lalu lintas.</li>
-                        <li><strong>CCTV Lalu Lintas</strong>: Kamera pengawas yang dipasang di titik-titik strategis untuk memantau kondisi lalu lintas secara langsung.</li>
-                        <li><strong>Pusat Kendali ATCS</strong>: Tempat di mana semua data dari sensor dan CCTV dikumpulkan, dianalisis, dan digunakan untuk mengontrol pengaturan lampu lalu lintas serta memberikan rekomendasi terkait pengaturan lalu lintas lainnya.</li>
-                        <li><strong>Jaringan Komunikasi</strong>: Infrastruktur yang menghubungkan sensor-sensor dan pusat kendali untuk memastikan data dapat disampaikan dengan cepat dan akurat.</li>
+                        <li><strong>Kamera CCTV</strong>: Kamera yang dipasang di berbagai titik strategis untuk memantau kondisi lalu lintas dan area pelayanan secara langsung.</li>
+                        <li><strong>Pusat Kendali CCTV</strong>: Tempat dimana semua rekaman CCTV dikumpulkan dan dianalisis untuk memastikan proses pengujian berjalan sesuai dengan prosedur yang ditetapkan.</li>
+                        <li><strong>Jaringan Komunikasi</strong>: Sistem komunikasi yang menghubungkan seluruh perangkat CCTV ke pusat kendali untuk memastikan data dan rekaman dapat dikirimkan dengan lancar.</li>
+                        <li><strong>Perangkat Penyimpanan Video</strong>: Sistem penyimpanan yang menyimpan rekaman video untuk pemantauan ulang atau keperluan dokumentasi.</li>
                     </ul>
-                    <p>Dengan adanya komponen-komponen ini, ATCS dapat memberikan solusi atas permasalahan kemacetan dan meningkatkan kualitas pengaturan lalu lintas di kota-kota besar.</p>
+                    <p>Dengan komponen-komponen ini, CCTV Pelayanan di UPT PKB Gresik dapat memastikan bahwa setiap tahapan pengujian kendaraan dapat dipantau dengan cermat dan dilaksanakan dengan transparansi yang tinggi.</p>
                 </div>
             </div>
         </div>

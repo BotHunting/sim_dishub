@@ -1,10 +1,10 @@
 <?php
+// Mulai sesi jika belum aktif
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-include("../config.php"); // Mengimpor koneksi database dari config.php
-
-// Mengambil data pegawai jika dibutuhkan (optional)
-$sql = "SELECT * FROM pegawai";
-$result = $koneksi->query($sql);
+require_once __DIR__ . '/../../assets/config.php'; // Mengimpor koneksi database dari root/assets/
 ?>
 
 <!DOCTYPE html>
@@ -49,19 +49,16 @@ $result = $koneksi->query($sql);
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <!-- Tab Home -->
-                    <li><a href="index.php" class="active">Home<br></a></li>
+                    <li><a href="index.php" class="active">Home</a></li>
 
-                    <!-- Tab Numpang Uji Masuk -->
+                    <!-- Tautan ke dashboard terpadu -->
                     <li>
-                        <a href="<?php echo isset($_SESSION['username']) ? 'numpanguji_masuk.php' : 'numpanguji_masuk_find.php'; ?>">
+                        <a href="dashboard.php">
                             Numpang Uji Masuk
                         </a>
                     </li>
-
-                    <!-- Tab Numpang Uji Keluar -->
                     <li>
-                        <a href="<?php echo isset($_SESSION['username']) ? 'numpanguji_keluar.php' : 'numpanguji_keluar_find.php'; ?>">
+                        <a href="dashboard.php#keluar-tab-pane">
                             Numpang Uji Keluar
                         </a>
                     </li>
@@ -69,15 +66,7 @@ $result = $koneksi->query($sql);
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <?php
-            // Jika pengguna sudah login, tampilkan tombol logout
-            if (isset($_SESSION['username'])) {
-                echo '<a class="btn-getstarted" href="../">Home</a>';
-            } else {
-                // Jika pengguna belum login, tampilkan tombol Home
-                echo '<a class="btn-getstarted" href="../index.php">Home</a>';
-            }
-            ?>
+            <a class="btn-getstarted" href="../index.php">Kembali ke PKB</a>
 
         </div>
     </header>

@@ -31,7 +31,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                require_once '../../config.php';
+                                require_once '../../assets/config.php';
                                 $sql = "SELECT * FROM disposisi WHERE status IN ('Pending', 'Rejected') ORDER BY tanggal DESC";
                                 $stmt = $koneksi->prepare($sql);
                                 $stmt->execute();

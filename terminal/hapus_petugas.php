@@ -2,7 +2,7 @@
 // Periksa apakah ada pengiriman data melalui metode GET dan apakah ID petugas telah dikirim
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     // Sertakan file koneksi.php
-    include_once 'koneksi.php';
+    include_once '../assets/config.php';
 
     // Escape input pengguna untuk menghindari serangan SQL Injection
     $id = mysqli_real_escape_string($koneksi, $_GET['id']);

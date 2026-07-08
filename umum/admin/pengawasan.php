@@ -1,4 +1,4 @@
-<?php include_once 'header.php'; ?>
+<?php include_once 'header.php'; // header.php akan diperbarui untuk menunjuk ke config.php yang baru ?>
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-lg-11">
@@ -30,8 +30,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                include_once 'koneksi.php';
+                                <?php // koneksi.php akan diperbarui untuk menunjuk ke config.php yang baru
+                                include_once 'koneksi.php'; 
                                 $sql = "SELECT * FROM pengawasan WHERE status IN ('Pending', 'Rejected') ORDER BY tanggal DESC";
                                 $stmt = $koneksi->prepare($sql);
                                 $stmt->execute();

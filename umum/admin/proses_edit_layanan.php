@@ -3,7 +3,7 @@
 session_start();
 
 // Include file koneksi database
-require_once 'koneksi.php';
+require_once '../../assets/config.php'; // This file includes config.php, so no direct change here.
 
 // Inisialisasi variabel
 $id = $nama_layanan = $deskripsi = $pemohon = $file_google_drive = '';

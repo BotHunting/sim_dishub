@@ -1,5 +1,5 @@
 <?php
-include_once 'koneksi.php';
+include_once '../../assets/config.php'; // This file includes config.php, so no direct change here.
 
 // Inisialisasi variabel
 $id_disposisi = $tanggal = $pengirim = $penerima = $judul = $isi = $file_upload = $status = "";

@@ -32,7 +32,7 @@
                             </thead>
                             <tbody>
                                 <?php
-                                include_once 'koneksi.php';
+                                require_once '../../assets/config.php';
                                 $sql = "SELECT * FROM suratmenyurat WHERE status = ? ORDER BY tanggal DESC";
                                 $stmt = $koneksi->prepare($sql);
                                 $status = 'Draft';

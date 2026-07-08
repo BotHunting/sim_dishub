@@ -1,6 +1,6 @@
 <?php
 // Koneksi ke database
-include_once 'koneksi.php';
+include_once '../assets/config.php';
 
 // Periksa apakah parameter nomor kendaraan telah diterima dari request GET
 if (isset($_GET['nomor_kendaraan'])) {

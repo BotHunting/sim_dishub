@@ -43,8 +43,7 @@ include("../config.php"); // Mengimpor koneksi database
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">
-                                <!-- Jika belum login, arahkan ke `numpanguji_masuk_find.php` -->
-                                <a href="<?php echo isset($_SESSION['username']) ? 'numpanguji_masuk.php' : 'numpanguji_masuk_find.php'; ?>">
+                                <a href="dashboard.php">
                                     Numpang Uji Masuk
                                 </a>
                             </h5>
@@ -60,8 +59,7 @@ include("../config.php"); // Mengimpor koneksi database
                         </div>
                         <div class="card-body">
                             <h5 class="card-title">
-                                <!-- Jika belum login, arahkan ke `numpanguji_keluar_find.php` -->
-                                <a href="<?php echo isset($_SESSION['username']) ? 'numpanguji_keluar.php' : 'numpanguji_keluar_find.php'; ?>">
+                                <a href="dashboard.php#keluar-tab-pane">
                                     Numpang Uji Keluar
                                 </a>
                             </h5>

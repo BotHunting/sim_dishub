@@ -1,5 +1,5 @@
 <?php
-include_once 'koneksi.php';
+include_once '../assets/config.php';
 
 $sql = "SELECT DATE_FORMAT(waktu_keberangkatan, '%m') AS bulan, SUM(retribusi) AS total_retribusi 
         FROM kendaraan_keluar 

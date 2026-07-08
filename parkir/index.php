@@ -1,5 +1,5 @@
 <?php
-include_once 'koneksi.php';
+include_once '../assets/config.php';
 
 // Query untuk menghitung jumlah petugas
 $sql = "SELECT COUNT(*) as total_petugas FROM petugas_parkir";

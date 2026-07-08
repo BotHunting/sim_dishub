@@ -1,6 +1,6 @@
 <?php
 // Sertakan file koneksi.php untuk terhubung ke database
-require_once('koneksi.php');
+require_once('../assets/config.php');
 
 // Inisialisasi variabel
 $bulan = isset($_GET['bulan']) ? $_GET['bulan'] : date('m');

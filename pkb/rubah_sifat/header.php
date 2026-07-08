@@ -1,10 +1,10 @@
 <?php
+// Mulai sesi jika belum aktif
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
-include("../config.php"); // Mengimpor koneksi database dari config.php
-
-// Mengambil data pegawai jika dibutuhkan (optional)
-$sql = "SELECT * FROM pegawai";
-$result = $koneksi->query($sql);
+require_once __DIR__ . '/../../assets/config.php'; // Mengimpor koneksi database dari root/assets/
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +58,3 @@ $result = $koneksi->query($sql);
         </div>
     </header>
     <!-- Content for Rubah Bentuk can go here -->
-
-</body>
-
-</html>

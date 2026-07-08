@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../assets/config.php';
 $nama_layanan = $deskripsi = $pemohon = $file_google_drive = '';
 $error = '';
 

@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Include koneksi ke database
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../assets/config.php';
 // Ambil data laporan dengan status "Approved" dari database
 $query = "SELECT * FROM laporan WHERE status = ?";
 // Persiapkan statement SQL

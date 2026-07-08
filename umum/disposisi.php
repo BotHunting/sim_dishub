@@ -2,7 +2,7 @@
 session_start();
 
 // Include koneksi ke database
-require_once __DIR__ . '/../config.php';
+require_once __DIR__ . '/../assets/config.php';
 
 // Buat prepared statement untuk query
 $query = "SELECT * FROM disposisi WHERE status = ? ORDER BY tanggal DESC";

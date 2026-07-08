@@ -1,20 +1,25 @@
 <?php
 include("header.php");
-include("config.php"); // Mengimpor koneksi database dari config.php
 
 // Mengambil ID pegawai dari URL
-$id = $_GET['id'];
+if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
+    die("ID Pegawai tidak valid.");
+}
+$id = (int)$_GET['id'];
 
 // Query untuk mengambil data pegawai berdasarkan ID
-$sql = "SELECT * FROM pegawai WHERE id = $id";
-$result = $conn->query($sql);
+$sql = "SELECT * FROM pegawai_pkb WHERE id = ?";
+$stmt = $koneksi->prepare($sql);
+$stmt->bind_param("i", $id);
+$stmt->execute();
+$result = $stmt->get_result();
 
 // Mengecek apakah data pegawai ditemukan
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
 } else {
     echo "Data pegawai tidak ditemukan.";
-    exit();
+    exit(); // Hentikan eksekusi jika data tidak ditemukan
 }
 ?>
 
@@ -46,43 +51,43 @@ if ($result->num_rows > 0) {
     <div class="container mt-5">
         <h2>Form Edit Pegawai</h2>
         <form action="proses_editpegawai.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="id" value="<?php echo $row['id']; ?>"> <!-- ID Pegawai -->
+            <input type="hidden" name="id" value="<?php echo htmlspecialchars($row['id']); ?>"> <!-- ID Pegawai -->
             <div class="form-group">
                 <label for="nama">Nama Pegawai:</label><br>
-                <input type="text" class="form-control" id="nama" name="nama" value="<?php echo $row['nama']; ?>" required><br><br>
+                <input type="text" class="form-control" id="nama" name="nama" value="<?php echo htmlspecialchars($row['nama']); ?>" required><br><br>
             </div>
             <div class="form-group">
                 <label for="jabatan">Jabatan:</label><br>
-                <input type="text" class="form-control" id="jabatan" name="jabatan" value="<?php echo $row['jabatan']; ?>" required><br><br>
+                <input type="text" class="form-control" id="jabatan" name="jabatan" value="<?php echo htmlspecialchars($row['jabatan']); ?>" required><br><br>
             </div>
             <div class="form-group">
                 <label for="deskripsi">Deskripsi:</label><br>
-                <textarea id="deskripsi" class="form-control" name="deskripsi" rows="4" required><?php echo $row['deskripsi']; ?></textarea><br><br>
+                <textarea id="deskripsi" class="form-control" name="deskripsi" rows="4" required><?php echo htmlspecialchars($row['deskripsi']); ?></textarea><br><br>
             </div>
             <div class="form-group">
                 <label for="foto">Foto Pegawai:</label><br>
                 <input type="file" class="form-control" id="foto" name="foto" accept="image/*"><br><br>
-                <img src="assets/img/trainers/<?php echo $row['foto']; ?>" class="img-fluid" width="150" alt="Foto Pegawai"><br><br>
+                <img src="assets/img/trainers/<?php echo htmlspecialchars($row['foto']); ?>" class="img-fluid" width="150" alt="Foto Pegawai"><br><br>
             </div>
             <div class="form-group">
                 <label for="twitter">Twitter (URL):</label><br>
-                <input type="text" class="form-control" id="twitter" name="twitter" value="<?php echo $row['twitter']; ?>"><br><br>
+                <input type="text" class="form-control" id="twitter" name="twitter" value="<?php echo htmlspecialchars($row['twitter']); ?>"><br><br>
             </div>
             <div class="form-group">
                 <label for="facebook">Facebook (URL):</label><br>
-                <input type="text" class="form-control" id="facebook" name="facebook" value="<?php echo $row['facebook']; ?>"><br><br>
+                <input type="text" class="form-control" id="facebook" name="facebook" value="<?php echo htmlspecialchars($row['facebook']); ?>"><br><br>
             </div>
             <div class="form-group">
                 <label for="instagram">Instagram (URL):</label><br>
-                <input type="text" class="form-control" id="instagram" name="instagram" value="<?php echo $row['instagram']; ?>"><br><br>
+                <input type="text" class="form-control" id="instagram" name="instagram" value="<?php echo htmlspecialchars($row['instagram']); ?>"><br><br>
             </div>
             <div class="form-group">
                 <label for="linkedin">LinkedIn (URL):</label><br>
-                <input type="text" class="form-control" id="linkedin" name="linkedin" value="<?php echo $row['linkedin']; ?>"><br><br>
+                <input type="text" class="form-control" id="linkedin" name="linkedin" value="<?php echo htmlspecialchars($row['linkedin']); ?>"><br><br>
             </div>
             <div class="form-group">
                 <label for="username">Username:</label>
-                <input type="text" class="form-control" id="username" name="username" value="<?php echo $row['username']; ?>" required>
+                <input type="text" class="form-control" id="username" name="username" value="<?php echo htmlspecialchars($row['username'] ?? ''); ?>" required>
             </div>
             <div class="form-group">
                 <label for="password">Password:</label>

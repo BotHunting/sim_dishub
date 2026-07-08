@@ -1,9 +1,8 @@
 <?php
 // Mulai sesi
 session_start();
-
-// Sertakan file koneksi ke database
-require_once 'koneksi.php';
+// Sertakan file koneksi ke database (koneksi.php akan diperbarui untuk menunjuk ke config.php yang baru)
+require_once '../../assets/config.php'; 
 
 // Inisialisasi variabel untuk menyimpan pesan error
 $error = '';

@@ -1,5 +1,5 @@
 <?php
-include_once 'koneksi.php';
+require_once '../../assets/config.php';
 // Inisialisasi variabel dengan nilai default
 $nomor_surat = $tanggal = $pengirim = $penerima = $subjek = $isi = $file_google_drive = "";  // Tambahkan inisialisasi variabel $file_google_drive
 $error = "";

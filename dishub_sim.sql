@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Waktu pembuatan: 30 Apr 2025 pada 12.15
+-- Waktu pembuatan: 08 Jul 2026 pada 13.40
 -- Versi server: 8.0.40
--- Versi PHP: 8.3.14
+-- Versi PHP: 8.5.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -112,7 +112,9 @@ INSERT INTO `disposisi` (`id`, `tanggal`, `pengirim`, `penerima`, `judul`, `isi`
 (10, '2024-03-12', 'Kepala Dinas', 'Kabag Umum', 'Apel', 'segera', 'Kepala Dinas_10_ACC.pdf', 'Approved'),
 (11, '2024-03-17', 'Kepala Dinas', 'Kepala Dinas', 'Tindak lanjut', 'laksanakan  sesuai aturan', 'https://drive.google.com/file/d/16UaJ1AwEveftybC7i7Pa6cnU4zZjjP_r/view?usp=drive_link', 'Approved'),
 (12, '2024-03-25', 'Kepala Dinas', 'Kepala Dinas', 'Tindak lanjut  pindah trayek', 'ikuti aturan berlaku', 'https://drive.google.com/file/d/16c2GpK8Lwn4isxxMG9QdcF6Y-j8qevs2/view?usp=drive_link', 'Pending'),
-(13, '2024-11-20', 'Kepala Dinas', 'Bidang Prasarana', 'Pinjam Pick Up', 'setujui pinjam', 'https://drive.google.com/file/d/16Unc3bAQkOeIGzBXAH2zY7KMJ1DVK3vc/view?usp=drive_link', 'Pending');
+(13, '2024-11-21', 'Kepala Dinas', 'Kepala Dinas', 'Pinjam Pick Up', 'Sudah ACC lanjut ke pengujian', 'https://drive.google.com/file/d/16Unc3bAQkOeIGzBXAH2zY7KMJ1DVK3vc/view?usp=drive_link', 'Pending'),
+(14, '2025-05-03', 'Sekertaris', 'UPTD Pengujian Kendaraan Bermotor', 'Pengadaan alat', 'isinya salah, tolong ganti', 'https://drive.google.com/file/d/16Unc3bAQkOeIGzBXAH2zY7KMJ1DVK3vc/view?usp=drive_link', 'Approved'),
+(15, '2025-05-02', 'UPTD Pengujian Kendaraan Bermotor', 'Sekertaris', 'Pengadaan alat', 'lantujtkan', '-', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -669,9 +671,9 @@ INSERT INTO `pelayananumum` (`id`, `tanggal`, `nama_layanan`, `deskripsi`, `file
 (2, '2024-03-11 00:00:00', 'ada kah?', 'ada sayang ada', NULL, 'sipaling', 'Approved'),
 (9, '2024-03-12 08:17:45', 'Pinjam truck', '1 minggu', 'https://drive.google.com/file/d/0BzBaCdVh0eMDaXpJWVRwNjFlTGo0S0twSVk3SVdadUdlOGd3/view?usp=drive_link&resourcekey=0-F7hbfHPh4ASeOCshbM7FWw', 'adwdad', 'Approved'),
 (10, '2024-03-12 08:23:23', 'pinjam bahu jalan', '1 bulan', 'https://drive.google.com/file/d/1vW9Eb2QiUWHsntwjZtei_x2yBbIwBYP8/view?usp=drive_link', 'malika', 'Rejected'),
-(11, '2024-03-17 14:53:03', 'Pindah Trayek', 'dari trayek A ke C', 'Samsul_65f6f5bfcc37a.pdf', 'Samsul', 'Pending'),
+(11, '2024-03-17 14:53:03', 'Pindah Trayek', 'dari trayek A ke D', 'https://drive.google.com/file/d/16Unc3bAQkOeIGzBXAH2zY7KMJ1DVK3vc/view?usp=drive_link', 'Samsul', 'Approved'),
 (12, '2024-03-22 14:42:18', 'Pinjam Pickup', '2 minggu untuk bandara', 'https://drive.google.com/file/d/0BzBaCdVh0eMDaXpJWVRwNjFlTGo0S0twSVk3SVdadUdlOGd3/view?usp=drive_link&resourcekey=0-F7hbfHPh4ASeOCshbM7FWw', 'Yohanes', 'Approved'),
-(13, '2024-11-20 06:48:16', 'Pinjam Pick Up', 'Pinjam 1 hari', 'https://drive.google.com/file/d/0BzBaCdVh0eMDaXpJWVRwNjFlTGo0S0twSVk3SVdadUdlOGd3/view?usp=drive_link&resourcekey=0-F7hbfHPh4ASeOCshbM7FWw', 'Marsyanda', 'Pending'),
+(13, '2024-11-20 06:48:16', 'Pinjam Pick Up', 'Pinjam 1 hari', 'https://drive.google.com/file/d/0BzBaCdVh0eMDaXpJWVRwNjFlTGo0S0twSVk3SVdadUdlOGd3/view?usp=drive_link&resourcekey=0-F7hbfHPh4ASeOCshbM7FWw', 'Marsyanda', 'Approved'),
 (14, '2025-03-14 06:11:17', 'Izin Trayek', 'Trayek kokas', 'https://drive.google.com/file/d/0BzBaCdVh0eMDaXpJWVRwNjFlTGo0S0twSVk3SVdadUdlOGd3/view?usp=drive_link&resourcekey=0-F7hbfHPh4ASeOCshbM7FWw', 'Yunica', 'Pending'),
 (15, '2025-03-14 06:19:41', 'Izin Angkutan Pariwisata', 'CV. Jasa Karya', 'https://drive.google.com/file/d/1vW9Eb2QiUWHsntwjZtei_x2yBbIwBYP8/view?usp=drive_link', 'Andik', 'Pending');
 
@@ -1526,7 +1528,7 @@ ALTER TABLE `bidang`
 -- AUTO_INCREMENT untuk tabel `disposisi`
 --
 ALTER TABLE `disposisi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `jabatan`
